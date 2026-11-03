@@ -1,0 +1,25 @@
+[build]
+  command = "vite build"
+  publish = "dist/client"
+[build.environment]
+  NODE_VERSION = "24"
+[dev]
+  framework = "#custom"
+  command = "npm run dev"
+  targetPort = 3000
+  port = 8889
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "DENY"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# Takes effect for requests on this hostname after the owner connects the domain.
+[[redirects]]
+  from = "https://www.icongraphics.com.ng/*"
+  to = "https://icongraphics.com.ng/:splat"
+  status = 301
+  force = true
