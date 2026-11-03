@@ -12,7 +12,7 @@ export const getRouter = () => {
         <h1>A small interruption.</h1>
         <p>This page could not load. Please try again.</p>
         <a className="button yellow" href="/">
-          Return home ↗
+          Return home
         </a>
       </main>
     ),

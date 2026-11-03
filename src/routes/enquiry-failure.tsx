@@ -25,7 +25,7 @@ function EnquiryFailurePage() {
       <PageHero
         label="MESSAGE STATUS"
         title="We encountered a temporary issue."
-        description="Your browser was unable to complete the automated submission. Do not worry — you can reach Rapheal Adebayo directly through WhatsApp or email."
+        description="Your browser was unable to complete the automated submission. You can reach Rapheal Adebayo directly through WhatsApp or email."
       />
       <section className="section light">
         <div className="wrap" style={{ maxWidth: '800px' }}>
@@ -107,7 +107,7 @@ function EnquiryFailurePage() {
                   className="button yellow small"
                   message="Hello Rapheal, I tried submitting the website enquiry form and would like to share my project here."
                 >
-                  Open WhatsApp Chat ↗
+                  Open WhatsApp Chat
                 </WA>
               </div>
 
@@ -140,7 +140,7 @@ function EnquiryFailurePage() {
                   className="button dark small"
                   href="mailto:hello@icongraphics.com.ng?subject=Project%20Enquiry%20-%20ICON%20GRAPHICS"
                 >
-                  Send an Email ↗
+                  Send an Email
                 </a>
               </div>
             </div>

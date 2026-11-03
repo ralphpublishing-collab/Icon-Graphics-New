@@ -158,10 +158,10 @@ function EnquirySuccessPage() {
                 className="button yellow"
                 message="Hello Rapheal, I just submitted an enquiry on the ICON GRAPHICS website and wanted to say hello."
               >
-                Chat on WhatsApp Now ↗
+                Chat on WhatsApp Now
               </WA>
               <a className="button dark" href="/">
-                Return to Homepage ↗
+                Return to Homepage
               </a>
             </div>
           </div>

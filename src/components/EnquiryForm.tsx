@@ -51,7 +51,7 @@ export function EnquiryForm() {
   }
   return state === 'success' ? (
     <div className="form-success" role="status">
-      <span>↗</span>
+      <span style={{ fontSize: '26px', color: '#65dbed' }}>✓</span>
       <h2>Enquiry received.</h2>
       <p>
         Thank you for sharing your project. Rapheal Adebayo and the ICON
@@ -59,11 +59,11 @@ export function EnquiryForm() {
         hours.
       </p>
       <div style={{ display: 'flex', gap: '14px', marginTop: '18px', flexWrap: 'wrap' }}>
-        <a className="button yellow small" href="/enquiry-success">
-          View Confirmation Details ↗
+        <a className="button yellow small" href="/success">
+          View Confirmation Details
         </a>
         <button className="button outline small" onClick={() => setState('idle')}>
-          Send another enquiry ↗
+          Send Another Enquiry
         </button>
       </div>
     </div>
@@ -136,21 +136,6 @@ export function EnquiryForm() {
               <option>Multiple services</option>
             </select>
           </label>
-          <fieldset className="full service-choice">
-            <legend>Additional services (optional)</legend>
-            <div className="service-checks">
-              {services.map((s) => (
-                <label key={s.id}>
-                  <input
-                    type="checkbox"
-                    name="additional-services"
-                    value={s.title}
-                  />
-                  <span>{s.title}</span>
-                </label>
-              ))}
-            </div>
-          </fieldset>
           <label>
             Budget range
             <input
@@ -256,13 +241,17 @@ export function EnquiryForm() {
           </p>
         )}
         {state === 'error' && (
-          <p className="error" role="alert">
-            Your enquiry could not be sent. Please try again or contact us
-            directly on WhatsApp. Your details remain in the form.
-          </p>
+          <div className="error" role="alert" style={{ marginBottom: '14px' }}>
+            <p style={{ margin: '0 0 8px' }}>
+              Your enquiry could not be sent automatically. Please try again or message our founder directly on WhatsApp.
+            </p>
+            <a href="/failure" className="text-link" style={{ fontSize: '13px', color: '#116780', textDecoration: 'underline' }}>
+              View alternative direct contact channels
+            </a>
+          </div>
         )}
         <button className="button yellow" type="submit">
-          {state === 'sending' ? 'Sending enquiry…' : 'Send project enquiry ↗'}
+          {state === 'sending' ? 'Sending enquiry…' : 'Send Project Enquiry'}
         </button>
         <p className="fine">
           Your information is used to respond to your enquiry.

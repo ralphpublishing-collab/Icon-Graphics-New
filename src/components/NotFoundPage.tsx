@@ -10,7 +10,7 @@ export function NotFoundPage() {
           creative.
         </p>
         <a className="button yellow" href="/">
-          Back to home ↗
+          Back to home
         </a>
       </section>
     </Layout>

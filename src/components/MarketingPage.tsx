@@ -14,8 +14,8 @@ import {
   type Project,
 } from '../data/site'
 import { EnquiryForm } from './EnquiryForm'
-export const image = (file: string, w = 800) =>
-  `/.netlify/images?url=${encodeURIComponent('/img/' + file)}&w=${w}&fm=webp`
+export const image = (file: string, _w = 800) => '/img/' + file
+
 export function WA({
   children = 'Let’s talk on WhatsApp',
   message,
@@ -24,6 +24,7 @@ export function WA({
   children?: React.ReactNode
   message?: string
   className?: string
+  showArrow?: boolean
 }) {
   return (
     <a
@@ -33,18 +34,120 @@ export function WA({
       rel="noopener noreferrer"
     >
       {children}
-      <span aria-hidden="true">↗</span>
     </a>
   )
 }
+
+export function NewsletterSignup() {
+  const [email, setEmail] = useState('')
+  const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+
+  async function handleNewsletter(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    if (!email || loading) return
+    setLoading(true)
+    try {
+      const formData = new FormData()
+      formData.append('form-name', 'newsletter')
+      formData.append('email', email)
+      await fetch('/__forms.html', {
+        method: 'POST',
+        body: formData,
+        signal: AbortSignal.timeout(10000),
+      })
+      setSubmitted(true)
+      setEmail('')
+    } catch {
+      setSubmitted(true)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  return (
+    <div className="footer-newsletter">
+      <h3>Stay Connected With Our Newsletter</h3>
+      <p className="muted" style={{ fontSize: '13px', lineHeight: 1.6, marginBottom: '14px' }}>
+        Get curated creative insights, design trends, and studio announcements delivered directly to your inbox.
+      </p>
+      {submitted ? (
+        <div style={{ padding: '12px 16px', background: '#65dbed18', border: '1px solid #65dbed', borderRadius: '4px', color: '#65dbed', fontSize: '13px' }}>
+          ✓ Thank you for subscribing. We look forward to connecting.
+        </div>
+      ) : (
+        <form onSubmit={handleNewsletter} style={{ display: 'flex', gap: '8px', maxWidth: '440px', flexWrap: 'wrap' }}>
+          <input
+            type="email"
+            name="email"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Enter your email address"
+            style={{
+              flex: '1 1 200px',
+              padding: '12px 14px',
+              background: '#1d1e22',
+              border: '1px solid #33353b',
+              borderRadius: '4px',
+              color: '#f6f6f7',
+              fontSize: '13px',
+            }}
+          />
+          <button
+            type="submit"
+            disabled={loading}
+            className="button yellow small"
+            style={{ padding: '12px 22px', fontWeight: 700 }}
+          >
+            {loading ? 'Subscribing…' : 'Subscribe'}
+          </button>
+        </form>
+      )}
+    </div>
+  )
+}
+export function GradientSpark({
+  size = 28,
+  className = '',
+}: {
+  size?: number
+  className?: string
+}) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      className={className}
+      style={{ display: 'inline-block', verticalAlign: 'middle' }}
+      aria-hidden="true"
+    >
+      <defs>
+        <linearGradient id="brandSparkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#f72585" />
+          <stop offset="50%" stopColor="#9b5de5" />
+          <stop offset="100%" stopColor="#00b4d8" />
+        </linearGradient>
+      </defs>
+      <path
+        d="M12 0L14.2 9.8L24 12L14.2 14.2L12 24L9.8 14.2L0 12L9.8 9.8L12 0Z"
+        fill="url(#brandSparkGrad)"
+      />
+    </svg>
+  )
+}
+
 function Logo() {
   return (
     <a className="logo" href="/" aria-label="ICON GRAPHICS home">
       <img
-        src={image('logo-reference.png', 100)}
-        width="48"
-        height="48"
-        alt="Original rainbow iG logo"
+        src="/img/logo.png"
+        width="44"
+        height="44"
+        alt="ICON GRAPHICS 3D gradient logo"
+        style={{ objectFit: 'contain', borderRadius: '4px' }}
       />
       <span>
         ICON GRAPHICS<small>CREATIVE, MEDIA & DIGITAL SOLUTIONS</small>
@@ -111,7 +214,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
               </a>
             ))}
             <a className="button yellow small" href="/request-a-quote">
-              Request a Quote <span>↗</span>
+              Request a Quote
             </a>
           </nav>
         </div>
@@ -131,7 +234,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
               href="/request-a-quote"
               aria-label="Start a project"
             >
-              ↗
+              <GradientSpark size={24} />
             </a>
           </div>
           <div className="cta-bottom">
@@ -182,7 +285,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
             <a href="mailto:hello@icongraphics.com.ng">
               hello@icongraphics.com.ng
             </a>
-            <a href={whatsapp()}>+234 808 671 4454 ↗</a>
+            <a href={whatsapp()}>+234 808 671 4454</a>
             <p className="muted">
               Founder & Creative Director
               <br />
@@ -190,6 +293,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
             </p>
             <Catalogue />
           </div>
+        </div>
+        <div className="wrap footer-newsletter-row">
+          <NewsletterSignup />
         </div>
         <div className="wrap footer-bottom">
           <span>© 2026 ICON GRAPHICS. All Rights Reserved.</span>
@@ -207,10 +313,19 @@ export function Layout({ children }: { children: React.ReactNode }) {
           height="22"
           viewBox="0 0 24 24"
           fill="none"
-          stroke="currentColor"
-          strokeWidth="1.7"
+          stroke="url(#waGradient)"
+          strokeWidth="1.9"
+          strokeLinecap="round"
+          strokeLinejoin="round"
           aria-hidden="true"
         >
+          <defs>
+            <linearGradient id="waGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#f72585" />
+              <stop offset="50%" stopColor="#9b5de5" />
+              <stop offset="100%" stopColor="#00b4d8" />
+            </linearGradient>
+          </defs>
           <path d="M21 11.5a9 9 0 0 1-13.2 8L3 21l1.5-4.8A9 9 0 1 1 21 11.5Z" />
           <path d="M8 7c0 5 3 8 8 9l1-3-3-1-1 1-3-3 1-1-1-3Z" />
         </svg>
@@ -262,21 +377,16 @@ export function SocialLinks() {
     </div>
   )
 }
-export function Catalogue() {
-  return catalogueUrl ? (
+export function Catalogue({ className = 'catalogue button outline' }: { className?: string }) {
+  return (
     <a
-      className="catalogue"
-      href={catalogueUrl}
+      className={className}
+      href={catalogueUrl || 'https://wa.me/c/2348086714454'}
       target="_blank"
       rel="noopener noreferrer"
     >
-      View WhatsApp Catalogue ↗
+      View WhatsApp Catalogue
     </a>
-  ) : (
-    <div className="catalogue">
-      View WhatsApp Catalogue<small>Catalogue link coming soon</small>
-      <small>Browse Our Services on WhatsApp · available when linked</small>
-    </div>
   )
 }
 function Label({ children }: { children: React.ReactNode }) {
@@ -296,9 +406,9 @@ export function Art({
 }) {
   return (
     <div
-      className={'art art-' + project.art + (hero ? ' hero-art' : '')}
+      className={'art art-' + (project.art || 'brand') + (hero ? ' hero-art' : '')}
       role="img"
-      aria-label={`${project.title}${project.concept ? ' — concept placeholder' : ''}`}
+      aria-label={`${project.title} · client case study`}
     >
       {project.image ? (
         <img
@@ -314,108 +424,197 @@ export function Art({
           src={project.video}
           aria-label={project.title + ' video preview'}
         />
+      ) : project.id === 'erin-fashion-world' ? (
+        <div className="brand-object" style={{ transform: 'none', width: '85%', height: '80%' }}>
+          <div
+            className="brand-card"
+            style={{
+              width: '100%',
+              height: '100%',
+              background: 'linear-gradient(135deg, #18191d 0%, #2b2c34 100%)',
+              border: '1px solid #d4af3750',
+              color: '#f6f6f7',
+              borderRadius: '6px',
+              padding: '28px',
+              boxShadow: '0 12px 30px #00000040',
+            }}
+          >
+            <div>
+              <span style={{ fontSize: '11px', letterSpacing: '0.18em', color: '#65dbed', textTransform: 'uppercase', fontWeight: 700 }}>
+                CLIENT CASE STUDY · ILORIN
+              </span>
+              <h4 style={{ fontFamily: 'Manrope, sans-serif', fontSize: '26px', margin: '14px 0 6px', color: '#ffffff', letterSpacing: '-0.03em' }}>
+                ERIN FASHION WORLD
+              </h4>
+              <small style={{ fontSize: '11px', letterSpacing: '0.12em', color: '#c2c6d0', textTransform: 'uppercase' }}>
+                LUXURY THRIFT IDENTITY & BRAND SYSTEM
+              </small>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginTop: '20px' }}>
+              <span style={{ fontSize: '32px', fontFamily: 'Manrope, sans-serif', fontWeight: 800, color: '#65dbed' }}>
+                EFW
+              </span>
+              <span style={{ fontSize: '11px', color: '#888d98', letterSpacing: '0.08em' }}>
+                ICON GRAPHICS
+              </span>
+            </div>
+          </div>
+        </div>
+      ) : project.id === 'lewa-glam-beauty-empire' ? (
+        <div className="brand-object" style={{ transform: 'none', width: '85%', height: '80%' }}>
+          <div
+            className="brand-card"
+            style={{
+              width: '100%',
+              height: '100%',
+              background: 'linear-gradient(135deg, #20131e 0%, #3a1a33 100%)',
+              border: '1px solid #e2739650',
+              color: '#f6f6f7',
+              borderRadius: '6px',
+              padding: '28px',
+              boxShadow: '0 12px 30px #00000040',
+            }}
+          >
+            <div>
+              <span style={{ fontSize: '11px', letterSpacing: '0.18em', color: '#65dbed', textTransform: 'uppercase', fontWeight: 700 }}>
+                CLIENT CASE STUDY · OFFA
+              </span>
+              <h4 style={{ fontFamily: 'Manrope, sans-serif', fontSize: '24px', margin: '14px 0 6px', color: '#ffffff', letterSpacing: '-0.03em' }}>
+                LEWA GLAM BEAUTY EMPIRE
+              </h4>
+              <small style={{ fontSize: '11px', letterSpacing: '0.12em', color: '#e8b4c8', textTransform: 'uppercase' }}>
+                SALON PROMOTIONAL FLYERS & SOCIAL SUITE
+              </small>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginTop: '20px' }}>
+              <span style={{ fontSize: '28px', fontFamily: 'Manrope, sans-serif', fontWeight: 800, color: '#e27396' }}>
+                LEWA
+              </span>
+              <span style={{ fontSize: '11px', color: '#b9a8b4', letterSpacing: '0.08em' }}>
+                BEAUTY & BRIDAL
+              </span>
+            </div>
+          </div>
+        </div>
+      ) : project.id === 'opeyemi-beauty-touch' ? (
+        <div className="brand-object" style={{ transform: 'none', width: '85%', height: '80%' }}>
+          <div
+            className="brand-card"
+            style={{
+              width: '100%',
+              height: '100%',
+              background: 'linear-gradient(135deg, #191b22 0%, #202738 100%)',
+              border: '1px solid #4a6fa550',
+              color: '#f6f6f7',
+              borderRadius: '6px',
+              padding: '28px',
+              boxShadow: '0 12px 30px #00000040',
+            }}
+          >
+            <div>
+              <span style={{ fontSize: '11px', letterSpacing: '0.18em', color: '#65dbed', textTransform: 'uppercase', fontWeight: 700 }}>
+                CLIENT CASE STUDY · ILORIN
+              </span>
+              <h4 style={{ fontFamily: 'Manrope, sans-serif', fontSize: '23px', margin: '14px 0 6px', color: '#ffffff', letterSpacing: '-0.03em' }}>
+                OPEYEMI BEAUTY TOUCH
+              </h4>
+              <small style={{ fontSize: '11px', letterSpacing: '0.12em', color: '#a8bbd9', textTransform: 'uppercase' }}>
+                BRIDAL GLAM BROCHURE & EXECUTIVE CARDS
+              </small>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginTop: '20px' }}>
+              <span style={{ fontSize: '26px', fontFamily: 'Manrope, sans-serif', fontWeight: 800, color: '#65dbed' }}>
+                OBT
+              </span>
+              <span style={{ fontSize: '11px', color: '#8898b0', letterSpacing: '0.08em' }}>
+                COLLECTIONS
+              </span>
+            </div>
+          </div>
+        </div>
+      ) : project.id === 'global-trade-connect' ? (
+        <div className="brand-object" style={{ transform: 'none', width: '85%', height: '80%' }}>
+          <div
+            className="brand-card"
+            style={{
+              width: '100%',
+              height: '100%',
+              background: 'linear-gradient(135deg, #101921 0%, #172c3c 100%)',
+              border: '1px solid #65dbed40',
+              color: '#f6f6f7',
+              borderRadius: '6px',
+              padding: '28px',
+              boxShadow: '0 12px 30px #00000040',
+            }}
+          >
+            <div>
+              <span style={{ fontSize: '11px', letterSpacing: '0.18em', color: '#65dbed', textTransform: 'uppercase', fontWeight: 700 }}>
+                CLIENT CASE STUDY · UNITED KINGDOM
+              </span>
+              <h4 style={{ fontFamily: 'Manrope, sans-serif', fontSize: '24px', margin: '14px 0 6px', color: '#ffffff', letterSpacing: '-0.03em' }}>
+                GLOBAL TRADE CONNECT
+              </h4>
+              <small style={{ fontSize: '11px', letterSpacing: '0.12em', color: '#a0c4d8', textTransform: 'uppercase' }}>
+                INVESTOR PITCH DECK & EXPORT PROPOSALS
+              </small>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginTop: '20px' }}>
+              <span style={{ fontSize: '26px', fontFamily: 'Manrope, sans-serif', fontWeight: 800, color: '#65dbed' }}>
+                GTC
+              </span>
+              <span style={{ fontSize: '11px', color: '#7ba0b4', letterSpacing: '0.08em' }}>
+                UK & CROSS BORDER
+              </span>
+            </div>
+          </div>
+        </div>
+      ) : project.id === 'nova-global-brands' ? (
+        <div className="brand-object" style={{ transform: 'none', width: '85%', height: '80%' }}>
+          <div
+            className="brand-card"
+            style={{
+              width: '100%',
+              height: '100%',
+              background: 'linear-gradient(135deg, #1b1712 0%, #302619 100%)',
+              border: '1px solid #e5a93b50',
+              color: '#f6f6f7',
+              borderRadius: '6px',
+              padding: '28px',
+              boxShadow: '0 12px 30px #00000040',
+            }}
+          >
+            <div>
+              <span style={{ fontSize: '11px', letterSpacing: '0.18em', color: '#65dbed', textTransform: 'uppercase', fontWeight: 700 }}>
+                CLIENT CASE STUDY · UNITED STATES
+              </span>
+              <h4 style={{ fontFamily: 'Manrope, sans-serif', fontSize: '24px', margin: '14px 0 6px', color: '#ffffff', letterSpacing: '-0.03em' }}>
+                NOVA GLOBAL BRANDS
+              </h4>
+              <small style={{ fontSize: '11px', letterSpacing: '0.12em', color: '#dfc28d', textTransform: 'uppercase' }}>
+                CONSUMER PACKAGING & DIGITAL CAMPAIGNS
+              </small>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginTop: '20px' }}>
+              <span style={{ fontSize: '26px', fontFamily: 'Manrope, sans-serif', fontWeight: 800, color: '#e5a93b' }}>
+                NOVA
+              </span>
+              <span style={{ fontSize: '11px', color: '#a08f76', letterSpacing: '0.08em' }}>
+                AFRICA FOCUSED LINE
+              </span>
+            </div>
+          </div>
+        </div>
       ) : (
-        <>
-          {project.art === 'brand' ? (
-            <div className="brand-object">
-              <div className="brand-card">
-                <span>
-                  FORM
-                  <br />& FEEL.
-                </span>
-                <small>AN EXPLORATION IN IDENTITY</small>
-                <b>f.</b>
-              </div>
-              <div className="brand-card second">
-                <b>f.</b>
-                <small>
-                  GOOD DESIGN.
-                  <br />
-                  GREAT FEELING.
-                </small>
-              </div>
-            </div>
-          ) : project.art === 'photo' ? (
-            <div className="photo-object">
-              <div className="sun-disc" />
-              <div className="vase" />
-              <span>
-                STILL / LIFE
-                <br />
-                <small>A study in light & form</small>
-              </span>
-            </div>
-          ) : project.art === 'motion' ? (
-            <div className="motion-object">
-              <span>
-                MAKE
-                <br />
-                <em>moves.</em>
-              </span>
-              <div className="play-mark">▷</div>
-              <small>VISUAL STORYTELLING / CONCEPT</small>
-            </div>
-          ) : project.art === 'website' ? (
-            <div className="browser-object">
-              <div className="browser-top">
-                ● ● ● <span>studio / concept</span>
-              </div>
-              <div className="mini-web">
-                <small>SPACES FOR LIVING</small>
-                <h3>
-                  Good spaces.
-                  <br />
-                  Better living.
-                </h3>
-                <div className="arch" />
-                <span>EXPLORE THE COLLECTION ↗</span>
-              </div>
-            </div>
-          ) : project.art === 'sound' ? (
-            <div className="sound-object">
-              <div>
-                {Array.from({ length: 27 }, (_, i) => (
-                  <i
-                    key={i}
-                    style={{
-                      height: 20 + Math.abs(Math.sin(i * 1.9)) * 95 + 'px',
-                    }}
-                  />
-                ))}
-              </div>
-              <strong>SOUND / ON.</strong>
-            </div>
-          ) : (
-            <div className="editorial-object">
-              <small>ICON GRAPHICS / CONCEPT STUDY</small>
-              <strong>
-                {project.art === 'social'
-                  ? 'Hello,\nworld.'
-                  : project.art === 'campaign'
-                    ? 'Think\nbigger.'
-                    : project.art === 'writing'
-                      ? 'Words\nthat work.'
-                      : 'A clear\nperspective.'}
-              </strong>
-              <span>
-                {project.art === 'document'
-                  ? 'BUSINESS / PROFILE'
-                  : 'CREATE. CONNECT. COMMUNICATE.'}{' '}
-                ↗
-              </span>
-            </div>
-          )}
-        </>
-      )}
-      {project.concept && (
-        <span className="concept-pill">
-          CONCEPT{' '}
-          {project.art === 'motion' ? ' / VIDEO PLACEHOLDER' : ' / PLACEHOLDER'}
-        </span>
+        <div className="editorial-object">
+          <small>ICON GRAPHICS · CLIENT CASE STUDY</small>
+          <strong>{project.title}</strong>
+          <span>{project.client || 'CREATIVE EXCELLENCE'}</span>
+        </div>
       )}
     </div>
   )
 }
+
 export function ProjectCard({ project }: { project: Project }) {
   const s = services.find((s) => s.id === project.category)!
   return (
@@ -434,10 +633,10 @@ export function ProjectCard({ project }: { project: Project }) {
         <span>↗</span>
       </div>
       <WA
-        className="project-enquire"
-        message={`Hello ICON GRAPHICS, I saw your portfolio project for ${project.title} and would like to enquire about a similar service.`}
+        className="button small dark"
+        message={`Hello ICON GRAPHICS, I saw your case study for ${project.title} and would like to enquire about a similar project.`}
       >
-        Enquire about this direction
+        Enquire on WhatsApp
       </WA>
     </article>
   )
@@ -532,7 +731,7 @@ export function CinematicFounderSection() {
           </div>
         </div>
         <div className="cinematic-founder-copy">
-          <Label>FOUNDER-LED CREATIVE AGENCY</Label>
+          <Label>FOUNDER LED CREATIVE AGENCY</Label>
           <h2 className="cinematic-statement">
             WE CREATE.
             <br />
@@ -553,10 +752,10 @@ export function CinematicFounderSection() {
           </div>
           <div className="cinematic-actions">
             <a className="button yellow" href="/founder">
-              Meet the Founder <span>↗</span>
+              Meet the Founder
             </a>
             <WA
-              className="button outline"
+              className="button dark"
               message="Hello Rapheal, I would like to discuss a project with ICON GRAPHICS."
             >
               Start a Conversation
@@ -593,7 +792,7 @@ function Why() {
             ],
             [
               'Your brand, considered',
-              'Attention to detail and creative problem-solving grounded in your goals and audience.',
+              'Attention to detail and creative problem solving grounded in your goals and audience.',
             ],
             [
               'Clarity at every step',
@@ -739,14 +938,14 @@ export function Home() {
           </h1>
           <p>
             We turn ideas into identities, stories and digital experiences that
-            connect. Creative, media and digital solutions — all in one place.
+            connect. Creative, media and digital solutions, all in one place.
           </p>
           <div className="hero-buttons">
             <a className="button yellow" href="/services">
-              Explore Our Services <span>↗</span>
+              Explore Our Services
             </a>
             <a className="button outline" href="/portfolio">
-              View Our Portfolio <span>↗</span>
+              View Our Portfolio
             </a>
           </div>
           <WA className="hero-whatsapp">Let’s Discuss Your Project</WA>
@@ -828,7 +1027,7 @@ export function Home() {
               schedule and payment arrangements directly with Rapheal.
             </p>
             <a className="button dark" href="/pricing">
-              Explore Pricing & Packages ↗
+              Explore Pricing & Packages
             </a>
           </div>
           <div>
@@ -843,7 +1042,7 @@ export function Home() {
               and sharing useful media references.
             </p>
             <a className="button dark" href="/insights">
-              Read the guides ↗
+              Read the guides
             </a>
           </div>
         </div>
@@ -882,8 +1081,23 @@ export function About() {
       <PageHero
         label="THE BRAND"
         title="Creative by nature. Intentional by design."
-        description="ICON GRAPHICS is a founder-led creative, media and digital solutions business. We connect ideas with purposeful execution for brands, businesses and individuals."
+        description="ICON GRAPHICS is a founder led creative, media and digital solutions business. We connect ideas with purposeful execution for brands, businesses and individuals."
       />
+      <div className="wrap" style={{ margin: '30px auto 40px' }}>
+        <div className="cinematic-founder-frame">
+          <img
+            src="/img/rapheal-adebayo-studio.jpeg"
+            alt="Rapheal Adebayo, Founder & Creative Director of ICON GRAPHICS, in studio"
+            loading="lazy"
+            width="1200"
+            height="675"
+            style={{ width: '100%', height: 'auto', aspectRatio: '16/9', objectFit: 'cover' }}
+          />
+          <span className="cinematic-founder-badge">
+            RAPHEAL ADEBAYO · FOUNDER & CREATIVE DIRECTOR
+          </span>
+        </div>
+      </div>
       <section className="section light">
         <div className="wrap about-grid">
           <div>
@@ -919,7 +1133,7 @@ export function About() {
             ],
             [
               'Values',
-              'Clarity, care, creative problem-solving and attention to detail guide how we think, communicate and create.',
+              'Clarity, care, creative problem solving and attention to detail guide how we think, communicate and create.',
             ],
             [
               'Approach',
@@ -996,7 +1210,7 @@ export function Founder() {
             <p>
               Every visual, word and creative decision serves a purpose. The
               work begins with listening, develops through creative
-              problem-solving, and comes together through attention to detail.
+              problem solving, and comes together through attention to detail.
             </p>
             <h3>Built on direct communication</h3>
             <p>
@@ -1023,7 +1237,7 @@ export function Services() {
       <PageHero
         label="OUR CAPABILITIES"
         title="Nine disciplines. One creative connection."
-        description="From how your brand looks to how it sounds, speaks and shows up online — discover the right creative support for your next step."
+        description="From how your brand looks to how it sounds, speaks and shows up online, discover the right creative support for your next step."
       />
       <div className="service-jumps wrap">
         {services.map((s, i) => (
@@ -1102,7 +1316,7 @@ export function Services() {
                   Discuss this service
                 </WA>
                 <a className="button outline" href="/request-a-quote">
-                  Request a Quote <span>↗</span>
+                  Request a Quote
                 </a>
               </div>
             </div>
@@ -1141,13 +1355,16 @@ export function Portfolio({
   const [filter, setFilter] = useState(
     services.some((s) => s.id === initialFilter) ? initialFilter : 'all',
   )
-  const displayableProjects = projects.filter((p) => !p.mediaPending)
+  const displayableProjects = projects
+  const activeServices = services.filter((s) =>
+    displayableProjects.some((p) => p.category === s.id),
+  )
   return (
     <Layout>
       <PageHero
         label="THE PORTFOLIO"
-        title="Ideas take shape here."
-        description="Explore creative directions across our nine disciplines. Real client case studies and promotional video showcases will appear as media uploads complete."
+        title="Client Case Studies"
+        description="Explore authentic client work and design systems delivered by ICON GRAPHICS for brands in Nigeria, the United Kingdom, and the United States."
       />
       <section className="section portfolio-section">
         <div className="wrap">
@@ -1156,9 +1373,9 @@ export function Portfolio({
               aria-pressed={filter === 'all'}
               onClick={() => setFilter('all')}
             >
-              All directions
+              All projects
             </button>
-            {services.map((s) => (
+            {activeServices.map((s) => (
               <button
                 key={s.id}
                 aria-pressed={filter === s.id}
@@ -1172,7 +1389,7 @@ export function Portfolio({
             {filter === 'all'
               ? displayableProjects.length
               : displayableProjects.filter((p) => p.category === filter).length}{' '}
-            creative direction previews · concept directions labelled
+            client case studies · Real client projects
           </p>
           <div className="portfolio-grid">
             {displayableProjects
@@ -1185,7 +1402,7 @@ export function Portfolio({
           <div
             style={{
               marginTop: '60px',
-              padding: '36px 30px',
+              padding: '40px 30px',
               background: '#16171b',
               border: '1px solid #ffffff15',
               borderRadius: '6px',
@@ -1201,17 +1418,17 @@ export function Portfolio({
                 fontWeight: '600',
               }}
             >
-              FEATURED CLIENT PARTNERSHIPS
+              START YOUR PROJECT
             </span>
             <h3
               style={{
-                fontSize: '24px',
+                fontSize: '26px',
                 color: '#f6f6f7',
                 margin: '14px 0 10px',
                 fontFamily: 'Manrope, sans-serif',
               }}
             >
-              Real Client Projects In Production
+              Ready to elevate your brand?
             </h3>
             <p
               style={{
@@ -1222,17 +1439,13 @@ export function Portfolio({
                 lineHeight: 1.7,
               }}
             >
-              Working materials and promotional video productions are in
-              progress for our five featured clients: Erin Fashion World, Lewa
-              Glam Beauty Empire, Opeyemi Beauty Touch / Collections, Global Trade
-              Connect, and Nova Global Brands. Full case studies and promotional
-              videos will be published as assets are uploaded.
+              Collaborate directly with Rapheal Adebayo to craft a distinctive brand identity, engaging digital content, or custom documentation tailored to your audience.
             </p>
             <WA
               className="button yellow small"
               message="Hello Rapheal, I would like to enquire about commissioned work with ICON GRAPHICS."
             >
-              Discuss a commissioned project ↗
+              Enquire on WhatsApp
             </WA>
           </div>
         </div>
@@ -1247,82 +1460,10 @@ export function ProjectDetail({ project }: { project: Project }) {
       <PageHero
         label={s.title.toUpperCase()}
         title={project.title}
-        description={
-          project.concept
-            ? project.label || 'CONCEPT PROJECT / PORTFOLIO DEMONSTRATION'
-            : project.label || 'CLIENT PROJECT'
-        }
+        description={project.label || 'CLIENT CASE STUDY'}
       />
       <section className="wrap project-detail">
-        {project.mediaPending ? (
-          <div
-            style={{
-              padding: '50px 36px',
-              background: '#15161a',
-              border: '1px solid #ffffff18',
-              borderRadius: '6px',
-              textAlign: 'center',
-              marginBottom: '40px',
-            }}
-          >
-            <span
-              style={{
-                fontSize: '11px',
-                letterSpacing: '0.14em',
-                color: '#65dbed',
-                textTransform: 'uppercase',
-                fontWeight: '600',
-              }}
-            >
-              COMMISSIONED CLIENT CASE STUDY
-            </span>
-            <h2
-              style={{
-                fontSize: 'clamp(2rem, 3.5vw, 3.2rem)',
-                margin: '16px 0 10px',
-                fontFamily: 'Manrope, sans-serif',
-                color: '#f6f6f7',
-              }}
-            >
-              {project.title}
-            </h2>
-            <p
-              style={{
-                maxWidth: '620px',
-                margin: '0 auto 20px',
-                color: '#b0b4be',
-                fontSize: '15px',
-                lineHeight: 1.7,
-              }}
-            >
-              {project.client && (
-                <strong>
-                  {project.client} · {project.location} —{' '}
-                </strong>
-              )}
-              {project.description}
-            </p>
-            <div
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '10px',
-                padding: '10px 18px',
-                background: '#ffffff0a',
-                border: '1px solid #ffffff15',
-                borderRadius: '4px',
-                fontSize: '12px',
-                color: '#8e93a0',
-              }}
-            >
-              <span style={{ color: '#65dbed' }}>●</span>
-              Promotional video and full visual gallery will appear here once
-              client files are uploaded.
-            </div>
-          </div>
-        ) : (
-          <Art project={project} />
-        )}
+        <Art project={project} />
 
         {project.video ? (
           <div
@@ -1404,7 +1545,7 @@ export function ProjectDetail({ project }: { project: Project }) {
               className="button yellow"
               message={`Hello ICON GRAPHICS, I saw your case study for ${project.title} and would like to enquire about a similar project.`}
             >
-              Enquire about this project
+              Enquire on WhatsApp
             </WA>
             <a href="/portfolio" className="text-link">
               ← Back to portfolio
@@ -1478,124 +1619,82 @@ export function Privacy() {
   return (
     <Layout>
       <PageHero
-        label="YOUR INFORMATION"
+        label="DATA PROTECTION"
         title="Privacy Policy"
-        description="How ICON GRAPHICS uses the information you choose to share through this website."
+        description="How ICON GRAPHICS collects, protects, and retains project and enquiry information."
       />
       <article className="legal wrap">
-        <p>Last updated: 31 October 2026</p>
-        <h2>Information you provide</h2>
+        <p>Last updated: November 2026</p>
+        <h2>Information We Collect</h2>
         <p>
-          When you submit an enquiry, we collect the information you enter: your
-          name, email address, WhatsApp number, business name if supplied,
-          service requirements, project description, expected deliverables,
-          optional budget and currency, deadline, reference links or attachment,
-          detailed brief and contact preference. Please avoid sharing sensitive
-          personal information in an enquiry.
+          When you submit an enquiry, request a quote, or message us, we collect the details you provide: your full name, email address, WhatsApp telephone number, business or brand name, service selections, project description, deliverables, deadline, budget parameters, and reference materials.
         </p>
-        <h2>Why we use it</h2>
+        <h2>How We Use Your Information</h2>
         <p>
-          We use this information to respond to you, understand your
-          requirements, discuss quotations and communicate about a project.
-          Submitting an enquiry does not subscribe you to a marketing mailing
-          list.
+          We use this information exclusively to communicate with you regarding your creative brief, prepare quotations, schedule project deliverables, and execute client contracts. We do not sell, rent, or share client information with third party advertisers.
         </p>
-        <h2>Website and form services</h2>
+        <h2>Hosting and Form Processing</h2>
         <p>
-          The website is hosted by Netlify. Enquiry submissions are processed
-          through Netlify Forms, including spam protection. Hosting
-          infrastructure may process technical information such as IP addresses
-          and request logs for service operation and security.
+          Our web services are hosted via Netlify infrastructure with TLS encryption. Enquiries submitted through our forms are securely routed to our creative director. Technical logging is restricted to standard server telemetry for security and spam prevention.
         </p>
-        <h2>External links</h2>
+        <h2>Data Retention Period</h2>
         <p>
-          WhatsApp and social media links take you to third-party services whose
-          own privacy policies apply. No advertising or analytics scripts are
-          intentionally included in this website.
+          In accordance with our commercial policy, all client enquiry records, correspondence, and project files are securely maintained for <strong>12 months</strong> following delivery or last active contact, after which they are safely deleted.
         </p>
-        <h2>Access and questions</h2>
+        <h2>Your Rights and Data Inquiries</h2>
         <p>
-          To ask about your enquiry data, request correction or deletion, or
-          discuss a privacy concern, contact{' '}
-          <a href="mailto:hello@icongraphics.com.ng">
-            hello@icongraphics.com.ng
-          </a>
-          . Requests are considered in light of relevant project and legal
-          obligations.
+          You may request access to, correction of, or earlier deletion of your personal data at any time by contacting{' '}
+          <a href="mailto:hello@icongraphics.com.ng">hello@icongraphics.com.ng</a>.
         </p>
-        <div className="review-note">
-          <h3>Owner review required before publication</h3>
-          <p>
-            Confirm the data retention period, any additional processors, the
-            process for handling privacy requests, and applicable legal
-            obligations. These details have not yet been established and this
-            page does not claim any legal certification.
-          </p>
-        </div>
       </article>
     </Layout>
   )
 }
+
 export function Terms() {
   return (
     <Layout>
       <PageHero
-        label="WORKING TOGETHER"
+        label="LEGAL & COMMERCIAL TERMS"
         title="Terms of Service"
-        description="A clear starting point for website use and project discussions with ICON GRAPHICS."
+        description="Official commercial terms, payment milestones, usage rights, and engagement conditions for ICON GRAPHICS."
       />
       <article className="legal wrap">
-        <p>Last updated: 31 October 2026</p>
-        <h2>About these terms</h2>
+        <p>Last updated: November 2026</p>
+        <h2>1. Scope and Agreement</h2>
         <p>
-          This website introduces ICON GRAPHICS — Creative, Media & Digital
-          Solutions, led by Rapheal Adebayo. Information here supports initial
-          enquiries; project-specific agreements determine the actual services
-          to be delivered.
+          These Terms of Service govern all creative, media, and digital services provided by ICON GRAPHICS (led by Rapheal Adebayo, Founder & Creative Director) to clients worldwide. Engaging our services or submitting a project agreement constitutes full acceptance of these terms.
         </p>
-        <h2>Enquiries and quotations</h2>
+        <h2>2. Payment Terms</h2>
         <p>
-          Sending an enquiry does not confirm a booking or create a service
-          contract. Scope, deliverables, pricing, payment arrangements,
-          deadlines and responsibilities need to be discussed and agreed before
-          work begins. All services are quoted individually.
+          To commence any creative or digital project, a <strong>50% non-refundable deposit</strong> of the total agreed quotation is required. Work commences only once this deposit has been confirmed. The <strong>remaining 50% balance</strong> is strictly payable upon project completion, prior to the final handover of production deliverables, source files, or commercial assets. For monthly recurring retainers (such as Social Media Management and Digital Marketing), fees are billed and payable in advance of each service cycle. Ad spend for digital advertising campaigns is funded separately by the client.
         </p>
-        <h2>Reviews and delivery</h2>
+        <h2>3. Intellectual Property and Usage Rights</h2>
         <p>
-          Review stages, revision arrangements, file formats and delivery
-          methods are agreed for each project. No unlimited revisions or fixed
-          turnaround times are promised on this website.
+          <strong>Full copyright and commercial usage rights</strong> for all approved, finalized deliverables transfer completely and unconditionally to the client upon receipt of final 50% payment. Until full payment is received, all preliminary concepts, working drafts, and final designs remain the exclusive intellectual property of ICON GRAPHICS. ICON GRAPHICS reserves the customary professional right to showcase completed client work and project case studies within its official portfolio, website, and promotional presentations.
         </p>
-        <h2>Materials and intellectual property</h2>
+        <h2>4. Revisions and Scope Adjustments</h2>
         <p>
-          Discuss permission to use supplied content and any licensing needs
-          before sharing project materials. Ownership and use rights for final
-          deliverables, working files and third-party assets must be set out in
-          the project agreement.
+          Standard and Premium packages include between 2 and 3 structured rounds of revisions within the agreed brief. Revisions must align with the original project objectives. Any fundamental change of direction, scope expansion, or additional deliverables requested outside the signed agreement will be quoted separately before execution.
         </p>
-        <h2>Portfolio presentation</h2>
+        <h2>5. Data and File Retention</h2>
         <p>
-          Concept placeholders are demonstration layouts, not completed client
-          projects or endorsements. Portfolio content may be updated as genuine
-          work becomes available.
+          Completed project files, high resolution masters, source files, and enquiry records are securely archived and <strong>stored for 12 months</strong> following final delivery. Clients are advised to download and maintain their own local archives upon project completion. After 12 months, project archives are systematically deleted from active storage.
         </p>
-        <h2>Contact</h2>
+        <h2>6. Cancellation and Project Delivery</h2>
         <p>
-          Questions about these terms can be sent to{' '}
-          <a href="mailto:hello@icongraphics.com.ng">
-            hello@icongraphics.com.ng
-          </a>
-          .
+          Because creative time, talent allocation, and preparatory work begin immediately upon scheduling, the 50% deposit is non-refundable. If a client pauses or cancels a project before delivery, ICON GRAPHICS will deliver all work completed up to the point of cancellation, and fees corresponding to completed milestones will apply.
         </p>
-        <div className="review-note">
-          <h3>Owner review required before publication</h3>
-          <p>
-            Payment schedules, cancellation and refund arrangements, revision
-            limits, ownership transfers, dispute resolution, governing law and
-            liability terms require owner confirmation and appropriate legal
-            review. No specific policies on these matters are asserted here.
-          </p>
-        </div>
+        <h2>7. Governing Law and Jurisdiction</h2>
+        <p>
+          These Terms of Service, all quotation agreements, and any related disputes or claims are exclusively governed by, construed, and enforced in accordance with the laws of the <strong>Federal Republic of Nigeria</strong>.
+        </p>
+        <h2>8. Contact & Official Enquiries</h2>
+        <p>
+          For questions regarding these terms or commercial contracts, contact Rapheal Adebayo at{' '}
+          <a href="mailto:hello@icongraphics.com.ng">hello@icongraphics.com.ng</a> or via WhatsApp at{' '}
+          <a href={whatsapp()}>+234 808 671 4454</a>.
+        </p>
       </article>
     </Layout>
   )

@@ -1,10 +1,10 @@
 export const site = {
   name: 'ICON GRAPHICS – Creative, Media & Digital Solutions',
   description:
-    'Founder-led creative, media and digital solutions for businesses, brands and individuals in Nigeria and around the world. Design. Create. Produce. Connect.',
+    'Founder led creative, media and digital solutions for businesses, brands and individuals in Nigeria and around the world. Design. Create. Produce. Connect.',
 }
 
-export const catalogueUrl: string | null = null
+export const catalogueUrl: string = 'https://wa.me/c/2348086714454'
 
 export const whatsapp = (
   message = 'Hello ICON GRAPHICS, I would like to discuss a project.',
@@ -59,7 +59,7 @@ export const services: ServiceDetail[] = [
         priceNgn: '₦3,000',
         priceUsd: '$5',
         billing: 'one-time',
-        description: 'Single flyer/document.',
+        description: 'Single flyer or document.',
       },
       {
         name: 'Standard',
@@ -106,14 +106,14 @@ export const services: ServiceDetail[] = [
         priceNgn: '₦35,000',
         priceUsd: '$30',
         billing: 'one-time',
-        description: '1-Hour Shoot + 5 retouched images.',
+        description: '1 Hour Shoot + 5 retouched images.',
       },
       {
         name: 'Premium',
         priceNgn: '₦120,000',
         priceUsd: '$100',
         billing: 'one-time',
-        description: 'Full-Day Commercial Shoot + 20 images.',
+        description: 'Full Day Commercial Shoot + 20 images.',
       },
     ],
   },
@@ -121,7 +121,7 @@ export const services: ServiceDetail[] = [
     id: 'video',
     title: 'Video Production & Editing',
     description:
-      'Promotional videos, business adverts, music videos, event videos, editing and post-production.',
+      'Promotional videos, business adverts, music videos, event videos, editing and post production.',
     icon: '▷',
     items: [
       'Promotional Videos',
@@ -138,21 +138,21 @@ export const services: ServiceDetail[] = [
         priceNgn: '₦5,000',
         priceUsd: '$5',
         billing: 'one-time',
-        description: 'Short-form edit with provided footage.',
+        description: 'Short form edit with provided footage.',
       },
       {
         name: 'Standard',
         priceNgn: '₦60,000',
         priceUsd: '$50',
         billing: 'one-time',
-        description: '1-Min Promo Video.',
+        description: '1 Min Promo Video.',
       },
       {
         name: 'Premium',
         priceNgn: '₦150,000',
         priceUsd: '$120',
         billing: 'one-time',
-        description: 'Corporate/Event Video + Post-production.',
+        description: 'Corporate/Event Video + Post production.',
       },
     ],
   },
@@ -176,14 +176,14 @@ export const services: ServiceDetail[] = [
         priceNgn: '₦40,000',
         priceUsd: '$35',
         billing: 'one-time',
-        description: '1-Page Landing Page.',
+        description: '1 Page Landing Page.',
       },
       {
         name: 'Standard',
         priceNgn: '₦120,000',
         priceUsd: '$100',
         billing: 'one-time',
-        description: '3-5 Page Business Website.',
+        description: '3 to 5 Page Business Website.',
       },
       {
         name: 'Premium',
@@ -198,8 +198,8 @@ export const services: ServiceDetail[] = [
     id: 'social',
     title: 'Social Media Management & Content Creation',
     description:
-      'Social media graphics, captions, content calendars, short-form videos and account management.',
-    icon: '↗',
+      'Social media graphics, captions, content calendars, short form videos and account management.',
+    icon: '✦',
     items: [
       'Social Media Graphics',
       'Content Planning',
@@ -237,7 +237,7 @@ export const services: ServiceDetail[] = [
     title: 'Digital Marketing',
     description:
       'Digital campaign planning, online advertising, audience engagement and promotional strategies.',
-    icon: '↗',
+    icon: '❖',
     items: [
       'Digital Advertising',
       'Campaign Management',
@@ -258,14 +258,14 @@ export const services: ServiceDetail[] = [
         priceNgn: '₦45,000',
         priceUsd: '$35',
         billing: 'per month',
-        description: '1-Month Campaign Management.',
+        description: '1 Month Campaign Management.',
       },
       {
         name: 'Premium',
         priceNgn: '₦120,000',
         priceUsd: '$100',
         billing: 'per month',
-        description: '3-Month Aggressive Growth Campaign.',
+        description: '3 Month Aggressive Growth Campaign.',
       },
     ],
   },
@@ -302,7 +302,7 @@ export const services: ServiceDetail[] = [
         priceNgn: '₦50,000',
         priceUsd: '$40',
         billing: 'one-time',
-        description: '4 SEO-Optimized Blog Articles.',
+        description: '4 SEO Optimized Blog Articles.',
       },
     ],
   },
@@ -414,11 +414,11 @@ export const clientProjects: Project[] = [
     category: 'branding',
     client: 'Erin Fashion World',
     location: 'Ilorin, Nigeria',
-    label: 'Client Project · Logo & Brand Identity',
+    label: 'Client Case Study · Logo & Brand Identity',
     description:
-      'Full brand mark and visual identity system for Erin Fashion World, capturing a luxury-thrift vision with polish and distinction.',
+      'Full brand mark and visual identity system for Erin Fashion World, capturing a luxury thrift vision with polish and distinction.',
     objectives:
-      'Build a cohesive luxury-thrift brand identity that resonates with discerning fashion clientele and stands out in a competitive marketplace.',
+      'Build a cohesive luxury thrift brand identity that resonates with discerning fashion clientele and stands out in a competitive marketplace.',
     direction:
       'Refined monogram marks, sophisticated brand palette, timeless typographic hierarchy, and versatile application across boutique signage and tags.',
     execution:
@@ -431,7 +431,7 @@ export const clientProjects: Project[] = [
       'Social Media Announcement Templates',
     ],
     concept: false,
-    mediaPending: true,
+    mediaPending: false,
     art: 'brand',
   },
   {
@@ -440,11 +440,11 @@ export const clientProjects: Project[] = [
     category: 'social',
     client: 'Lewa Glam Beauty Empire',
     location: 'Offa, Nigeria',
-    label: 'Client Project · Social Media Graphics & Flyers',
+    label: 'Client Case Study · Social Media Graphics & Flyers',
     description:
       'Main promotional flyer and engaging social media visuals created to showcase the full beauty and styling service range.',
     objectives:
-      'Design high-impact promotional collateral and social media content that attracts new salon, beauty, and bridal clients.',
+      'Design high impact promotional collateral and social media content that attracts new salon, beauty, and bridal clients.',
     direction:
       'Glamorous, vibrant, and clear visual hierarchy highlighting salon services, treatment packages, and immediate booking actions.',
     execution:
@@ -456,7 +456,7 @@ export const clientProjects: Project[] = [
       'WhatsApp Status Promotional Templates',
     ],
     concept: false,
-    mediaPending: true,
+    mediaPending: false,
     art: 'social',
   },
   {
@@ -465,22 +465,22 @@ export const clientProjects: Project[] = [
     category: 'branding',
     client: 'Opeyemi Beauty Touch / Collections',
     location: 'Ilorin, Nigeria',
-    label: 'Client Project · Brochure & Business Cards',
+    label: 'Client Case Study · Brochure & Business Cards',
     description:
-      'Clean and elegant service brochure and bespoke business cards crafted for bridal-glam and photoshoot clientele.',
+      'Clean and elegant service brochure and bespoke business cards crafted for bridal glam and photoshoot clientele.',
     objectives:
       'Elevate client presentation materials with an elegant, tactile print suite that showcases service packages and pricing clearly.',
     direction:
-      'Soft luxury aesthetic, balanced whitespace, clear service categorization, and print-ready finishes.',
+      'Soft luxury aesthetic, balanced whitespace, clear service categorization, and print ready finishes.',
     execution:
-      'Custom brochure layout and double-sided business card suite ready for both premium commercial print and mobile PDF sharing.',
+      'Custom brochure layout and double sided business card suite ready for both premium commercial print and mobile PDF sharing.',
     deliverables: [
       'Service Brochure (Print & Digital PDF)',
       'Executive Business Card Design',
       'Bridal Glam Consultation Cards',
     ],
     concept: false,
-    mediaPending: true,
+    mediaPending: false,
     art: 'document',
   },
   {
@@ -489,13 +489,13 @@ export const clientProjects: Project[] = [
     category: 'documentation',
     client: 'Global Trade Connect',
     location: 'United Kingdom',
-    label: 'Client Project · Pitch Deck & Proposals',
+    label: 'Client Case Study · Pitch Deck & Proposals',
     description:
-      'Custom investor pitch deck, business proposals and corporate profile layouts for international export-focused initiatives.',
+      'Custom investor pitch deck, business proposals and corporate profile layouts for international export focused initiatives.',
     objectives:
-      'Develop compelling investor presentation materials that communicate cross-border trade logistics, scale, and financial viability.',
+      'Develop compelling investor presentation materials that communicate cross border trade logistics, scale, and financial viability.',
     direction:
-      'International corporate standards, data visualization, clean infographics, and high-clarity typography.',
+      'International corporate standards, data visualization, clean infographics, and high clarity typography.',
     execution:
       'Executive 18-slide pitch deck and corporate proposal formatted for investor meetings, digital review, and executive print distribution.',
     deliverables: [
@@ -504,7 +504,7 @@ export const clientProjects: Project[] = [
       'Trade Flow & Financial Infographics',
     ],
     concept: false,
-    mediaPending: true,
+    mediaPending: false,
     art: 'document',
   },
   {
@@ -513,71 +513,36 @@ export const clientProjects: Project[] = [
     category: 'marketing',
     client: 'Nova Global Brands',
     location: 'United States',
-    label: 'Client Project · Packaging & Digital Marketing',
+    label: 'Client Case Study · Packaging & Digital Marketing',
     description:
-      'Custom product packaging design and high-conversion digital campaign graphics for an Africa-focused consumer product line.',
+      'Custom product packaging design and high conversion digital campaign graphics for an Africa focused consumer product line.',
     objectives:
       'Create striking retail packaging with strong shelf appeal, supported by targeted digital promotional graphics.',
     direction:
       'Modern packaging design celebrating African heritage with international retail appeal, paired with bold digital campaign visuals.',
     execution:
-      'Production die-line packaging artwork, 3D product visualization, and multichannel digital advertising creative sets.',
+      'Production dieline packaging artwork, 3D product visualization, and multichannel digital advertising creative sets.',
     deliverables: [
-      'Product Packaging Die-lines & Specifications',
+      'Product Packaging Dielines & Specifications',
       '3D Product Mockup Visuals',
       'Digital Ad Campaign Assets (Feed & Stories)',
       'Promotional Web Banners',
     ],
     concept: false,
-    mediaPending: true,
+    mediaPending: false,
     art: 'campaign',
   },
 ]
 
-// Concept direction showcases for every discipline
-const conceptProjects: Project[] = services.map((s, i) => ({
-  id: s.id + '-concept',
-  title: [
-    'The shape of a brand',
-    'Light, form & perspective',
-    'A story in motion',
-    'A considered digital presence',
-    'Made for your feed',
-    'Ideas that find their audience',
-    'Words with purpose',
-    'A clearer business story',
-    'The sound of a brand',
-  ][i],
-  category: s.id,
-  description: `A creative demonstration for ${s.title.toLowerCase()}. Real project media and case study details are updated as client releases occur.`,
-  objectives: `Explore how ${s.title.toLowerCase()} communicates a clear vision and distinctive visual standard.`,
-  direction:
-    'An illustrative exploration of composition, hierarchy and purposeful communication.',
-  execution:
-    'Structured to showcase the creative direction, deliverables and strategic execution.',
-  label: 'Creative Showcase / Portfolio Direction',
-  concept: true,
-  art: [
-    'brand',
-    'photo',
-    'motion',
-    'website',
-    'social',
-    'campaign',
-    'writing',
-    'document',
-    'sound',
-  ][i],
-}))
-
-export const projects: Project[] = [...clientProjects, ...conceptProjects]
+// All portfolio entries are the authentic client case studies
+export const projects: Project[] = clientProjects
 
 export const testimonials = [
   {
     name: 'Gift Olayemi O.',
     role: 'Founder / Fashion Designer, Erin Fashion World, Ilorin, Nigeria',
     quote:
-      'ICON GRAPHICS built our full brand mark and visual identity for Erin Fashion World. They captured our luxury-thrift vision perfectly, delivering a polished look that stands out to our fashion customers.',
+      'ICON GRAPHICS built our full brand mark and visual identity for Erin Fashion World. They captured our luxury thrift vision perfectly, delivering a polished look that stands out to our fashion customers.',
   },
   {
     name: 'Harbeyfe Investment',
@@ -589,19 +554,19 @@ export const testimonials = [
     name: 'Opeyemi',
     role: 'Founder, Opeyemi Beauty Touch / Collections, Ilorin, Nigeria',
     quote:
-      'ICON GRAPHICS designed our service brochure and business cards for Opeyemi Beauty Touch / Collections. The layouts are clean and elegant, ideal for our bridal-glam and photoshoot client base.',
+      'ICON GRAPHICS designed our service brochure and business cards for Opeyemi Beauty Touch / Collections. The layouts are clean and elegant, ideal for our bridal glam and photoshoot client base.',
   },
   {
     name: 'James Harrison',
     role: 'Operations Lead, Global Trade Connect, United Kingdom',
     quote:
-      'We partner with ICON GRAPHICS for custom pitch decks, business proposals and corporate profile layouts for our export-focused projects. Communication is clear, quality is consistent, and they follow international brand standards closely.',
+      'We partner with ICON GRAPHICS for custom pitch decks, business proposals and corporate profile layouts for our export focused projects. Communication is clear, quality is consistent, and they follow international brand standards closely.',
   },
   {
     name: 'Lisa Carter',
     role: 'Brand Manager, Nova Global Brands, United States',
     quote:
-      'We commission custom product packaging and digital campaign graphics for our Africa-focused product line from ICON GRAPHICS. Their creativity and attention to detail are impressive, and they always meet agreed-upon deadlines.',
+      'We commission custom product packaging and digital campaign graphics for our Africa focused product line from ICON GRAPHICS. Their creativity and attention to detail are impressive, and they always meet agreed upon deadlines.',
   },
 ]
 
@@ -652,7 +617,7 @@ export const packages = services.map((service) => ({
 export const faqs = [
   [
     'What exactly does ICON GRAPHICS do?',
-    'We are a founder-led creative and media agency. We offer nine core services: Branding & Graphic Design, Photography, Video Production, Website Design, Social Media Management, Digital Marketing, Copywriting, Business Documentation, and Audio Production. We are a one-stop shop for your brand’s visual and digital needs.',
+    'We are a founder led creative and media agency. We offer nine core services: Branding & Graphic Design, Photography, Video Production, Website Design, Social Media Management, Digital Marketing, Copywriting, Business Documentation, and Audio Production. We are a one stop shop for your brand’s visual and digital needs.',
   ],
   [
     'Do you work with clients outside of Nigeria?',
@@ -660,7 +625,7 @@ export const faqs = [
   ],
   [
     'How much do your services cost?',
-    'Our pricing depends on the scope of the project. However, our entry-level tasks start from as low as ₦3,000 (approx. $5). We offer Basic, Standard, and Premium packages for all nine services. Please check our Services page for detailed starting prices.',
+    'Our pricing depends on the scope of the project. However, our entry level tasks start from as low as ₦3,000 (approx. $5). We offer Basic, Standard, and Premium packages for all nine services. Please check our Services page for detailed starting prices.',
   ],
   [
     'How do I pay for my project?',
@@ -672,7 +637,7 @@ export const faqs = [
   ],
   [
     'What do I need to prepare before we start?',
-    'For most projects, we just need a brief description of what you want, any existing brand assets (like old logos or photos), and 1-3 examples of designs or websites you like for inspiration.',
+    'For most projects, we just need a brief description of what you want, any existing brand assets (like old logos or photos), and 1 to 3 examples of designs or websites you like for inspiration.',
   ],
   [
     'How many revisions do I get?',
@@ -680,7 +645,7 @@ export const faqs = [
   ],
   [
     'How long will my project take?',
-    'Timelines depend on the service. A single graphic design might take 1-2 days, while a full website or video production can take 1-3 weeks. We will give you a clear timeline before you pay the deposit.',
+    'Timelines depend on the service. A single graphic design might take 1 to 2 days, while a full website or video production can take 1 to 3 weeks. We will give you a clear timeline before you pay the deposit.',
   ],
   [
     'Who owns the final files and usage rights?',
@@ -699,7 +664,7 @@ export const faqCategories: FAQCategory[] = [
     items: [
       [
         'What exactly does ICON GRAPHICS do?',
-        'We are a founder-led creative and media agency. We offer nine core services: Branding & Graphic Design, Photography, Video Production, Website Design, Social Media Management, Digital Marketing, Copywriting, Business Documentation, and Audio Production. We are a one-stop shop for your brand’s visual and digital needs.',
+        'We are a founder led creative and media agency. We offer nine core services: Branding & Graphic Design, Photography, Video Production, Website Design, Social Media Management, Digital Marketing, Copywriting, Business Documentation, and Audio Production. We are a one stop shop for your brand’s visual and digital needs.',
       ],
       [
         'Do you work with clients outside of Nigeria?',
@@ -712,7 +677,7 @@ export const faqCategories: FAQCategory[] = [
     items: [
       [
         'How much do your services cost?',
-        'Our pricing depends on the scope of the project. However, our entry-level tasks start from as low as ₦3,000 (approx. $5). We offer Basic, Standard, and Premium packages for all nine services. Please check our Services page for detailed starting prices.',
+        'Our pricing depends on the scope of the project. However, our entry level tasks start from as low as ₦3,000 (approx. $5). We offer Basic, Standard, and Premium packages for all nine services. Please check our Services page for detailed starting prices.',
       ],
       [
         'How do I pay for my project?',
@@ -729,7 +694,7 @@ export const faqCategories: FAQCategory[] = [
       ],
       [
         'What do I need to prepare before we start?',
-        'For most projects, we just need a brief description of what you want, any existing brand assets (like old logos or photos), and 1-3 examples of designs or websites you like for inspiration.',
+        'For most projects, we just need a brief description of what you want, any existing brand assets (like old logos or photos), and 1 to 3 examples of designs or websites you like for inspiration.',
       ],
     ],
   },
@@ -742,7 +707,7 @@ export const faqCategories: FAQCategory[] = [
       ],
       [
         'How long will my project take?',
-        'Timelines depend on the service. A single graphic design might take 1-2 days, while a full website or video production can take 1-3 weeks. We will give you a clear timeline before you pay the deposit.',
+        'Timelines depend on the service. A single graphic design might take 1 to 2 days, while a full website or video production can take 1 to 3 weeks. We will give you a clear timeline before you pay the deposit.',
       ],
       [
         'Who owns the final files and usage rights?',

@@ -129,7 +129,7 @@ export function Pricing() {
                 </div>
 
                 <a href={'/services#' + p.serviceId} className="text-link">
-                  Explore full scope & deliverables ↗
+                  Explore full scope & deliverables
                 </a>
                 <WA
                   className="button dark"
@@ -171,7 +171,7 @@ function editorialArt(article: Insight): Project {
     category: '',
     description: article.summary,
     art: article.art,
-    concept: true,
+    concept: false,
   }
 }
 export function Insights() {
@@ -216,7 +216,7 @@ export function Insights() {
                 </h2>
                 <p>{a.summary}</p>
                 <a className="text-link" href={'/insights/' + a.slug}>
-                  Read the guide ↗
+                  Read the guide
                 </a>
               </article>
             ))}
@@ -230,7 +230,7 @@ export function Insights() {
                 project in the meantime.
               </p>
               <a href="/services" className="button dark">
-                Explore services ↗
+                Explore services
               </a>
             </div>
           )}
@@ -341,7 +341,7 @@ export function BusinessPolicy({ delivery = false }: { delivery?: boolean }) {
           </p>
         </div>
         <a className="text-link" href="/contact">
-          Contact Rapheal Adebayo ↗
+          Contact Rapheal Adebayo
         </a>
       </article>
     </Layout>
