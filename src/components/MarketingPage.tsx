@@ -307,29 +307,17 @@ export function Layout({ children }: { children: React.ReactNode }) {
           </div>
         </div>
       </footer>
-      <WA className="floating-wa">
+      <WA className="floating-wa" aria-label="Chat on WhatsApp">
         <svg
-          width="22"
-          height="22"
           viewBox="0 0 24 24"
-          fill="none"
-          stroke="url(#waGradient)"
-          strokeWidth="1.9"
-          strokeLinecap="round"
-          strokeLinejoin="round"
+          width="30"
+          height="30"
+          fill="#ffffff"
           aria-hidden="true"
+          className="wa-icon"
         >
-          <defs>
-            <linearGradient id="waGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#f72585" />
-              <stop offset="50%" stopColor="#9b5de5" />
-              <stop offset="100%" stopColor="#00b4d8" />
-            </linearGradient>
-          </defs>
-          <path d="M21 11.5a9 9 0 0 1-13.2 8L3 21l1.5-4.8A9 9 0 1 1 21 11.5Z" />
-          <path d="M8 7c0 5 3 8 8 9l1-3-3-1-1 1-3-3 1-1-1-3Z" />
+          <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19.01L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.81 13.47 3.81 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.11 7.44C8.95 7.44 8.68 7.5 8.46 7.74C8.24 7.97 7.62 8.56 7.62 9.75C7.62 10.94 8.49 12.08 8.61 12.24C8.73 12.4 10.3 14.98 12.78 15.95C14.44 16.6 15.1 16.41 15.65 16.36C16.38 16.29 17.55 15.65 17.79 14.97C18.03 14.29 18.03 13.71 17.96 13.59C17.89 13.47 17.7 13.4 17.41 13.25C17.12 13.1 15.7 12.4 15.44 12.31C15.18 12.22 14.99 12.17 14.8 12.46C14.61 12.75 14.07 13.4 13.91 13.59C13.75 13.78 13.58 13.8 13.29 13.66C13 13.51 12.07 13.21 10.97 12.23C10.11 11.46 9.53 10.51 9.36 10.22C9.19 9.93 9.34 9.78 9.49 9.63C9.62 9.5 9.78 9.29 9.92 9.12C10.06 8.95 10.11 8.83 10.21 8.64C10.31 8.45 10.26 8.28 10.19 8.13C10.12 7.99 9.56 6.58 9.31 6C9.07 5.43 8.83 5.51 8.66 5.5L8.2 5.49L9.11 7.44Z" />
         </svg>
-        <span className="floating-label">Let’s talk</span>
       </WA>
     </>
   )
@@ -621,7 +609,6 @@ export function ProjectCard({ project }: { project: Project }) {
     <article className="project-card">
       <a href={'/portfolio/' + project.id} className="project-image">
         <Art project={project} />
-        <span className="project-arrow">↗</span>
       </a>
       <div className="project-info">
         <div>
@@ -630,7 +617,6 @@ export function ProjectCard({ project }: { project: Project }) {
             <a href={'/portfolio/' + project.id}>{project.title}</a>
           </h3>
         </div>
-        <span>↗</span>
       </div>
       <WA
         className="button small dark"
@@ -667,7 +653,6 @@ function ServicesOverview() {
               </span>
               <h3>{s.title}</h3>
               <span className="service-icon">{s.icon}</span>
-              <span className="service-arrow">↗</span>
             </a>
           ))}
         </div>
@@ -695,7 +680,7 @@ function Featured() {
               Purposeful design, media production and digital growth for brands that aspire to lead.
             </p>
             <a className="text-link" href="/portfolio">
-              Explore the portfolio ↗
+              Explore the portfolio
             </a>
           </div>
         </div>
@@ -712,54 +697,60 @@ function Featured() {
     </section>
   )
 }
-export function CinematicFounderSection() {
+export function AboutFounderSection() {
   return (
-    <section className="cinematic-founder-section" id="founder-spotlight">
-      <div className="wrap cinematic-founder-grid">
-        <div className="cinematic-founder-visual">
-          <div className="cinematic-founder-frame">
+    <section className="dedicated-founder-section" id="founder">
+      <div className="wrap dedicated-founder-grid">
+        <div className="founder-visual-wrap">
+          <div className="founder-portrait-card">
             <img
-              src="/img/rapheal-adebayo-studio.jpeg"
+              src="/img/rapheal-adebayo-supplied.jpeg"
               alt="Rapheal Adebayo, Founder & Creative Director of ICON GRAPHICS"
               loading="lazy"
-              width="1200"
-              height="675"
             />
-            <span className="cinematic-founder-badge">
-              FOUNDER & CREATIVE DIRECTOR
-            </span>
+            <div className="founder-badge-overlay">
+              <span className="founder-name-tag">Rapheal Adebayo</span>
+              <span className="founder-role-tag">Founder & Creative Director</span>
+            </div>
+          </div>
+          <div className="founder-secondary-badge">
+            <img
+              src="/img/rapheal-adebayo.jpeg"
+              alt="Rapheal Adebayo in studio"
+              loading="lazy"
+              className="founder-studio-thumb"
+            />
+            <div>
+              <strong>Rapheal Adebayo</strong>
+              <small>Creative Direction & Studio Lead</small>
+            </div>
           </div>
         </div>
-        <div className="cinematic-founder-copy">
-          <Label>FOUNDER LED CREATIVE AGENCY</Label>
-          <h2 className="cinematic-statement">
-            WE CREATE.
+        <div className="founder-story-column">
+          <Label>MEET THE FOUNDER</Label>
+          <h2 className="founder-heading">
+            The visionary mind
             <br />
-            WE CONNECT.
-            <br />
-            <em>WE TRANSFORM.</em>
+            <em>behind the work.</em>
           </h2>
-          <p className="cinematic-supporting">
-            “We turn ideas into powerful visual, creative and digital
-            experiences that help brands stand out, communicate confidently and
-            grow beyond boundaries.”
-          </p>
-          <div className="cinematic-meta">
-            <span className="cinematic-founder-name">Rapheal Adebayo</span>
-            <span className="cinematic-founder-title">
-              Founder & Creative Director, ICON GRAPHICS
-            </span>
+          <div className="founder-bio-text">
+            <p>
+              Rapheal Adebayo is the Founder and Creative Director of ICON GRAPHICS. Driven by a belief that every brand has a unique story, Rapheal founded the agency to bridge the gap between bold ideas and flawless execution. With a hands-on approach, he personally oversees the creative direction of every project, ensuring that clients don't just get a service—they get a dedicated partner. Based in Nigeria and working with clients globally, Rapheal's vision is to empower businesses with design that speaks, media that engages, and digital solutions that convert.
+            </p>
+            <p>
+              From the initial conversation through to final delivery, you collaborate directly with the founder responsible for your creative deliverables. Every visual, word, and strategic choice is crafted with precision, passion, and genuine accountability.
+            </p>
           </div>
-          <div className="cinematic-actions">
-            <a className="button yellow" href="/founder">
-              Meet the Founder
-            </a>
+          <div className="founder-action-buttons">
             <WA
-              className="button dark"
+              className="button yellow"
               message="Hello Rapheal, I would like to discuss a project with ICON GRAPHICS."
             >
-              Start a Conversation
+              Talk to Rapheal on WhatsApp
             </WA>
+            <a className="button outline" href="/contact">
+              Send a Project Brief
+            </a>
           </div>
         </div>
       </div>
@@ -836,7 +827,6 @@ export function Process() {
                 <h3>{p}</h3>
                 <p>{processDescriptions[i]}</p>
               </div>
-              <span>↗</span>
             </div>
           ))}
         </div>
@@ -932,9 +922,6 @@ export function Home() {
             Our creative
             <br />
             <em>expertise.</em>
-            <span className="headline-spark" aria-hidden="true">
-              ✳
-            </span>
           </h1>
           <p>
             We turn ideas into identities, stories and digital experiences that
@@ -944,7 +931,7 @@ export function Home() {
             <a className="button yellow" href="/services">
               Explore Our Services
             </a>
-            <a className="button outline" href="/portfolio">
+            <a className="button yellow" href="/portfolio">
               View Our Portfolio
             </a>
           </div>
@@ -953,22 +940,16 @@ export function Home() {
         <div className="hero-collage">
           <div className="collage-caption">
             <span>DESIGNED TO STAND OUT.</span>
-            <span>MADE TO CONNECT. ↗</span>
+            <span>MADE TO CONNECT.</span>
           </div>
-          <div className="hero-brand-stage">
-            <img
-              src="/img/rapheal-adebayo-studio.jpeg"
-              width="700"
-              height="394"
-              fetchPriority="high"
-              alt="Rapheal Adebayo, Founder & Creative Director of ICON GRAPHICS"
-              style={{ objectFit: 'cover', aspectRatio: '16/9' }}
-            />
-            <span>DESIGN. CREATE. PRODUCE. CONNECT.</span>
+          <div className="hero-main-art">
+            <Art project={projects[0]} />
+          </div>
+          <div className="hero-mini-art">
+            <Art project={projects[1]} />
           </div>
           <div className="round-stamp">
             <span>DESIGN. CREATE.</span>
-            <b>↗</b>
             <span>PRODUCE. CONNECT.</span>
           </div>
           <div className="collage-foot">
@@ -985,8 +966,7 @@ export function Home() {
       </div>
       <div className="ticker" aria-label="Design. Create. Produce. Connect.">
         <div>
-          DESIGN <span>✳</span> CREATE <span>✳</span> PRODUCE <span>✳</span>{' '}
-          CONNECT <span>✳</span> DESIGN <span>✳</span> CREATE <span>✳</span>
+          DESIGN • CREATE • PRODUCE • CONNECT • DESIGN • CREATE •
         </div>
       </div>
       <section id="intro" className="intro wrap">
@@ -1003,16 +983,15 @@ export function Home() {
             communicate effectively and stand out in the digital world.
           </p>
           <a className="text-link" href="/about">
-            Get to know us ↗
+            Get to know us
           </a>
         </div>
       </section>
       <ServicesOverview />
       <Featured />
-      <CinematicFounderSection />
       <Why />
-      <Process />
       <Testimonials />
+      <Process />
       <section className="section light">
         <div className="wrap next-step-grid">
           <div>
@@ -1051,7 +1030,7 @@ export function Home() {
       <section className="contact-strip wrap">
         <Label>LET’S CONNECT</Label>
         <a href="mailto:hello@icongraphics.com.ng">
-          hello@icongraphics.com.ng ↗
+          hello@icongraphics.com.ng
         </a>
         <SocialLinks />
       </section>
@@ -1083,21 +1062,6 @@ export function About() {
         title="Creative by nature. Intentional by design."
         description="ICON GRAPHICS is a founder led creative, media and digital solutions business. We connect ideas with purposeful execution for brands, businesses and individuals."
       />
-      <div className="wrap" style={{ margin: '30px auto 40px' }}>
-        <div className="cinematic-founder-frame">
-          <img
-            src="/img/rapheal-adebayo-studio.jpeg"
-            alt="Rapheal Adebayo, Founder & Creative Director of ICON GRAPHICS, in studio"
-            loading="lazy"
-            width="1200"
-            height="675"
-            style={{ width: '100%', height: 'auto', aspectRatio: '16/9', objectFit: 'cover' }}
-          />
-          <span className="cinematic-founder-badge">
-            RAPHEAL ADEBAYO · FOUNDER & CREATIVE DIRECTOR
-          </span>
-        </div>
-      </div>
       <section className="section light">
         <div className="wrap about-grid">
           <div>
@@ -1147,7 +1111,7 @@ export function About() {
           ))}
         </div>
       </section>
-      <CinematicFounderSection />
+      <AboutFounderSection />
       <Why />
     </Layout>
   )
@@ -1160,20 +1124,6 @@ export function Founder() {
         title="The person behind the perspective."
         description="Direct collaboration. Thoughtful creative direction. A personal commitment to quality and craft."
       />
-      <div className="wrap" style={{ margin: '30px auto 50px' }}>
-        <div className="cinematic-founder-frame">
-          <img
-            src="/img/rapheal-adebayo-studio.jpeg"
-            alt="Rapheal Adebayo, Founder & Creative Director of ICON GRAPHICS, in studio"
-            width="1200"
-            height="675"
-            style={{ width: '100%', height: 'auto', aspectRatio: '16/9', objectFit: 'cover' }}
-          />
-          <span className="cinematic-founder-badge">
-            RAPHEAL ADEBAYO · FOUNDER & CREATIVE DIRECTOR
-          </span>
-        </div>
-      </div>
       <section className="section light">
         <div className="wrap founder-split">
           <div className="portrait-wrap">
@@ -1202,9 +1152,7 @@ export function Founder() {
             </p>
             <h3>We create. We connect. We transform.</h3>
             <p>
-              “We turn ideas into powerful visual, creative and digital
-              experiences that help brands stand out, communicate confidently
-              and grow beyond boundaries.”
+              Rapheal Adebayo is the Founder and Creative Director of ICON GRAPHICS. Driven by a belief that every brand has a unique story, Rapheal founded the agency to bridge the gap between bold ideas and flawless execution. With a hands-on approach, he personally oversees the creative direction of every project, ensuring that clients don't just get a service—they get a dedicated partner. Based in Nigeria and working with clients globally, Rapheal's vision is to empower businesses with design that speaks, media that engages, and digital solutions that convert.
             </p>
             <h3>A philosophy of purpose</h3>
             <p>
@@ -1328,7 +1276,7 @@ export function Services() {
                   <ProjectCard key={p.id} project={p} />
                 ))}
               <a className="text-link" href={'/portfolio?category=' + s.id}>
-                Explore this portfolio category ↗
+                Explore this portfolio category
               </a>
             </div>
           </div>
@@ -1585,12 +1533,12 @@ export function Contact({ quote = false }: { quote?: boolean }) {
             <div className="contact-info">
               <small>EMAIL US</small>
               <a href="mailto:hello@icongraphics.com.ng">
-                hello@icongraphics.com.ng ↗
+                hello@icongraphics.com.ng
               </a>
               <small>WHATSAPP</small>
-              <a href={whatsapp()}>+234 808 671 4454 ↗</a>
+              <a href={whatsapp()}>+234 808 671 4454</a>
               <small>WEBSITE</small>
-              <a href="https://icongraphics.com.ng">icongraphics.com.ng ↗</a>
+              <a href="https://icongraphics.com.ng">icongraphics.com.ng</a>
               <small>YOUR CREATIVE CONTACT</small>
               <p>
                 Rapheal Adebayo
