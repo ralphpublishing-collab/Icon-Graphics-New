@@ -1255,6 +1255,261 @@ export function Founder() {
     </Layout>
   )
 }
+/* ---------------------------------------------------------------
+   Service previews: illustrative concept visuals for service
+   categories that do not yet have supplied client work. They use
+   licensed Unsplash stock photography (via Netlify Image CDN) and
+   code-native mockups, and are always labelled as concept previews.
+---------------------------------------------------------------- */
+const PREVIEW_PHOTOS = {
+  photography: 'https://images.unsplash.com/photo-1617005082133-548c4dd27f35',
+  video: 'https://images.unsplash.com/photo-1601506521793-dc748fc80b67',
+  web: 'https://images.unsplash.com/photo-1614850523459-c2f4c699c52e',
+  writing: 'https://images.unsplash.com/photo-1455390582262-044cdead277a',
+  audio: 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc',
+} as const
+type PreviewId = keyof typeof PREVIEW_PHOTOS
+
+const PREVIEW_META: Record<PreviewId, { heading: string; label: string }> = {
+  photography: {
+    heading: 'Studio & product photography',
+    label: 'Professional camera lens on a studio desk',
+  },
+  video: {
+    heading: 'Cinematic video production',
+    label: 'Video player showing a camera operator on a neon-lit film set',
+  },
+  web: {
+    heading: 'Dark-theme website concept',
+    label: 'Laptop displaying a dark-themed website design',
+  },
+  writing: {
+    heading: 'Editorial & copywriting',
+    label: 'Fountain pen writing on a notebook page beside a copy draft',
+  },
+  audio: {
+    heading: 'Voice-over & audio production',
+    label: 'Studio microphone with a glowing audio waveform',
+  },
+}
+
+function PreviewPhoto({
+  url,
+  className = 'svc-photo',
+}: {
+  url: string
+  className?: string
+}) {
+  return (
+    <img
+      className={className}
+      src={remoteImage(url, 1000)}
+      srcSet={[560, 800, 1200]
+        .map((w) => remoteImage(url, w) + ' ' + w + 'w')
+        .join(', ')}
+      sizes="(max-width: 768px) 100vw, 45vw"
+      alt=""
+      width={1000}
+      height={700}
+      loading="lazy"
+      decoding="async"
+    />
+  )
+}
+
+const WAVE_BARS = [
+  18, 32, 46, 28, 60, 82, 54, 38, 70, 94, 66, 42, 78, 100, 72, 48, 62, 86, 58,
+  34, 52, 74, 44, 26, 40, 64, 36, 22, 30, 16,
+]
+
+function PreviewVisual({ id }: { id: Exclude<PreviewId, 'video'> }) {
+  const url = PREVIEW_PHOTOS[id]
+  if (id === 'photography')
+    return (
+      <>
+        <PreviewPhoto url={url} />
+        <div className="svc-shade" />
+        <div className="svc-viewfinder" aria-hidden="true">
+          <i /> <i /> <i /> <i />
+          <span className="svc-focus" />
+        </div>
+        <div className="svc-hud" aria-hidden="true">
+          <span>ƒ/1.8</span>
+          <span>1/250</span>
+          <span>ISO 100</span>
+        </div>
+      </>
+    )
+  if (id === 'web')
+    return (
+      <div className="svc-laptop" aria-hidden="true">
+        <div className="svc-laptop-screen">
+          <div className="svc-browser">
+            <i /> <i /> <i />
+            <span>yourbrand.com</span>
+          </div>
+          <div className="svc-site">
+            <PreviewPhoto url={url} className="svc-site-bg" />
+            <div className="svc-site-nav">
+              <b>BRAND</b>
+              <span /> <span /> <span />
+            </div>
+            <div className="svc-site-hero">
+              <strong>Built to be remembered.</strong>
+              <span className="svc-line" />
+              <span className="svc-line short" />
+              <em>Get started</em>
+            </div>
+            <div className="svc-site-cards">
+              <span /> <span /> <span />
+            </div>
+          </div>
+        </div>
+        <div className="svc-laptop-base" />
+      </div>
+    )
+  if (id === 'writing')
+    return (
+      <>
+        <PreviewPhoto url={url} />
+        <div className="svc-shade" />
+        <div className="svc-page" aria-hidden="true">
+          <small>FEATURE · ISSUE 01</small>
+          <strong>Words that move people.</strong>
+          <span className="svc-line" />
+          <span className="svc-line" />
+          <span className="svc-line short" />
+        </div>
+      </>
+    )
+  // audio
+  return (
+    <>
+      <PreviewPhoto url={url} className="svc-photo svc-photo-audio" />
+      <div className="svc-shade" />
+      <div className="svc-wave" aria-hidden="true">
+        {WAVE_BARS.map((h, i) => (
+          <span
+            key={i}
+            style={{ height: h + '%', animationDelay: (i % 10) * 0.12 + 's' }}
+          />
+        ))}
+      </div>
+      <div className="svc-hud svc-hud-audio" aria-hidden="true">
+        <span>
+          <i className="svc-live" /> REC
+        </span>
+        <span>48 kHz · 24-bit</span>
+      </div>
+    </>
+  )
+}
+
+function VideoPreview({ label }: { label: string }) {
+  const [playing, setPlaying] = useState(false)
+  const reel = SHOWREEL_VIDEO
+  if (playing && reel?.video)
+    return (
+      <div className="art svc-visual svc-video">
+        <video
+          className="svc-player-video"
+          src={reel.video}
+          controls
+          autoPlay
+          playsInline
+          aria-label={reel.title + ' promotional video'}
+        />
+      </div>
+    )
+  return (
+    <div className="art svc-visual svc-video">
+      <div
+        role="img"
+        aria-label={label + ' (concept preview)'}
+        className="svc-fill"
+      >
+        <PreviewPhoto url={PREVIEW_PHOTOS.video} />
+      </div>
+      <div className="svc-shade" />
+      <div className="svc-player-top" aria-hidden="true">
+        <span className="showreel-rec">
+          <i /> 4K · 24 FPS
+        </span>
+      </div>
+      {reel?.video && (
+        <button
+          type="button"
+          className="showreel-play svc-play"
+          onClick={() => {
+            setPlaying(true)
+            track('showreel_play', { project: reel.id, source: 'services' })
+          }}
+          aria-label={'Play the ' + reel.title + ' promotional video'}
+        >
+          <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
+            <path d="M8 5.5v13l11-6.5z" fill="currentColor" />
+          </svg>
+        </button>
+      )}
+      <div className="svc-player-bar" aria-hidden="true">
+        <span className="svc-time">00:00</span>
+        <span className="svc-track">
+          <i />
+        </span>
+        <span className="svc-time">01:30</span>
+      </div>
+      <span className="concept-pill">CONCEPT PREVIEW</span>
+    </div>
+  )
+}
+
+export function ServicePreview({
+  serviceId,
+  title,
+}: {
+  serviceId: string
+  title: string
+}) {
+  if (!(serviceId in PREVIEW_PHOTOS)) return null
+  const id = serviceId as PreviewId
+  const meta = PREVIEW_META[id]
+  const href = '/portfolio?category=' + id
+  return (
+    <article className="project-card service-preview-card">
+      {id === 'video' ? (
+        <div className="project-image">
+          <VideoPreview label={meta.label} />
+        </div>
+      ) : (
+        <a href={href} className="project-image">
+          <div
+            className={'art svc-visual svc-' + id}
+            role="img"
+            aria-label={meta.label + ' (concept preview)'}
+          >
+            <PreviewVisual id={id} />
+          </div>
+          <span className="concept-pill">CONCEPT PREVIEW</span>
+        </a>
+      )}
+      <div className="project-info">
+        <div>
+          <p>{title}</p>
+          <h3>
+            <a href={href}>{meta.heading}</a>
+          </h3>
+        </div>
+      </div>
+      <WA
+        className="button small dark"
+        message={`Hello ICON GRAPHICS, I would like to enquire about ${title}.`}
+      >
+        Enquire on WhatsApp
+      </WA>
+    </article>
+  )
+}
+
 export function Services() {
   return (
     <Layout>
@@ -1345,12 +1600,14 @@ export function Services() {
               </div>
             </div>
             <div>
-              {projects
-                .filter((p) => p.category === s.id)
-                .slice(0, 1)
-                .map((p) => (
-                  <ProjectCard key={p.id} project={p} />
-                ))}
+              {(() => {
+                const project = projects.find((p) => p.category === s.id)
+                return project ? (
+                  <ProjectCard project={project} />
+                ) : (
+                  <ServicePreview serviceId={s.id} title={s.title} />
+                )
+              })()}
               <a className="text-link" href={'/portfolio?category=' + s.id}>
                 Explore this portfolio category
               </a>
