@@ -11,7 +11,7 @@ import {
   faqCategories,
   testimonials,
   pricingDisclaimer,
-  LOCATION_TEXT,
+  LOCATION,
   type Project,
 } from '../data/site'
 import { EnquiryForm } from './EnquiryForm'
@@ -354,7 +354,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
               hello@icongraphics.com.ng
             </a>
             <a href={whatsapp()}>+234 808 671 4454</a>
-            <p className="location-note">{LOCATION_TEXT}</p>
+            <div className="location-block">
+              <span className="location-label">HEADQUARTERS</span>
+              <span className="location-value">{LOCATION.headquarters}</span>
+              <span className="location-label">AVAILABILITY</span>
+              <span className="location-value">{LOCATION.availability}</span>
+            </div>
             <p className="muted">
               Founder & Creative Director
               <br />
@@ -730,34 +735,84 @@ function ServicesOverview() {
     </section>
   )
 }
-const CREATIVE_DIRECTION_IDS = [
-  'erin-fashion-world',
-  'lewa-glam-beauty-empire',
-  'nova-global-brands',
-]
-function Featured() {
-  const featured = CREATIVE_DIRECTION_IDS.map((id) =>
-    projects.find((p) => p.id === id),
-  ).filter((p): p is Project => Boolean(p))
+const CAPABILITY_IDS = ['video', 'web', 'audio', 'writing', 'photography']
+const CAPABILITY_ICONS: Record<string, React.ReactNode> = {
+  video: (
+    <>
+      <rect x="3" y="6" width="13" height="12" rx="2.5" />
+      <path d="M16 10.5 21 7.5v9l-5-3" />
+    </>
+  ),
+  web: (
+    <>
+      <rect x="3" y="4.5" width="18" height="12" rx="2" />
+      <path d="M8 20h8M12 16.5V20M3 8h18" />
+    </>
+  ),
+  audio: (
+    <>
+      <rect x="9" y="3" width="6" height="11" rx="3" />
+      <path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7" />
+    </>
+  ),
+  writing: (
+    <>
+      <path d="M4 20h4L19.5 8.5a2.1 2.1 0 0 0-4-4L4 16v4Z" />
+      <path d="m13.5 6.5 4 4M13 20h7" />
+    </>
+  ),
+  photography: (
+    <>
+      <path d="M4 8h3l1.8-2.5h6.4L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z" />
+      <circle cx="12" cy="13" r="3.6" />
+    </>
+  ),
+}
+function StudioCapabilities() {
+  const items = CAPABILITY_IDS.map((id) =>
+    services.find((s) => s.id === id),
+  ).filter((s): s is (typeof services)[number] => Boolean(s))
   return (
-    <section className="section creative-directions">
+    <section
+      className="section studio-capabilities"
+      aria-labelledby="studio-capabilities-title"
+    >
       <div className="wrap">
-        <div className="creative-directions-heading">
-          <Label>CREATIVE DIRECTIONS</Label>
-          <h2>
-            A glimpse of <em>what’s possible.</em>
+        <div className="studio-capabilities-heading">
+          <Label>STUDIO CAPABILITIES</Label>
+          <h2 id="studio-capabilities-title">
+            Nine disciplines. <em>One creative connection.</em>
           </h2>
           <p>
-            Ideas, expressions and possibilities. Purposeful design, media
-            production and digital growth for brands that aspire to lead.
+            Beyond the case studies above, the studio also delivers these
+            services, planned and produced under one creative direction.
           </p>
-          <a className="text-link" href="/portfolio">
-            Explore the portfolio
-          </a>
         </div>
-        <div className="creative-directions-grid">
-          {featured.map((p) => (
-            <ProjectCard key={p.id} project={p} />
+        <div className="studio-capabilities-grid">
+          {items.map((s) => (
+            <a
+              key={s.id}
+              className="capability-card"
+              href={'/services#' + s.id}
+            >
+              <span className="capability-icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.6"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  {CAPABILITY_ICONS[s.id]}
+                </svg>
+              </span>
+              <h3>{s.title}</h3>
+              <p>{s.description}</p>
+              <span className="capability-link">
+                Explore service <span aria-hidden="true">→</span>
+              </span>
+            </a>
           ))}
         </div>
       </div>
@@ -1100,7 +1155,7 @@ export function Home() {
       </section>
       <AboutFounderSection />
       <ServicesOverview />
-      <Featured />
+      <StudioCapabilities />
       <Why />
       <Testimonials />
       <Process />
@@ -1966,8 +2021,12 @@ export function Contact({ quote = false }: { quote?: boolean }) {
               <a href={whatsapp()}>+234 808 671 4454</a>
               <small>WEBSITE</small>
               <a href="https://icongraphics.com.ng">icongraphics.com.ng</a>
-              <small>LOCATION</small>
-              <p className="location-note">{LOCATION_TEXT}</p>
+              <div className="location-block">
+              <span className="location-label">HEADQUARTERS</span>
+              <span className="location-value">{LOCATION.headquarters}</span>
+              <span className="location-label">AVAILABILITY</span>
+              <span className="location-value">{LOCATION.availability}</span>
+            </div>
               
               <div className="founder-contact-card" style={{ display: 'flex', alignItems: 'center', gap: '14px', marginTop: '28px', padding: '14px 18px', background: 'rgba(255, 255, 255, 0.05)', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
                 <img
