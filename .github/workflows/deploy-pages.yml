@@ -26,9 +26,9 @@ jobs:
         with:
           node-version: '22'
       - name: Install dependencies
-        run:  pm install --no-audit --no-fund
+        run: npm install --no-audit --no-fund
       - name: Build and prerender the website
-        run:  pm run build
+        run: npm run build
       - name: Verify static website output
         run: |
           test -f dist/client/index.html
