@@ -4117,6 +4117,12 @@ button::after,
   gap: 32px;
   align-items: start;
 }
+.case-showcase-grid > figure:only-child {
+  grid-column: 1 / -1;
+  width: 100%;
+  max-width: 860px;
+  justify-self: center;
+}
 @media (max-width: 760px) {
   .case-showcase {
     padding: 18px;

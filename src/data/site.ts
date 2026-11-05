@@ -467,8 +467,24 @@ export const clientProjects: Project[] = [
     client: 'Lewa Glam Beauty Empire',
     location: 'Offa, Nigeria',
     label: 'Client Case Study · Social Media Graphics & Flyers',
-    image: '/portfolio/lewa-glam-beauty-empire.jpg',
-    video: '/portfolio/lewa-glam-beauty-empire.mp4',
+    image: '/portfolio/lewa-glam-beauty-empire-social-grid.png',
+    video: '/portfolio/lewa-glam-beauty-empire-promo.mp4',
+    gallery: [
+      {
+        src: '/portfolio/lewa-glam-beauty-empire-flyer.png',
+        alt: 'Lewa Glam Beauty Empire promotional flyer in emerald green and gold, featuring a woman in a green gele, the services makeup, gele tying, lashes, nail fixing, pedicure and manicure and facial treatment, a Book Now button and contact details',
+        caption: 'Main promotional flyer',
+        width: 1024,
+        height: 1536,
+      },
+      {
+        src: '/portfolio/lewa-glam-beauty-empire-social-grid.png',
+        alt: 'Nine-tile Lewa Glam Beauty Empire social media grid in green and gold, with logo, beauty portraits, services menu, a skincare beauty tip, the Look Good. Feel Confident. Shine Always. slogan and contact tile',
+        caption: 'Social media campaign grid',
+        width: 1254,
+        height: 1254,
+      },
+    ],
     description:
       'Main promotional flyer and engaging social media visuals created to showcase the full beauty and styling service range.',
     objectives:
