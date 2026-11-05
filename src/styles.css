@@ -4133,7 +4133,15 @@ button::after,
 .case-showcase-grid > figure.is-portrait:only-child {
   max-width: 600px;
 }
+.case-showcase-grid > figure:nth-child(odd):last-child:not(:only-child) {
+  grid-column: 1 / -1;
+  width: calc(50% - 16px);
+  justify-self: center;
+}
 @media (max-width: 760px) {
+  .case-showcase-grid > figure:nth-child(odd):last-child:not(:only-child) {
+    width: 100%;
+  }
   .case-showcase {
     padding: 18px;
     gap: 24px;

@@ -552,8 +552,38 @@ export const clientProjects: Project[] = [
     client: 'Global Trade Connect',
     location: 'United Kingdom',
     label: 'Client Case Study · Pitch Deck & Proposals',
-    image: '/portfolio/global-trade-connect.jpg',
-    video: '/portfolio/global-trade-connect.mp4',
+    image: '/portfolio/global-trade-connect-deck-cover.png',
+    video: '/portfolio/global-trade-connect-promo.mp4',
+    gallery: [
+      {
+        src: '/portfolio/global-trade-connect-deck-cover.png',
+        alt: 'Global Trade Connect pitch deck cover slide in navy, royal blue and silver: chrome-ringed globe logo, the headline Connecting Businesses. Powering Global Trade., the line Building stronger international connections through seamless trade and logistics solutions, a container ship at a lit port with an aircraft and glowing world network map, and icons for global logistics, international trade and business connectivity',
+        caption: 'Pitch deck · cover slide',
+        width: 1672,
+        height: 941,
+      },
+      {
+        src: '/portfolio/global-trade-connect-deck-who-we-are.png',
+        alt: 'Global Trade Connect Who We Are slide: company introduction describing an international trade and logistics-focused business that helps businesses navigate global markets and build meaningful international connections, with a handshake call-out and a footer bar for global markets, international trade, business connections and global opportunities',
+        caption: 'Who we are · company profile',
+        width: 1672,
+        height: 941,
+      },
+      {
+        src: '/portfolio/global-trade-connect-deck-vision.png',
+        alt: 'Global Trade Connect Our Vision slide with the headline Making Global Trade Seamless and a vision statement about opportunities moving across borders, above five icon pillars: expand markets, build partnerships, drive growth, connect businesses and create opportunities',
+        caption: 'Our vision',
+        width: 1672,
+        height: 941,
+      },
+      {
+        src: '/portfolio/global-trade-connect-deck-services.png',
+        alt: 'Global Trade Connect Our Services slide presenting five service cards with icons and photography: global logistics, import and export support, international trade consultancy, supply chain solutions and business connectivity, with the tagline Building Global Trade Partnerships, One Connection at a Time',
+        caption: 'Our services',
+        width: 1672,
+        height: 941,
+      },
+    ],
     description:
       'Custom investor pitch deck, business proposals and corporate profile layouts for international export focused initiatives.',
     objectives:
