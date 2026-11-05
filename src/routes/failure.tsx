@@ -27,15 +27,15 @@ function FailurePage() {
         title="Let’s connect directly."
         description="Your form could not be submitted automatically, but we are right here to receive your project brief."
       />
-      <section className="section light">
+      <section className="section">
         <div className="wrap" style={{ maxWidth: '800px' }}>
           <div
             style={{
               padding: '45px 35px',
-              background: '#ffffff',
-              border: '1px solid #d4d8e0',
-              borderRadius: '6px',
-              boxShadow: '0 8px 30px #00000008',
+              background: '#12141e',
+              border: '1px solid rgba(255, 255, 255, 0.12)',
+              borderRadius: '8px',
+              boxShadow: '0 20px 50px rgba(0, 0, 0, 0.6)',
             }}
           >
             <div
@@ -46,11 +46,12 @@ function FailurePage() {
                 width: '56px',
                 height: '56px',
                 borderRadius: '50%',
-                background: '#f8d7da',
-                color: '#842029',
+                background: 'rgba(247, 37, 133, 0.2)',
+                color: '#f72585',
                 fontSize: '26px',
                 fontWeight: '700',
                 marginBottom: '20px',
+                border: '1px solid rgba(247, 37, 133, 0.3)',
               }}
             >
               !
@@ -59,13 +60,13 @@ function FailurePage() {
               style={{
                 fontSize: 'clamp(1.8rem, 3vw, 2.4rem)',
                 marginBottom: '16px',
-                color: '#121315',
+                color: '#ffffff',
               }}
             >
               We’re ready to assist you
             </h2>
-            <p style={{ color: '#555b66', fontSize: '15px', lineHeight: 1.8 }}>
-              Network interruptions or browser ad blockers can sometimes prevent form transmissions. You can message our founder directly on WhatsApp or email us with your project description:
+            <p style={{ color: '#c4c7d0', fontSize: '15px', lineHeight: 1.8 }}>
+              Network interruptions or browser privacy settings can sometimes prevent form transmissions. You can message our founder directly on WhatsApp or email us with your project description:
             </p>
 
             <div
@@ -79,8 +80,8 @@ function FailurePage() {
               <div
                 style={{
                   padding: '24px 20px',
-                  background: '#f6f7f9',
-                  border: '1px solid #e1e5ec',
+                  background: 'rgba(255, 255, 255, 0.04)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
                   borderRadius: '6px',
                 }}
               >
@@ -89,16 +90,16 @@ function FailurePage() {
                     fontSize: '11px',
                     fontWeight: '700',
                     letterSpacing: '0.1em',
-                    color: '#116780',
+                    color: '#ff5c8a',
                     textTransform: 'uppercase',
                   }}
                 >
                   INSTANT MESSAGING
                 </span>
-                <h3 style={{ margin: '8px 0 6px', fontSize: '18px' }}>
+                <h3 style={{ margin: '8px 0 6px', fontSize: '18px', color: '#ffffff' }}>
                   WhatsApp Direct
                 </h3>
-                <p style={{ fontSize: '13px', color: '#555b66', margin: '0 0 16px' }}>
+                <p style={{ fontSize: '13px', color: '#a4a8b4', margin: '0 0 16px' }}>
                   +234 808 671 4454
                 </p>
                 <WA
@@ -112,8 +113,8 @@ function FailurePage() {
               <div
                 style={{
                   padding: '24px 20px',
-                  background: '#f6f7f9',
-                  border: '1px solid #e1e5ec',
+                  background: 'rgba(255, 255, 255, 0.04)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
                   borderRadius: '6px',
                 }}
               >
@@ -122,20 +123,20 @@ function FailurePage() {
                     fontSize: '11px',
                     fontWeight: '700',
                     letterSpacing: '0.1em',
-                    color: '#116780',
+                    color: '#ff5c8a',
                     textTransform: 'uppercase',
                   }}
                 >
                   OFFICIAL EMAIL
                 </span>
-                <h3 style={{ margin: '8px 0 6px', fontSize: '18px' }}>
+                <h3 style={{ margin: '8px 0 6px', fontSize: '18px', color: '#ffffff' }}>
                   Email Studio
                 </h3>
-                <p style={{ fontSize: '13px', color: '#555b66', margin: '0 0 16px' }}>
+                <p style={{ fontSize: '13px', color: '#a4a8b4', margin: '0 0 16px' }}>
                   hello@icongraphics.com.ng
                 </p>
                 <a
-                  className="button dark small"
+                  className="button outline small"
                   href="mailto:hello@icongraphics.com.ng?subject=Project%20Enquiry%20-%20ICON%20GRAPHICS"
                 >
                   Send an Email
@@ -145,7 +146,7 @@ function FailurePage() {
 
             <div
               style={{
-                borderTop: '1px solid #e1e5ec',
+                borderTop: '1px solid rgba(255, 255, 255, 0.1)',
                 paddingTop: '25px',
                 display: 'flex',
                 gap: '16px',

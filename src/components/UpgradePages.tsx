@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { Layout, PageHero, WA, Art } from './MarketingPage'
-import { packages, pricingDisclaimer, type Project } from '../data/site'
+import { Layout, PageHero, WA } from './MarketingPage'
+import { packages, pricingDisclaimer } from '../data/site'
 import {
   insights,
   insightTopics,
@@ -16,7 +16,7 @@ export function Pricing() {
         title="The right scope. A considered quotation."
         description="Every project starts with what you need. Explore transparent rates across our nine services with Basic, Standard and Premium tiers in NGN and USD."
       />
-      <section className="section light">
+      <section className="section dark-pricing-section">
         <div className="wrap">
           <div className="pricing-intro">
             <span className="eyebrow">BUILT AROUND YOUR BRIEF</span>
@@ -42,7 +42,7 @@ export function Pricing() {
                     <span
                       className="service-chip"
                       key={item}
-                      style={{ fontSize: '11px', padding: '4px 8px' }}
+                      style={{ fontSize: '11px', padding: '5px 10px' }}
                     >
                       {item}
                     </span>
@@ -62,10 +62,10 @@ export function Pricing() {
                     <div
                       key={t.name}
                       style={{
-                        padding: '12px 14px',
-                        background: '#f4f6f8',
-                        border: '1px solid #d8dce2',
-                        borderRadius: '4px',
+                        padding: '14px 16px',
+                        background: '#181a24',
+                        border: '1px solid rgba(255, 255, 255, 0.12)',
+                        borderRadius: '6px',
                       }}
                     >
                       <div
@@ -81,23 +81,30 @@ export function Pricing() {
                             fontSize: '12px',
                             letterSpacing: '0.06em',
                             textTransform: 'uppercase',
+                            color: '#ffffff',
                           }}
                         >
                           {t.name}
                         </strong>
                         <span
                           className="tier-billing-badge"
-                          style={{ fontSize: '9px' }}
+                          style={{
+                            fontSize: '10px',
+                            background: 'rgba(247, 37, 133, 0.2)',
+                            color: '#ff5c8a',
+                            padding: '3px 8px',
+                            borderRadius: '12px',
+                          }}
                         >
                           {t.billing}
                         </span>
                       </div>
-                      <div style={{ margin: '4px 0 6px' }}>
+                      <div style={{ margin: '6px 0' }}>
                         <span
                           style={{
-                            fontSize: '18px',
+                            fontSize: '20px',
                             fontWeight: '700',
-                            color: '#116780',
+                            color: '#ffffff',
                             fontFamily: 'Manrope, sans-serif',
                           }}
                         >
@@ -105,9 +112,9 @@ export function Pricing() {
                         </span>
                         <span
                           style={{
-                            fontSize: '13px',
-                            color: '#555b66',
-                            marginLeft: '6px',
+                            fontSize: '14px',
+                            color: '#c4c7d0',
+                            marginLeft: '8px',
                             fontWeight: '600',
                           }}
                         >
@@ -116,10 +123,10 @@ export function Pricing() {
                       </div>
                       <p
                         style={{
-                          fontSize: '12px',
-                          color: '#555b66',
+                          fontSize: '13px',
+                          color: '#b0b4be',
                           margin: 0,
-                          lineHeight: 1.4,
+                          lineHeight: 1.5,
                         }}
                       >
                         {t.description}
@@ -128,11 +135,15 @@ export function Pricing() {
                   ))}
                 </div>
 
-                <a href={'/services#' + p.serviceId} className="text-link">
+                <a
+                  href={'/services#' + p.serviceId}
+                  className="text-link"
+                  style={{ color: '#ffffff', borderBottomColor: '#ffffff', marginBottom: '18px' }}
+                >
                   Explore full scope & deliverables
                 </a>
                 <WA
-                  className="button dark"
+                  className="button primary"
                   message={`Hello ICON GRAPHICS, I would like to discuss pricing and options for ${p.title}.`}
                 >
                   Discuss this package
@@ -142,15 +153,15 @@ export function Pricing() {
           </div>
 
           <div className="pricing-disclaimer-box" style={{ marginTop: '50px' }}>
-            <strong>Official Pricing Disclaimer:</strong>
-            <p style={{ margin: '8px 0 0', color: 'inherit' }}>
+            <strong style={{ color: '#ffffff' }}>Official Pricing Disclaimer:</strong>
+            <p style={{ margin: '8px 0 0', color: '#c4c7d0' }}>
               {pricingDisclaimer}
             </p>
             <p
               style={{
                 margin: '10px 0 0',
                 fontSize: '13px',
-                color: '#6c7380',
+                color: '#959aa5',
               }}
             >
               Deposit policy: A 50% non-refundable deposit is required to
@@ -164,16 +175,70 @@ export function Pricing() {
     </Layout>
   )
 }
-function editorialArt(article: Insight): Project {
-  return {
-    id: article.slug,
-    title: article.title,
-    category: '',
-    description: article.summary,
-    art: article.art,
-    concept: false,
-  }
+
+export function InsightThumbnail({ art, title }: { art: string; title: string }) {
+  return (
+    <div className="insight-thumbnail-box">
+      <div className="insight-thumbnail-glow" />
+      <div className="insight-thumbnail-icon">
+        {art === 'brand' ? (
+          // Pen tool for Branding
+          <svg
+            viewBox="0 0 24 24"
+            width="48"
+            height="48"
+            fill="none"
+            stroke="#ffffff"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M12 19l7-7 3 3-7 7-3-3z" />
+            <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" />
+            <path d="M2 2l7.586 7.586" />
+            <circle cx="11" cy="11" r="2" />
+          </svg>
+        ) : art === 'website' ? (
+          // Browser icon for Website
+          <svg
+            viewBox="0 0 24 24"
+            width="48"
+            height="48"
+            fill="none"
+            stroke="#ffffff"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <rect x="2" y="3" width="20" height="18" rx="3" />
+            <line x1="2" y1="9" x2="22" y2="9" />
+            <line x1="6" y1="6" x2="6.01" y2="6" strokeWidth="2.5" />
+            <line x1="10" y1="6" x2="10.01" y2="6" strokeWidth="2.5" />
+            <line x1="14" y1="6" x2="14.01" y2="6" strokeWidth="2.5" />
+          </svg>
+        ) : (
+          // Camera icon for Video
+          <svg
+            viewBox="0 0 24 24"
+            width="48"
+            height="48"
+            fill="none"
+            stroke="#ffffff"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <rect x="2" y="7" width="14" height="12" rx="2" />
+            <polygon points="22 7 16 12 22 17 22 7" fill="#ffffff" />
+            <circle cx="9" cy="13" r="2.5" />
+          </svg>
+        )}
+      </div>
+      <span className="insight-thumbnail-tag">{title}</span>
+    </div>
+  )
 }
+
 export function Insights() {
   const [category, setCategory] = useState('All')
   const visible = insights.filter(
@@ -186,7 +251,7 @@ export function Insights() {
         title="Good questions. Clearer creative decisions."
         description="Practical editorial guides for planning your next brand, media or digital project. Start with the purpose, then work through the details."
       />
-      <section className="section light">
+      <section className="section dark-insights-section">
         <div className="wrap">
           <div className="filter-bar" aria-label="Article categories">
             {['All', ...insightTopics].map((topic) => (
@@ -195,6 +260,17 @@ export function Insights() {
                 className={category === topic ? 'active' : ''}
                 aria-pressed={category === topic}
                 onClick={() => setCategory(topic)}
+                style={
+                  category === topic
+                    ? {
+                        background:
+                          'linear-gradient(135deg, #f72585 0%, #9b5de5 50%, #00b4d8 100%)',
+                        color: '#ffffff',
+                        borderColor: 'transparent',
+                        fontWeight: 700,
+                      }
+                    : undefined
+                }
               >
                 {topic}
               </button>
@@ -202,12 +278,12 @@ export function Insights() {
           </div>
           <div className="insight-grid">
             {visible.map((a) => (
-              <article className="insight-card" key={a.slug}>
+              <article className="insight-card dark-insight-card" key={a.slug}>
                 <a href={'/insights/' + a.slug} aria-label={a.title}>
-                  <Art project={editorialArt(a)} />
+                  <InsightThumbnail art={a.art} title={a.category} />
                 </a>
                 <div className="insight-meta">
-                  <span>{a.category}</span>
+                  <span className="insight-category-chip">{a.category}</span>
                   <time dateTime={a.published}>{insightDate(a.published)}</time>
                   <span>{a.readingMinutes} min read</span>
                 </div>
@@ -229,7 +305,7 @@ export function Insights() {
                 published. Explore our services or ask Rapheal about your
                 project in the meantime.
               </p>
-              <a href="/services" className="button dark">
+              <a href="/services" className="button yellow">
                 Explore services
               </a>
             </div>
@@ -239,6 +315,7 @@ export function Insights() {
     </Layout>
   )
 }
+
 export function InsightDetail({ article }: { article: Insight }) {
   return (
     <Layout>
@@ -248,27 +325,54 @@ export function InsightDetail({ article }: { article: Insight }) {
         description={article.summary}
       />
       <article className="legal wrap editorial-article">
-        <p>
-          <time dateTime={article.published}>
-            {insightDate(article.published)}
-          </time>{' '}
-          · {article.readingMinutes} min read · ICON GRAPHICS website guide
-        </p>
-        <Art project={editorialArt(article)} />
-        {article.sections.map((section) => (
-          <section key={section.heading}>
-            <h2>{section.heading}</h2>
-            <p>{section.text}</p>
+        <div className="insight-author-card">
+          <img
+            src="/img/rapheal-avatar.png"
+            alt="Rapheal Adebayo"
+            className="insight-author-avatar"
+          />
+          <div>
+            <strong>Rapheal Adebayo</strong>
+            <p>Founder & Creative Director · ICON GRAPHICS</p>
+          </div>
+          <span className="insight-read-badge">
+            <time dateTime={article.published}>{insightDate(article.published)}</time> ·{' '}
+            {article.readingMinutes} min read
+          </span>
+        </div>
+
+        <div style={{ margin: '30px 0' }}>
+          <InsightThumbnail art={article.art} title={article.category} />
+        </div>
+
+        <div className="insight-lead-box">
+          <p className="large-copy" style={{ color: '#ffffff', fontSize: '18px', lineHeight: 1.8 }}>
+            {article.content}
+          </p>
+        </div>
+
+        {article.sections?.map((section) => (
+          <section key={section.heading} style={{ marginTop: '36px' }}>
+            <h2 style={{ color: '#ffffff', fontSize: '24px', marginBottom: '14px' }}>
+              {section.heading}
+            </h2>
+            <p style={{ color: '#c4c7d0', fontSize: '16px', lineHeight: 1.85 }}>
+              {section.text}
+            </p>
           </section>
         ))}
-        <WA className="button yellow">Discuss your project</WA>
-        <a className="text-link" href="/insights">
-          ← All insights
-        </a>
+
+        <div style={{ marginTop: '50px', display: 'flex', gap: '18px', flexWrap: 'wrap', alignItems: 'center' }}>
+          <WA className="button yellow">Discuss your project</WA>
+          <a className="text-link" href="/insights">
+            ← All insights
+          </a>
+        </div>
       </article>
     </Layout>
   )
 }
+
 export function BusinessPolicy({ delivery = false }: { delivery?: boolean }) {
   const sections = delivery
     ? [
@@ -325,24 +429,26 @@ export function BusinessPolicy({ delivery = false }: { delivery?: boolean }) {
         description="Clear terms, honest communication and mutual respect guide every ICON GRAPHICS partnership."
       />
       <article className="legal wrap">
-        <p>
+        <p style={{ color: '#a4a8b4', marginBottom: '24px' }}>
           Official studio policy · Governed by the laws of the Federal Republic of Nigeria.
         </p>
         {sections.map(([title, copy]) => (
-          <section key={title}>
-            <h2>{title}</h2>
-            <p>{copy}</p>
+          <section key={title} style={{ marginTop: '30px' }}>
+            <h2 style={{ color: '#ffffff' }}>{title}</h2>
+            <p style={{ color: '#c4c7d0' }}>{copy}</p>
           </section>
         ))}
         <div className="review-note">
           <h3>Client Agreement & Scope Alignment</h3>
-          <p>
+          <p style={{ color: '#c4c7d0' }}>
             Standard payment structure requires a 50% deposit before commencement and 50% before final delivery. Copyright transfers upon full payment. Portfolio display rights are retained by ICON GRAPHICS. Contact Rapheal to confirm any special project requirements before commencing.
           </p>
         </div>
-        <a className="text-link" href="/contact">
-          Contact Rapheal Adebayo
-        </a>
+        <div style={{ marginTop: '30px' }}>
+          <a className="text-link" href="/contact">
+            Contact Rapheal Adebayo
+          </a>
+        </div>
       </article>
     </Layout>
   )

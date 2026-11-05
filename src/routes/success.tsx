@@ -27,15 +27,15 @@ function SuccessPage() {
         title="We’ve received your enquiry."
         description="Thank you for sharing your project details with ICON GRAPHICS. Your message has been routed directly to our founder and creative team."
       />
-      <section className="section light">
+      <section className="section">
         <div className="wrap" style={{ maxWidth: '800px' }}>
           <div
             style={{
               padding: '45px 35px',
-              background: '#ffffff',
-              border: '1px solid #d4d8e0',
-              borderRadius: '6px',
-              boxShadow: '0 8px 30px #00000008',
+              background: '#12141e',
+              border: '1px solid rgba(255, 255, 255, 0.12)',
+              borderRadius: '8px',
+              boxShadow: '0 20px 50px rgba(0, 0, 0, 0.6)',
             }}
           >
             <div
@@ -46,11 +46,12 @@ function SuccessPage() {
                 width: '56px',
                 height: '56px',
                 borderRadius: '50%',
-                background: '#65dbed20',
-                color: '#116780',
+                background: 'linear-gradient(135deg, #f72585 0%, #9b5de5 50%, #00b4d8 100%)',
+                color: '#ffffff',
                 fontSize: '28px',
                 fontWeight: '700',
                 marginBottom: '20px',
+                boxShadow: '0 0 20px rgba(247, 37, 133, 0.4)',
               }}
             >
               ✓
@@ -59,7 +60,7 @@ function SuccessPage() {
               style={{
                 fontSize: 'clamp(2rem, 3.5vw, 2.8rem)',
                 marginBottom: '16px',
-                color: '#121315',
+                color: '#ffffff',
               }}
             >
               What happens next?
@@ -77,8 +78,9 @@ function SuccessPage() {
                   style={{
                     fontSize: '14px',
                     fontWeight: '700',
-                    color: '#116780',
-                    background: '#edf1f5',
+                    color: '#ffffff',
+                    background: 'rgba(255, 255, 255, 0.08)',
+                    border: '1px solid rgba(255, 255, 255, 0.12)',
                     padding: '6px 12px',
                     borderRadius: '4px',
                   }}
@@ -86,10 +88,10 @@ function SuccessPage() {
                   01
                 </span>
                 <div>
-                  <h3 style={{ fontSize: '16px', color: '#1a1f26', margin: '0 0 6px' }}>
+                  <h3 style={{ fontSize: '16px', color: '#ffffff', margin: '0 0 6px' }}>
                     Personal Review by Rapheal Adebayo
                   </h3>
-                  <p style={{ margin: 0, fontSize: '14px', color: '#555b66' }}>
+                  <p style={{ margin: 0, fontSize: '14px', color: '#c4c7d0' }}>
                     Our Founder & Creative Director will review your objectives,
                     deliverables, and timeline to prepare a custom scope.
                   </p>
@@ -101,8 +103,9 @@ function SuccessPage() {
                   style={{
                     fontSize: '14px',
                     fontWeight: '700',
-                    color: '#116780',
-                    background: '#edf1f5',
+                    color: '#ffffff',
+                    background: 'rgba(255, 255, 255, 0.08)',
+                    border: '1px solid rgba(255, 255, 255, 0.12)',
                     padding: '6px 12px',
                     borderRadius: '4px',
                   }}
@@ -110,10 +113,10 @@ function SuccessPage() {
                   02
                 </span>
                 <div>
-                  <h3 style={{ fontSize: '16px', color: '#1a1f26', margin: '0 0 6px' }}>
+                  <h3 style={{ fontSize: '16px', color: '#ffffff', margin: '0 0 6px' }}>
                     Response Within 24 Hours
                   </h3>
-                  <p style={{ margin: 0, fontSize: '14px', color: '#555b66' }}>
+                  <p style={{ margin: 0, fontSize: '14px', color: '#c4c7d0' }}>
                     We will follow up via your preferred contact channel (WhatsApp
                     or Email) with clarifying questions or an initial quotation.
                   </p>
@@ -125,8 +128,9 @@ function SuccessPage() {
                   style={{
                     fontSize: '14px',
                     fontWeight: '700',
-                    color: '#116780',
-                    background: '#edf1f5',
+                    color: '#ffffff',
+                    background: 'rgba(255, 255, 255, 0.08)',
+                    border: '1px solid rgba(255, 255, 255, 0.12)',
                     padding: '6px 12px',
                     borderRadius: '4px',
                   }}
@@ -134,10 +138,10 @@ function SuccessPage() {
                   03
                 </span>
                 <div>
-                  <h3 style={{ fontSize: '16px', color: '#1a1f26', margin: '0 0 6px' }}>
+                  <h3 style={{ fontSize: '16px', color: '#ffffff', margin: '0 0 6px' }}>
                     Collaboration & Agreement
                   </h3>
-                  <p style={{ margin: 0, fontSize: '14px', color: '#555b66' }}>
+                  <p style={{ margin: 0, fontSize: '14px', color: '#c4c7d0' }}>
                     Once scope and pricing are agreed, work commences with an
                     initial 50% deposit and scheduled milestones.
                   </p>
@@ -150,7 +154,7 @@ function SuccessPage() {
                 display: 'flex',
                 gap: '16px',
                 flexWrap: 'wrap',
-                borderTop: '1px solid #e1e5ec',
+                borderTop: '1px solid rgba(255, 255, 255, 0.1)',
                 paddingTop: '25px',
               }}
             >
@@ -160,7 +164,7 @@ function SuccessPage() {
               >
                 Chat on WhatsApp
               </WA>
-              <a className="button dark" href="/">
+              <a className="button outline" href="/">
                 Return to Homepage
               </a>
             </div>

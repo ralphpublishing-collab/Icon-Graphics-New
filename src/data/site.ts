@@ -1,7 +1,7 @@
 export const site = {
-  name: 'ICON GRAPHICS – Creative, Media & Digital Solutions',
+  name: 'ICON GRAPHICS | Creative Agency in Nigeria',
   description:
-    'Founder led creative, media and digital solutions for businesses, brands and individuals in Nigeria and around the world. Design. Create. Produce. Connect.',
+    'We turn ideas into identities, stories and digital experiences that connect.',
 }
 
 export const catalogueUrl: string = 'https://wa.me/c/2348086714454'
@@ -415,6 +415,8 @@ export const clientProjects: Project[] = [
     client: 'Erin Fashion World',
     location: 'Ilorin, Nigeria',
     label: 'Client Case Study · Logo & Brand Identity',
+    image: '/portfolio/erin-fashion-world.jpg',
+    video: '/portfolio/erin-fashion-world.mp4',
     description:
       'Full brand mark and visual identity system for Erin Fashion World, capturing a luxury thrift vision with polish and distinction.',
     objectives:
@@ -441,6 +443,8 @@ export const clientProjects: Project[] = [
     client: 'Lewa Glam Beauty Empire',
     location: 'Offa, Nigeria',
     label: 'Client Case Study · Social Media Graphics & Flyers',
+    image: '/portfolio/lewa-glam-beauty-empire.jpg',
+    video: '/portfolio/lewa-glam-beauty-empire.mp4',
     description:
       'Main promotional flyer and engaging social media visuals created to showcase the full beauty and styling service range.',
     objectives:
@@ -466,6 +470,8 @@ export const clientProjects: Project[] = [
     client: 'Opeyemi Beauty Touch / Collections',
     location: 'Ilorin, Nigeria',
     label: 'Client Case Study · Brochure & Business Cards',
+    image: '/portfolio/opeyemi-beauty-touch.jpg',
+    video: '/portfolio/opeyemi-beauty-touch.mp4',
     description:
       'Clean and elegant service brochure and bespoke business cards crafted for bridal glam and photoshoot clientele.',
     objectives:
@@ -490,6 +496,8 @@ export const clientProjects: Project[] = [
     client: 'Global Trade Connect',
     location: 'United Kingdom',
     label: 'Client Case Study · Pitch Deck & Proposals',
+    image: '/portfolio/global-trade-connect.jpg',
+    video: '/portfolio/global-trade-connect.mp4',
     description:
       'Custom investor pitch deck, business proposals and corporate profile layouts for international export focused initiatives.',
     objectives:
@@ -514,6 +522,8 @@ export const clientProjects: Project[] = [
     client: 'Nova Global Brands',
     location: 'United States',
     label: 'Client Case Study · Packaging & Digital Marketing',
+    image: '/portfolio/nova-global-brands.jpg',
+    video: '/portfolio/nova-global-brands.mp4',
     description:
       'Custom product packaging design and high conversion digital campaign graphics for an Africa focused consumer product line.',
     objectives:
@@ -533,6 +543,7 @@ export const clientProjects: Project[] = [
     art: 'campaign',
   },
 ]
+
 
 // All portfolio entries are the authentic client case studies
 export const projects: Project[] = clientProjects

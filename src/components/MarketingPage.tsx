@@ -20,15 +20,18 @@ export function WA({
   children = 'Let’s talk on WhatsApp',
   message,
   className = 'button outline',
+  style,
 }: {
   children?: React.ReactNode
   message?: string
   className?: string
   showArrow?: boolean
+  style?: React.CSSProperties
 }) {
   return (
     <a
       className={className}
+      style={style}
       href={whatsapp(message)}
       target="_blank"
       rel="noopener noreferrer"
@@ -310,13 +313,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <WA className="floating-wa" aria-label="Chat on WhatsApp">
         <svg
           viewBox="0 0 24 24"
-          width="30"
-          height="30"
+          width="32"
+          height="32"
           fill="#ffffff"
           aria-hidden="true"
           className="wa-icon"
         >
-          <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19.01L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.81 13.47 3.81 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.11 7.44C8.95 7.44 8.68 7.5 8.46 7.74C8.24 7.97 7.62 8.56 7.62 9.75C7.62 10.94 8.49 12.08 8.61 12.24C8.73 12.4 10.3 14.98 12.78 15.95C14.44 16.6 15.1 16.41 15.65 16.36C16.38 16.29 17.55 15.65 17.79 14.97C18.03 14.29 18.03 13.71 17.96 13.59C17.89 13.47 17.7 13.4 17.41 13.25C17.12 13.1 15.7 12.4 15.44 12.31C15.18 12.22 14.99 12.17 14.8 12.46C14.61 12.75 14.07 13.4 13.91 13.59C13.75 13.78 13.58 13.8 13.29 13.66C13 13.51 12.07 13.21 10.97 12.23C10.11 11.46 9.53 10.51 9.36 10.22C9.19 9.93 9.34 9.78 9.49 9.63C9.62 9.5 9.78 9.29 9.92 9.12C10.06 8.95 10.11 8.83 10.21 8.64C10.31 8.45 10.26 8.28 10.19 8.13C10.12 7.99 9.56 6.58 9.31 6C9.07 5.43 8.83 5.51 8.66 5.5L8.2 5.49L9.11 7.44Z" />
+          <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0012.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 012.41 5.83c0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.14l-.3-.18-3.12.82.83-3.04-.2-.32a8.196 8.196 0 01-1.25-4.38c0-4.54 3.69-8.24 8.24-8.24m-3.5 3.77c-.16 0-.43.06-.65.3-.22.23-.84.82-.84 2.01s.87 2.33.99 2.49c.12.16 1.69 2.58 4.17 3.55 1.66.65 2.32.46 2.87.41.73-.07 1.9-.71 2.14-1.39.24-.68.24-1.26.17-1.38-.07-.12-.26-.19-.55-.34-.29-.15-1.71-.85-1.97-.94-.26-.09-.45-.14-.64.15-.19.29-.73.94-.89 1.13-.16.19-.33.21-.62.07-.29-.15-1.22-.45-2.32-1.43-.86-.77-1.44-1.72-1.61-2.01-.17-.29-.02-.45.13-.59.13-.13.29-.34.43-.51.14-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.63-1.56-.88-2.14-.24-.57-.48-.49-.65-.5z" />
         </svg>
       </WA>
     </>
@@ -400,9 +403,10 @@ export function Art({
     >
       {project.image ? (
         <img
-          src={`/.netlify/images?url=${encodeURIComponent(project.image)}&w=1000&fm=webp`}
+          src={project.image}
           loading="lazy"
           alt={project.title}
+          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
         />
       ) : project.video ? (
         <video
@@ -713,18 +717,6 @@ export function AboutFounderSection() {
               <span className="founder-role-tag">Founder & Creative Director</span>
             </div>
           </div>
-          <div className="founder-secondary-badge">
-            <img
-              src="/img/rapheal-adebayo.jpeg"
-              alt="Rapheal Adebayo in studio"
-              loading="lazy"
-              className="founder-studio-thumb"
-            />
-            <div>
-              <strong>Rapheal Adebayo</strong>
-              <small>Creative Direction & Studio Lead</small>
-            </div>
-          </div>
         </div>
         <div className="founder-story-column">
           <Label>MEET THE FOUNDER</Label>
@@ -735,7 +727,7 @@ export function AboutFounderSection() {
           </h2>
           <div className="founder-bio-text">
             <p>
-              Rapheal Adebayo is the Founder and Creative Director of ICON GRAPHICS. Driven by a belief that every brand has a unique story, Rapheal founded the agency to bridge the gap between bold ideas and flawless execution. With a hands-on approach, he personally oversees the creative direction of every project, ensuring that clients don't just get a service—they get a dedicated partner. Based in Nigeria and working with clients globally, Rapheal's vision is to empower businesses with design that speaks, media that engages, and digital solutions that convert.
+              Rapheal Adebayo is the Founder and Creative Director of ICON GRAPHICS. Driven by a belief that every brand has a unique story, Rapheal founded the agency to bridge the gap between bold ideas and flawless execution. With a hands-on approach, he personally oversees the creative direction of every project, ensuring that clients don't just get a service, they get a dedicated partner. Based in Nigeria and working with clients globally, Rapheal's vision is to empower businesses with design that speaks, media that engages, and digital solutions that convert.
             </p>
             <p>
               From the initial conversation through to final delivery, you collaborate directly with the founder responsible for your creative deliverables. Every visual, word, and strategic choice is crafted with precision, passion, and genuine accountability.
@@ -937,27 +929,48 @@ export function Home() {
           </div>
           <WA className="hero-whatsapp">Let’s Discuss Your Project</WA>
         </div>
-        <div className="hero-collage">
-          <div className="collage-caption">
-            <span>DESIGNED TO STAND OUT.</span>
-            <span>MADE TO CONNECT.</span>
-          </div>
-          <div className="hero-main-art">
-            <Art project={projects[0]} />
-          </div>
-          <div className="hero-mini-art">
-            <Art project={projects[1]} />
-          </div>
-          <div className="round-stamp">
-            <span>DESIGN. CREATE.</span>
-            <span>PRODUCE. CONNECT.</span>
-          </div>
-          <div className="collage-foot">
-            <span>IDEAS WITH INTENTION.</span>
-            <span>EXECUTION WITH IMPACT.</span>
+        <div className="hero-brand-card-wrap">
+          <div className="hero-brand-display">
+            <img
+              src="/img/logo-3d.png"
+              alt="ICON GRAPHICS 3D Brand Mark"
+              className="hero-brand-3d-img"
+            />
+            <div className="hero-brand-badge">
+              <span className="dot" />
+              <span>DESIGN • CREATE • PRODUCE • CONNECT</span>
+            </div>
           </div>
         </div>
       </section>
+
+      {/* Structured CSS Grid of Portfolio Preview Cards cleanly BELOW hero */}
+      <section className="hero-portfolio-showcase wrap">
+        <div className="section-heading">
+          <div>
+            <Label>AUTHENTIC CLIENT PORTFOLIO</Label>
+            <h2>
+              Featured Case
+              <br />
+              <em>Studies.</em>
+            </h2>
+          </div>
+          <div>
+            <p>
+              Purposeful identity design, social campaigns, brochures, and commercial packages delivered for clients globally.
+            </p>
+            <a className="text-link" href="/portfolio">
+              Explore the portfolio
+            </a>
+          </div>
+        </div>
+        <div className="portfolio-preview-grid">
+          {projects.slice(0, 3).map((p) => (
+            <ProjectCard key={p.id} project={p} />
+          ))}
+        </div>
+      </section>
+
       <div className="hero-bottom wrap">
         <span>
           <i className="dot" /> BASED IN NIGERIA. CREATING BEYOND BORDERS.
@@ -966,7 +979,7 @@ export function Home() {
       </div>
       <div className="ticker" aria-label="Design. Create. Produce. Connect.">
         <div>
-          DESIGN • CREATE • PRODUCE • CONNECT • DESIGN • CREATE •
+          DESIGN • CREATE • PRODUCE • CONNECT • DESIGN • CREATE • PRODUCE • CONNECT • DESIGN • CREATE • PRODUCE • CONNECT
         </div>
       </div>
       <section id="intro" className="intro wrap">
@@ -987,6 +1000,7 @@ export function Home() {
           </a>
         </div>
       </section>
+      <AboutFounderSection />
       <ServicesOverview />
       <Featured />
       <Why />
@@ -1152,7 +1166,7 @@ export function Founder() {
             </p>
             <h3>We create. We connect. We transform.</h3>
             <p>
-              Rapheal Adebayo is the Founder and Creative Director of ICON GRAPHICS. Driven by a belief that every brand has a unique story, Rapheal founded the agency to bridge the gap between bold ideas and flawless execution. With a hands-on approach, he personally oversees the creative direction of every project, ensuring that clients don't just get a service—they get a dedicated partner. Based in Nigeria and working with clients globally, Rapheal's vision is to empower businesses with design that speaks, media that engages, and digital solutions that convert.
+              Rapheal Adebayo is the Founder and Creative Director of ICON GRAPHICS. Driven by a belief that every brand has a unique story, Rapheal founded the agency to bridge the gap between bold ideas and flawless execution. With a hands-on approach, he personally oversees the creative direction of every project, ensuring that clients don't just get a service, they get a dedicated partner. Based in Nigeria and working with clients globally, Rapheal's vision is to empower businesses with design that speaks, media that engages, and digital solutions that convert.
             </p>
             <h3>A philosophy of purpose</h3>
             <p>
@@ -1203,9 +1217,9 @@ export function Services() {
           <div className="wrap service-detail-grid">
             <div>
               <Label>
-                0{i + 1} / {s.title.toUpperCase()}
+                0{i + 1} / SERVICE CAPABILITY
               </Label>
-              <h2>{s.title}</h2>
+              <h2 className="service-main-heading">{s.title}</h2>
               <p className="large-copy">{s.description}</p>
 
               <div className="service-items-box">
@@ -1240,7 +1254,7 @@ export function Services() {
                       <p className="tier-desc">{tier.description}</p>
                     </div>
                     <WA
-                      className="button small outline"
+                      className="button small yellow"
                       message={`Hello ICON GRAPHICS, I am interested in the ${tier.name} package (${tier.priceNgn} / ${tier.priceUsd}) for ${s.title}.`}
                     >
                       Enquire {tier.name}
@@ -1258,7 +1272,7 @@ export function Services() {
                 }}
               >
                 <WA
-                  className={'button ' + (i % 2 === 0 ? 'dark' : 'yellow')}
+                  className="button yellow"
                   message={`Hello ICON GRAPHICS, I would like to enquire about ${s.title}.`}
                 >
                   Discuss this service
@@ -1414,22 +1428,19 @@ export function ProjectDetail({ project }: { project: Project }) {
         <Art project={project} />
 
         {project.video ? (
-          <div
-            style={{
-              margin: '30px 0',
-              borderRadius: '6px',
-              overflow: 'hidden',
-              border: '1px solid #ffffff20',
-              background: '#000',
-            }}
-          >
+          <div className="project-video-player-wrap">
+            <div className="project-video-header">
+              <span className="project-video-badge">10-Second Commercial Reel</span>
+              <span className="project-video-caption">{project.title} — Official Media</span>
+            </div>
             <video
               controls
+              playsInline
               preload="metadata"
               poster={project.image}
-              style={{ width: '100%', display: 'block', maxHeight: '560px' }}
+              className="project-embedded-video"
             >
-              <source src={project.video} />
+              <source src={project.video} type="video/mp4" />
               {project.captions && (
                 <track
                   kind="captions"
@@ -1520,7 +1531,7 @@ export function Contact({ quote = false }: { quote?: boolean }) {
             : 'A new identity, a story to tell, or a digital presence to build. Get in touch and let’s explore the right direction.'
         }
       />
-      <section className="section light">
+      <section className="section dark-contact-section">
         <div className="wrap enquiry-layout">
           <aside>
             <Label>ICON GRAPHICS</Label>
@@ -1529,7 +1540,7 @@ export function Contact({ quote = false }: { quote?: boolean }) {
               <br />
               <em>something meaningful.</em>
             </h2>
-            <p>Creative, Media & Digital Solutions</p>
+            <p style={{ color: '#b0b4be' }}>Creative, Media & Digital Solutions</p>
             <div className="contact-info">
               <small>EMAIL US</small>
               <a href="mailto:hello@icongraphics.com.ng">
@@ -1539,16 +1550,31 @@ export function Contact({ quote = false }: { quote?: boolean }) {
               <a href={whatsapp()}>+234 808 671 4454</a>
               <small>WEBSITE</small>
               <a href="https://icongraphics.com.ng">icongraphics.com.ng</a>
-              <small>YOUR CREATIVE CONTACT</small>
-              <p>
-                Rapheal Adebayo
-                <br />
-                Founder & Creative Director
-              </p>
+              
+              <div className="founder-contact-card" style={{ display: 'flex', alignItems: 'center', gap: '14px', marginTop: '28px', padding: '14px 18px', background: 'rgba(255, 255, 255, 0.05)', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
+                <img
+                  src="/img/rapheal-avatar.png"
+                  alt="Rapheal Adebayo"
+                  style={{ width: '52px', height: '52px', borderRadius: '50%', objectFit: 'cover', border: '2px solid #f72585', flexShrink: 0 }}
+                />
+                <div>
+                  <small style={{ margin: 0, textTransform: 'uppercase', letterSpacing: '0.14em', color: '#ff5c8a', fontSize: '9px', fontWeight: 700 }}>
+                    YOUR CREATIVE CONTACT
+                  </small>
+                  <strong style={{ display: 'block', fontSize: '15px', color: '#ffffff', marginTop: '2px' }}>
+                    Rapheal Adebayo
+                  </strong>
+                  <span style={{ fontSize: '11px', color: '#a4a8b4' }}>
+                    Founder & Creative Director
+                  </span>
+                </div>
+              </div>
             </div>
-            <WA className="button dark">Prefer WhatsApp?</WA>
+            <WA className="button yellow" style={{ width: '100%', marginBottom: '14px' }}>
+              Prefer WhatsApp?
+            </WA>
             <SocialLinks />
-            <Catalogue />
+            <Catalogue className="button yellow" />
           </aside>
           <div className="form-panel">
             <h3>{quote ? 'Request a quote' : 'Send an enquiry'}</h3>
