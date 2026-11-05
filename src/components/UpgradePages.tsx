@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Layout, PageHero, WA } from './MarketingPage'
+import { Layout, PageHero, WA, remoteImage } from './MarketingPage'
 import { packages, pricingDisclaimer } from '../data/site'
 import {
   insights,
@@ -176,64 +176,29 @@ export function Pricing() {
   )
 }
 
-export function InsightThumbnail({ art, title }: { art: string; title: string }) {
+export function InsightThumbnail({
+  thumbnail,
+  title,
+  eager = false,
+}: {
+  thumbnail: Insight['thumbnail']
+  title: string
+  eager?: boolean
+}) {
   return (
-    <div className="insight-thumbnail-box">
-      <div className="insight-thumbnail-glow" />
-      <div className="insight-thumbnail-icon">
-        {art === 'brand' ? (
-          // Pen tool for Branding
-          <svg
-            viewBox="0 0 24 24"
-            width="48"
-            height="48"
-            fill="none"
-            stroke="#ffffff"
-            strokeWidth="1.8"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M12 19l7-7 3 3-7 7-3-3z" />
-            <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" />
-            <path d="M2 2l7.586 7.586" />
-            <circle cx="11" cy="11" r="2" />
-          </svg>
-        ) : art === 'website' ? (
-          // Browser icon for Website
-          <svg
-            viewBox="0 0 24 24"
-            width="48"
-            height="48"
-            fill="none"
-            stroke="#ffffff"
-            strokeWidth="1.8"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <rect x="2" y="3" width="20" height="18" rx="3" />
-            <line x1="2" y1="9" x2="22" y2="9" />
-            <line x1="6" y1="6" x2="6.01" y2="6" strokeWidth="2.5" />
-            <line x1="10" y1="6" x2="10.01" y2="6" strokeWidth="2.5" />
-            <line x1="14" y1="6" x2="14.01" y2="6" strokeWidth="2.5" />
-          </svg>
-        ) : (
-          // Camera icon for Video
-          <svg
-            viewBox="0 0 24 24"
-            width="48"
-            height="48"
-            fill="none"
-            stroke="#ffffff"
-            strokeWidth="1.8"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <rect x="2" y="7" width="14" height="12" rx="2" />
-            <polygon points="22 7 16 12 22 17 22 7" fill="#ffffff" />
-            <circle cx="9" cy="13" r="2.5" />
-          </svg>
-        )}
-      </div>
+    <div className="insight-thumbnail-box insight-thumbnail-photo">
+      <img
+        src={remoteImage(thumbnail.src, 800)}
+        srcSet={[480, 800, 1200]
+          .map((w) => remoteImage(thumbnail.src, w) + ' ' + w + 'w')
+          .join(', ')}
+        sizes="(max-width: 768px) 100vw, 400px"
+        alt={thumbnail.alt}
+        width={800}
+        height={450}
+        loading={eager ? 'eager' : 'lazy'}
+        decoding="async"
+      />
       <span className="insight-thumbnail-tag">{title}</span>
     </div>
   )
@@ -280,7 +245,7 @@ export function Insights() {
             {visible.map((a) => (
               <article className="insight-card dark-insight-card" key={a.slug}>
                 <a href={'/insights/' + a.slug} aria-label={a.title}>
-                  <InsightThumbnail art={a.art} title={a.category} />
+                  <InsightThumbnail thumbnail={a.thumbnail} title={a.category} />
                 </a>
                 <div className="insight-meta">
                   <span className="insight-category-chip">{a.category}</span>
@@ -342,7 +307,7 @@ export function InsightDetail({ article }: { article: Insight }) {
         </div>
 
         <div style={{ margin: '30px 0' }}>
-          <InsightThumbnail art={article.art} title={article.category} />
+          <InsightThumbnail thumbnail={article.thumbnail} title={article.category} eager />
         </div>
 
         <div className="insight-lead-box">
