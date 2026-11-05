@@ -1427,7 +1427,13 @@ export function ProjectDetail({ project }: { project: Project }) {
       <section className="wrap project-detail">
         {project.gallery?.length ? (
           <div className="case-showcase">
-            <figure className="case-showcase-lead">
+            <figure
+              className={
+                project.gallery[0].width / project.gallery[0].height > 1.3
+                  ? 'case-showcase-lead case-showcase-lead--wide'
+                  : 'case-showcase-lead'
+              }
+            >
               <img
                 src={project.gallery[0].src}
                 alt={project.gallery[0].alt}
@@ -1461,7 +1467,10 @@ export function ProjectDetail({ project }: { project: Project }) {
             {project.gallery.length > 1 ? (
               <div className="case-showcase-grid">
                 {project.gallery.slice(1).map((item) => (
-                  <figure key={item.src}>
+                  <figure
+                    key={item.src}
+                    className={item.height / item.width > 1.3 ? 'is-portrait' : undefined}
+                  >
                     <img
                       src={item.src}
                       alt={item.alt}

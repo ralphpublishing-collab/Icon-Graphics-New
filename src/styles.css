@@ -4123,6 +4123,16 @@ button::after,
   max-width: 860px;
   justify-self: center;
 }
+.case-showcase-lead--wide {
+  padding: 32px;
+}
+.case-showcase-lead--wide img {
+  max-width: 100%;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+}
+.case-showcase-grid > figure.is-portrait:only-child {
+  max-width: 600px;
+}
 @media (max-width: 760px) {
   .case-showcase {
     padding: 18px;
@@ -4130,6 +4140,9 @@ button::after,
   }
   .case-showcase-lead {
     padding: 28px 12px 20px;
+  }
+  .case-showcase-lead--wide {
+    padding: 12px;
   }
   .case-showcase-grid {
     grid-template-columns: 1fr;

@@ -510,8 +510,24 @@ export const clientProjects: Project[] = [
     client: 'Opeyemi Beauty Touch / Collections',
     location: 'Ilorin, Nigeria',
     label: 'Client Case Study · Brochure & Business Cards',
-    image: '/portfolio/opeyemi-beauty-touch.jpg',
-    video: '/portfolio/opeyemi-beauty-touch.mp4',
+    image: '/portfolio/opeyemi-beauty-touch-brochure.jpg',
+    video: '/portfolio/opeyemi-beauty-touch-promo.mp4',
+    gallery: [
+      {
+        src: '/portfolio/opeyemi-beauty-touch-brochure.jpg',
+        alt: 'Opeyemi Beauty Touch / Collections tri-fold brochure in black and gold: crown and silhouette logo with services panel (bridal makeup, birthday glam, matriculation glam, makeup training, photoshoot makeup, other beauty services), makeup packages panel with bridal, special occasion and classic glam packages, and a bridal photography and contact panel with the tagline Beauty Is Our Passion',
+        caption: 'Tri-fold service brochure',
+        width: 2149,
+        height: 1284,
+      },
+      {
+        src: '/portfolio/opeyemi-beauty-touch-business-cards.jpg',
+        alt: 'Front and back of the black and rose-gold Opeyemi Beauty Touch / Collections business card on dark marble: the front shows the crowned silhouette logo, ornate gold border and the tagline We magnify the beauty that already exist; the back lists phone, Ilorin location and the call to action Book your beauty experience',
+        caption: 'Business card · front & back',
+        width: 1664,
+        height: 2564,
+      },
+    ],
     description:
       'Clean and elegant service brochure and bespoke business cards crafted for bridal glam and photoshoot clientele.',
     objectives:
