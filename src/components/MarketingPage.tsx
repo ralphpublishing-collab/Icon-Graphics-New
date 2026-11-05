@@ -942,7 +942,7 @@ export function FAQ() {
   return (
     <section className="section light" id="faq">
       <div className="wrap faq-layout">
-        <div>
+        <div className="faq-intro">
           <Label>A LITTLE CLARITY</Label>
           <h2>
             You ask.
@@ -953,30 +953,11 @@ export function FAQ() {
             Everything you need to know about starting a project, transparent
             pricing, revision workflows, and delivery arrangements.
           </p>
-          <aside className="faq-contact-card" aria-labelledby="faq-contact-title">
-            <h3 id="faq-contact-title">Still have questions?</h3>
-            <div className="faq-contact-person">
-              <img
-                src="/.netlify/images?url=/img/rapheal-adebayo-supplied.jpeg&w=128&h=128&fit=cover"
-                alt="Rapheal Adebayo, Founder & Creative Director"
-                width={64}
-                height={64}
-                loading="lazy"
-              />
-              <p>
-                Talk directly with Rapheal Adebayo, Founder &amp; Creative
-                Director.
-              </p>
-            </div>
-            <WA
-              className="faq-contact-button"
-              message="Hello Rapheal, I have a question about working with ICON GRAPHICS."
-            >
-              Chat on WhatsApp
-            </WA>
-          </aside>
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
+        <div
+          className="faq-list"
+          style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}
+        >
           {faqCategories.map((category) => (
             <div key={category.title}>
               <h3
@@ -1005,6 +986,28 @@ export function FAQ() {
             </div>
           ))}
         </div>
+        <aside className="faq-contact-card" aria-labelledby="faq-contact-title">
+          <h3 id="faq-contact-title">Still have questions?</h3>
+          <div className="faq-contact-person">
+            <img
+              src="/.netlify/images?url=/img/rapheal-adebayo-supplied.jpeg&w=128&h=128&fit=cover"
+              alt="Rapheal Adebayo, Founder & Creative Director"
+              width={64}
+              height={64}
+              loading="lazy"
+            />
+            <p>
+              Talk directly with Rapheal Adebayo, Founder &amp; Creative
+              Director.
+            </p>
+          </div>
+          <WA
+            className="faq-contact-button"
+            message="Hello Rapheal, I have a question about working with ICON GRAPHICS."
+          >
+            Chat on WhatsApp
+          </WA>
+        </aside>
       </div>
     </section>
   )
@@ -1866,6 +1869,8 @@ export function Portfolio({
 }
 export function ProjectDetail({ project }: { project: Project }) {
   const s = services.find((s) => s.id === project.category)!
+  const projectServices =
+    project.label?.split('·')[1]?.trim() || s.title
   return (
     <Layout>
       <PageHero
@@ -1953,9 +1958,40 @@ export function ProjectDetail({ project }: { project: Project }) {
         ) : null}
 
         <div className="project-description">
-          <div>
+          <div className="project-summary-column">
             <Label>CASE STUDY OVERVIEW</Label>
             <h2>Project details.</h2>
+            <aside
+              className="project-summary-card"
+              aria-labelledby="project-summary-title"
+            >
+              <h3 id="project-summary-title">Project summary</h3>
+              <dl>
+                <div>
+                  <dt>Client</dt>
+                  <dd>{project.client || project.title}</dd>
+                </div>
+                <div>
+                  <dt>Services provided</dt>
+                  <dd>{projectServices}</dd>
+                  {projectServices !== s.title ? (
+                    <dd className="project-summary-meta">{s.title}</dd>
+                  ) : null}
+                </div>
+                {project.location ? (
+                  <div>
+                    <dt>Location</dt>
+                    <dd>{project.location}</dd>
+                  </div>
+                ) : null}
+              </dl>
+              <WA
+                className="project-summary-button"
+                message={`Hello ICON GRAPHICS, I saw your case study for ${project.title} and would like to enquire about a similar project.`}
+              >
+                Enquire on WhatsApp
+              </WA>
+            </aside>
           </div>
           <div>
             <p>{project.description}</p>

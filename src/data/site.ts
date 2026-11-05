@@ -528,8 +528,8 @@ export const clientProjects: Project[] = [
         src: '/portfolio/opeyemi-beauty-touch-business-cards.jpg',
         alt: 'Front and back of the black and rose-gold Opeyemi Beauty Touch / Collections business card on dark marble: the front shows the crowned silhouette logo, ornate gold border and the tagline We magnify the beauty that already exist; the back lists phone, Ilorin location and the call to action Book your beauty experience',
         caption: 'Business card · front & back',
-        width: 1664,
-        height: 2564,
+        width: 1696,
+        height: 2528,
       },
     ],
     description:
