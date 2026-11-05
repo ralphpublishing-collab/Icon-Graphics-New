@@ -4,8 +4,10 @@ export const site = {
     'We turn ideas into identities, stories and digital experiences that connect.',
 }
 
-export const LOCATION_TEXT =
-  'Location: Ilorin, Kwara State, Nigeria. Serving clients globally. Available for virtual consultations.'
+export const LOCATION = {
+  headquarters: 'Ilorin, Kwara State, Nigeria',
+  availability: 'Global (Virtual Consultations)',
+}
 export const catalogueUrl: string = 'https://wa.me/c/2348086714454'
 
 export const whatsapp = (
