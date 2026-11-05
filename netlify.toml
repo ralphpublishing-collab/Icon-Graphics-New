@@ -9,6 +9,10 @@
   targetPort = 3000
   port = 8889
 
+# Unsplash stock photography is served through Netlify Image CDN.
+[images]
+  remote_images = ['https://images\.unsplash\.com/.*']
+
 [[headers]]
   for = "/*"
   [headers.values]

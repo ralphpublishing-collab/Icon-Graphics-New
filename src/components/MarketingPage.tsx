@@ -15,6 +15,70 @@ import {
 } from '../data/site'
 import { EnquiryForm } from './EnquiryForm'
 export const image = (file: string, _w = 800) => '/img/' + file
+/** Serve a remote (allow-listed) image through Netlify Image CDN. */
+export const remoteImage = (url: string, w = 1200) =>
+  '/.netlify/images?url=' + encodeURIComponent(url) + '&w=' + w + '&q=75'
+
+const SHOWREEL_BG = 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d'
+const SHOWREEL_VIDEO = projects.find((p) => p.video)
+
+function Showreel() {
+  const [playing, setPlaying] = useState(false)
+  if (!SHOWREEL_VIDEO?.video) return null
+  return (
+    <div className="showreel-card">
+      {playing ? (
+        <video
+          className="showreel-video"
+          src={SHOWREEL_VIDEO.video}
+          controls
+          autoPlay
+          playsInline
+          aria-label={SHOWREEL_VIDEO.title + ' promotional video'}
+        />
+      ) : (
+        <>
+          <img
+            className="showreel-bg"
+            src={remoteImage(SHOWREEL_BG, 1200)}
+            srcSet={[640, 960, 1400]
+              .map((w) => remoteImage(SHOWREEL_BG, w) + ' ' + w + 'w')
+              .join(', ')}
+            sizes="(max-width: 768px) 100vw, 45vw"
+            alt=""
+            width={1200}
+            height={800}
+            fetchPriority="high"
+          />
+          <div className="showreel-overlay" aria-hidden="true" />
+          <div className="showreel-top">
+            <span className="showreel-rec">
+              <i aria-hidden="true" /> SHOWREEL
+            </span>
+            <span>VIDEO PRODUCTION</span>
+          </div>
+          <button
+            type="button"
+            className="showreel-play"
+            onClick={() => {
+              setPlaying(true)
+              track('showreel_play', { project: SHOWREEL_VIDEO.id })
+            }}
+            aria-label={'Play the ' + SHOWREEL_VIDEO.title + ' promotional video'}
+          >
+            <svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true">
+              <path d="M8 5.5v13l11-6.5z" fill="currentColor" />
+            </svg>
+          </button>
+          <div className="showreel-caption">
+            <strong>Watch our video work</strong>
+            <span>Client promo: {SHOWREEL_VIDEO.title}</span>
+          </div>
+        </>
+      )}
+    </div>
+  )
+}
 
 export function WA({
   children = 'Let’s talk on WhatsApp',
@@ -701,14 +765,18 @@ function Featured() {
     </section>
   )
 }
-export function AboutFounderSection() {
+export function AboutFounderSection({
+  photo = '/img/rapheal-adebayo-supplied.jpeg',
+}: {
+  photo?: string
+}) {
   return (
     <section className="dedicated-founder-section" id="founder">
       <div className="wrap dedicated-founder-grid">
         <div className="founder-visual-wrap">
           <div className="founder-portrait-card">
             <img
-              src="/img/rapheal-adebayo-supplied.jpeg"
+              src={photo}
               alt="Rapheal Adebayo, Founder & Creative Director of ICON GRAPHICS"
               loading="lazy"
             />
@@ -929,40 +997,25 @@ export function Home() {
           </div>
           <WA className="hero-whatsapp">Let’s Discuss Your Project</WA>
         </div>
-        <div className="hero-brand-card-wrap">
-          <div className="hero-brand-display">
-            <img
-              src="/img/logo-3d.png"
-              alt="ICON GRAPHICS 3D Brand Mark"
-              className="hero-brand-3d-img"
-            />
-            <div className="hero-brand-badge">
-              <span className="dot" />
-              <span>DESIGN • CREATE • PRODUCE • CONNECT</span>
-            </div>
-          </div>
+        <div className="hero-showreel-wrap">
+          <Showreel />
         </div>
       </section>
 
       {/* Structured CSS Grid of Portfolio Preview Cards cleanly BELOW hero */}
       <section className="hero-portfolio-showcase wrap">
-        <div className="section-heading">
-          <div>
-            <Label>AUTHENTIC CLIENT PORTFOLIO</Label>
-            <h2>
-              Featured Case
-              <br />
-              <em>Studies.</em>
-            </h2>
-          </div>
-          <div>
-            <p>
-              Purposeful identity design, social campaigns, brochures, and commercial packages delivered for clients globally.
-            </p>
+        <div className="section-heading section-heading--stacked">
+          <Label>AUTHENTIC CLIENT PORTFOLIO</Label>
+          <h2>
+            Featured Case <em>Studies.</em>
+          </h2>
+          <p className="section-subtitle">
+            Purposeful identity design, social campaigns, brochures and
+            commercial packages delivered for clients globally.{' '}
             <a className="text-link" href="/portfolio">
               Explore the portfolio
             </a>
-          </div>
+          </p>
         </div>
         <div className="portfolio-preview-grid">
           {projects.slice(0, 3).map((p) => (
@@ -977,9 +1030,18 @@ export function Home() {
         </span>
         <a href="#intro">SCROLL TO EXPLORE ↓</a>
       </div>
-      <div className="ticker" aria-label="Design. Create. Produce. Connect.">
-        <div>
-          DESIGN • CREATE • PRODUCE • CONNECT • DESIGN • CREATE • PRODUCE • CONNECT • DESIGN • CREATE • PRODUCE • CONNECT
+      <div className="ticker" role="img" aria-label="Design. Create. Produce. Connect.">
+        <div className="ticker-track" aria-hidden="true">
+          {[0, 1, 2, 3, 4, 5].map((copy) => (
+            <span className="ticker-group" key={copy}>
+              {['DESIGN', 'CREATE', 'PRODUCE', 'CONNECT'].map((word) => (
+                <span className="ticker-item" key={word}>
+                  {word}
+                  <b className="ticker-bullet">•</b>
+                </span>
+              ))}
+            </span>
+          ))}
         </div>
       </div>
       <section id="intro" className="intro wrap">
@@ -1125,7 +1187,7 @@ export function About() {
           ))}
         </div>
       </section>
-      <AboutFounderSection />
+      <AboutFounderSection photo="/img/rapheal-adebayo-about.jpeg" />
       <Why />
     </Layout>
   )
@@ -1142,7 +1204,7 @@ export function Founder() {
         <div className="wrap founder-split">
           <div className="portrait-wrap">
             <img
-              src={image('rapheal-adebayo-supplied.jpeg', 900)}
+              src={image('rapheal-adebayo-about.jpeg', 900)}
               alt="Rapheal Adebayo, Founder and Creative Director of ICON GRAPHICS"
             />
             <span className="portrait-label">RAPHEAL ADEBAYO / FOUNDER</span>

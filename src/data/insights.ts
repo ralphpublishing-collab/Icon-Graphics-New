@@ -6,6 +6,8 @@ export type Insight = {
   published: string
   readingMinutes: number
   art: 'brand' | 'website' | 'video'
+  /** Unsplash stock thumbnail (served via Netlify Image CDN) */
+  thumbnail: { src: string; alt: string }
   content: string
   sections?: { heading: string; text: string }[]
   author?: {
@@ -31,6 +33,10 @@ export const insights: Insight[] = [
     published: '2026-11-01',
     readingMinutes: 3,
     art: 'brand',
+    thumbnail: {
+      src: 'https://images.unsplash.com/photo-1561070791-2526d30994b5',
+      alt: 'Design desk with colour swatches, a palette book and tablet sketches',
+    },
     author: defaultAuthor,
     content:
       'Before a single pixel is designed or a camera is turned on, the most important step of any creative project is the brief. A clear brief gives creativity direction, sets boundaries, and aligns everyone on what success looks like. Start with the purpose: define what you are creating and why. Who is the audience? What should they feel, believe, or do after experiencing the work? Be specific about deliverables, deadlines, and technical requirements. Finally, share visual references—not to copy, but to establish tone, mood, and aesthetic expectations. When both client and creator share a clear brief, the result is always stronger, faster, and more impactful.',
@@ -62,6 +68,10 @@ export const insights: Insight[] = [
     published: '2026-11-01',
     readingMinutes: 3,
     art: 'website',
+    thumbnail: {
+      src: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085',
+      alt: 'Laptop showing a code editor on a bright, minimal desk',
+    },
     author: defaultAuthor,
     content:
       'Your website is often the very first touchpoint a potential customer has with your business. Before thinking about animations, color schemes, or layout trends, the most critical question is: what is the user’s journey? A successful business website should immediately communicate three things within five seconds: who you are, what problem you solve, and what action the visitor should take next. Structure your navigation simply, ensure page load speed is optimized, and make your contact and quote request channels effortless to find. Great web design is not just about aesthetics—it is about removing friction between a customer’s need and your solution.',
@@ -93,6 +103,10 @@ export const insights: Insight[] = [
     published: '2026-11-01',
     readingMinutes: 3,
     art: 'video',
+    thumbnail: {
+      src: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32',
+      alt: 'Professional camera body and lenses on a dark surface',
+    },
     author: defaultAuthor,
     content:
       'Video is one of the most powerful storytelling mediums available to a brand, but without proper pre-production planning, it can quickly become inefficient and costly. Before production begins, establish the core message and the primary platform where the video will live (e.g., 9:16 vertical for social feeds vs. 16:9 widescreen for corporate presentations). Gather visual references for lighting, pacing, sound design, and color grading. Crucially, verify all permissions early: ensure you have full commercial licenses for music, talent releases for on-camera individuals, and access permissions for filming locations. Smooth video production starts with disciplined preparation.',
