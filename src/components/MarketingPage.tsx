@@ -11,6 +11,7 @@ import {
   faqCategories,
   testimonials,
   pricingDisclaimer,
+  LOCATION_TEXT,
   type Project,
 } from '../data/site'
 import { EnquiryForm } from './EnquiryForm'
@@ -353,6 +354,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
               hello@icongraphics.com.ng
             </a>
             <a href={whatsapp()}>+234 808 671 4454</a>
+            <p className="location-note">{LOCATION_TEXT}</p>
             <p className="muted">
               Founder & Creative Director
               <br />
@@ -728,38 +730,35 @@ function ServicesOverview() {
     </section>
   )
 }
+const CREATIVE_DIRECTION_IDS = [
+  'erin-fashion-world',
+  'lewa-glam-beauty-empire',
+  'nova-global-brands',
+]
 function Featured() {
+  const featured = CREATIVE_DIRECTION_IDS.map((id) =>
+    projects.find((p) => p.id === id),
+  ).filter((p): p is Project => Boolean(p))
   return (
-    <section className="section">
+    <section className="section creative-directions">
       <div className="wrap">
-        <div className="section-heading">
-          <div>
-            <Label>CREATIVE DIRECTIONS</Label>
-            <h2>
-              A glimpse of
-              <br />
-              <em>what’s possible.</em>
-            </h2>
-          </div>
-          <div>
-            <p>
-              Ideas, expressions and possibilities.
-              <br />
-              Purposeful design, media production and digital growth for brands that aspire to lead.
-            </p>
-            <a className="text-link" href="/portfolio">
-              Explore the portfolio
-            </a>
-          </div>
+        <div className="creative-directions-heading">
+          <Label>CREATIVE DIRECTIONS</Label>
+          <h2>
+            A glimpse of <em>what’s possible.</em>
+          </h2>
+          <p>
+            Ideas, expressions and possibilities. Purposeful design, media
+            production and digital growth for brands that aspire to lead.
+          </p>
+          <a className="text-link" href="/portfolio">
+            Explore the portfolio
+          </a>
         </div>
-        <div className="featured-grid">
-          {['branding', 'web', 'video']
-            .flatMap((category) =>
-              projects.filter((p) => p.category === category).slice(0, 1),
-            )
-            .map((p) => (
-              <ProjectCard key={p.id} project={p} />
-            ))}
+        <div className="creative-directions-grid">
+          {featured.map((p) => (
+            <ProjectCard key={p.id} project={p} />
+          ))}
         </div>
       </div>
     </section>
@@ -935,7 +934,28 @@ export function FAQ() {
             Everything you need to know about starting a project, transparent
             pricing, revision workflows, and delivery arrangements.
           </p>
-          <WA className="text-link">Let’s discuss your project</WA>
+          <aside className="faq-contact-card" aria-labelledby="faq-contact-title">
+            <h3 id="faq-contact-title">Still have questions?</h3>
+            <div className="faq-contact-person">
+              <img
+                src="/.netlify/images?url=/img/rapheal-adebayo-supplied.jpeg&w=128&h=128&fit=cover"
+                alt="Rapheal Adebayo, Founder & Creative Director"
+                width={64}
+                height={64}
+                loading="lazy"
+              />
+              <p>
+                Talk directly with Rapheal Adebayo, Founder &amp; Creative
+                Director.
+              </p>
+            </div>
+            <WA
+              className="faq-contact-button"
+              message="Hello Rapheal, I have a question about working with ICON GRAPHICS."
+            >
+              Chat on WhatsApp
+            </WA>
+          </aside>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
           {faqCategories.map((category) => (
@@ -1000,6 +1020,23 @@ export function Home() {
         <div className="hero-showreel-wrap">
           <Showreel />
         </div>
+        <a className="hero-scroll" href="#intro">
+          <span>SCROLL TO EXPLORE</span>
+          <svg
+            className="hero-scroll-arrow"
+            viewBox="0 0 24 24"
+            width="20"
+            height="20"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M12 4v16M5 13l7 7 7-7" />
+          </svg>
+        </a>
       </section>
 
       {/* Structured CSS Grid of Portfolio Preview Cards cleanly BELOW hero */}
@@ -1028,7 +1065,6 @@ export function Home() {
         <span>
           <i className="dot" /> BASED IN NIGERIA. CREATING BEYOND BORDERS.
         </span>
-        <a href="#intro">SCROLL TO EXPLORE ↓</a>
       </div>
       <div className="ticker" role="img" aria-label="Design. Create. Produce. Connect.">
         <div className="ticker-track" aria-hidden="true">
@@ -1930,6 +1966,8 @@ export function Contact({ quote = false }: { quote?: boolean }) {
               <a href={whatsapp()}>+234 808 671 4454</a>
               <small>WEBSITE</small>
               <a href="https://icongraphics.com.ng">icongraphics.com.ng</a>
+              <small>LOCATION</small>
+              <p className="location-note">{LOCATION_TEXT}</p>
               
               <div className="founder-contact-card" style={{ display: 'flex', alignItems: 'center', gap: '14px', marginTop: '28px', padding: '14px 18px', background: 'rgba(255, 255, 255, 0.05)', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
                 <img
