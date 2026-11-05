@@ -5331,3 +5331,18 @@ video {
     max-width: 100%;
   }
 }
+
+/* Service pages: show the full preview artwork instead of cropping it into a
+   wide strip. Client images use contain on a dark 4:3 stage; the inline
+   object-fit set by Art() needs !important to be overridden here. */
+.service-detail .project-card .art {
+  height: auto;
+  aspect-ratio: 4 / 3;
+}
+.service-detail .project-card:not(.service-preview-card) .art {
+  background: #111214;
+}
+.service-detail .project-card:not(.service-preview-card) .art > img,
+.service-detail .project-card:not(.service-preview-card) .art > video {
+  object-fit: contain !important;
+}
