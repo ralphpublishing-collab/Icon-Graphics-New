@@ -316,6 +316,15 @@ export function InsightDetail({ article }: { article: Insight }) {
           </p>
         </div>
 
+        {article.paragraphs?.map((paragraph) => (
+          <p
+            key={paragraph.slice(0, 40)}
+            style={{ color: '#c4c7d0', fontSize: '17px', lineHeight: 1.85, marginTop: '28px' }}
+          >
+            {paragraph}
+          </p>
+        ))}
+
         {article.sections?.map((section) => (
           <section key={section.heading} style={{ marginTop: '36px' }}>
             <h2 style={{ color: '#ffffff', fontSize: '24px', marginBottom: '14px' }}>

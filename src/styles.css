@@ -5672,3 +5672,70 @@ video {
     transform: none;
   }
 }
+
+/* ===============================================================
+   INSIGHTS: one consistent photographic card layout for every
+   article (no featured first card), 2-line excerpts, swipeable
+   category filter on mobile
+=============================================================== */
+.insight-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+  align-items: stretch;
+}
+.insight-grid > .insight-card,
+.insight-grid > .insight-card:first-child {
+  grid-column: auto;
+  display: flex;
+  flex-direction: column;
+  column-gap: 0;
+}
+.insight-grid > .insight-card:first-child > a:first-child {
+  grid-row: auto;
+}
+.insight-card .insight-meta {
+  align-items: center;
+  margin-block: 20px 14px;
+}
+.insight-card h2 {
+  font-size: clamp(1.35rem, 1.9vw, 1.7rem);
+  margin-bottom: 12px;
+}
+.insight-card > p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
+.insight-card > .text-link {
+  margin-top: auto;
+  padding-top: 20px;
+  align-self: flex-start;
+}
+@media (max-width: 1100px) {
+  .insight-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 768px) {
+  .insight-grid {
+    grid-template-columns: 1fr;
+  }
+  .insight-grid > .insight-card,
+  .insight-grid > .insight-card:first-child {
+    display: flex !important;
+  }
+  .filter-bar {
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+  }
+  .filter-bar button {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    scroll-snap-align: start;
+  }
+}

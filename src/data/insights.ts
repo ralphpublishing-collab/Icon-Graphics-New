@@ -5,10 +5,22 @@ export type Insight = {
   summary: string
   published: string
   readingMinutes: number
-  art: 'brand' | 'website' | 'video'
+  art:
+    | 'brand'
+    | 'website'
+    | 'video'
+    | 'design'
+    | 'photo'
+    | 'social'
+    | 'marketing'
+    | 'writing'
+    | 'document'
+    | 'audio'
   /** Unsplash stock thumbnail (served via Netlify Image CDN) */
   thumbnail: { src: string; alt: string }
   content: string
+  /** Additional body paragraphs rendered after the lead paragraph */
+  paragraphs?: string[]
   sections?: { heading: string; text: string }[]
   author?: {
     name: string
@@ -34,8 +46,8 @@ export const insights: Insight[] = [
     readingMinutes: 3,
     art: 'brand',
     thumbnail: {
-      src: 'https://images.unsplash.com/photo-1561070791-2526d30994b5',
-      alt: 'Design desk with colour swatches, a palette book and tablet sketches',
+      src: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12',
+      alt: 'Hand pinning sketches and layout references to a studio planning board',
     },
     author: defaultAuthor,
     content:
@@ -104,8 +116,8 @@ export const insights: Insight[] = [
     readingMinutes: 3,
     art: 'video',
     thumbnail: {
-      src: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32',
-      alt: 'Professional camera body and lenses on a dark surface',
+      src: 'https://images.unsplash.com/photo-1485846234645-a62644f84728',
+      alt: 'Film clapperboard held up on location before a take',
     },
     author: defaultAuthor,
     content:
@@ -127,6 +139,153 @@ export const insights: Insight[] = [
         heading: 'Post-Production Review Workflows',
         text: 'Establish clear milestone reviews for rough cuts, sound mixing, color grading, and final delivery formats. Structured review rounds keep production on schedule and deliver polished broadcast-quality output.',
       },
+    ],
+  },
+  {
+    slug: "the-power-of-visual-communication",
+    title: "The Power of Visual Communication",
+    category: "Graphic design",
+    summary:
+      "Design is more than just making things look pretty. It's how your brand speaks before you say a single word.",
+    published: '2026-11-05',
+    readingMinutes: 2,
+    art: "design",
+    thumbnail: {
+      src: 'https://images.unsplash.com/photo-1626785774573-4b799315345d',
+      alt: "Designer desk with a sketchbook, keyboard and creative software icons",
+    },
+    author: defaultAuthor,
+    content:
+      "Graphic design is the art of using visual elements—typography, color, imagery, and layout—to communicate a specific message. Great design doesn't just look good; it guides the viewer's eye, evokes emotion, and drives action. A logo is the face of your brand, but your overall design system is its personality. When businesses invest in cohesive graphic design, they establish immediate credibility.",
+    paragraphs: [
+      "It's about creating a visual hierarchy that guides the user's eye exactly where you want it to go. Every element should have a purpose, and every layout should tell a story before the user even reads the text.",
+      "Whether it's a social media flyer, a massive billboard, or a business card, consistency and clarity are key. When visual communication is aligned with your brand strategy, it builds instant recognition, separates you from competitors, and fosters long-term trust with your audience.",
+    ],
+  },
+  {
+    slug: "why-brand-photography-matters",
+    title: "Why Brand Photography Matters",
+    category: "Photography",
+    summary:
+      "In a digital world, high-quality imagery is the fastest way to build trust and capture attention.",
+    published: '2026-11-05',
+    readingMinutes: 2,
+    art: "photo",
+    thumbnail: {
+      src: 'https://images.unsplash.com/photo-1520390138845-fd2d229dd553',
+      alt: "Close-up of hands holding a professional camera with a large lens",
+    },
+    author: defaultAuthor,
+    content:
+      "People scroll past boring text, but they stop for striking images. Brand photography isn't just about taking pictures; it's about capturing the essence, quality, and personality of your business. Whether it's product shots that highlight texture and craftsmanship, or lifestyle images that show real human connection, professional photography sets the standard for your brand.",
+    paragraphs: [
+      "In a digital landscape where attention spans are shrinking, an investment in professional photography is one of the fastest ways to build trust. It tells your audience that you care about the details, which translates directly to how they perceive the quality of your products or services.",
+      "Great photography also ensures consistency across all your platforms. From your website to your social media and printed brochures, high-quality, cohesive imagery creates a unified brand experience that makes your business look established, premium, and highly professional.",
+    ],
+  },
+  {
+    slug: "building-a-social-media-strategy",
+    title: "Building a Social Media Strategy That Works",
+    category: "Social media",
+    summary:
+      "Posting every day isn't a strategy. Here is how to build a social media presence that actually converts.",
+    published: '2026-11-05',
+    readingMinutes: 2,
+    art: "social",
+    thumbnail: {
+      src: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c',
+      alt: "Smartphone home screen showing social media apps",
+    },
+    author: defaultAuthor,
+    content:
+      "Consistency is important, but strategy is everything. A successful social media plan goes beyond just posting pretty pictures. It involves understanding your audience deeply, identifying the right platforms, and creating content pillars that provide genuine value.",
+    paragraphs: [
+      "Are you educating your audience, entertaining them, or inspiring them? When you focus on building a community rather than just chasing vanity metrics like likes and follows, your social media transforms from a chore into a powerful engine for brand loyalty.",
+      "It's also crucial to have a distinct brand voice. Whether your tone is professional, playful, or bold, it must be consistent. By engaging directly with your followers, responding to comments, and creating interactive content, you turn passive scrollers into active advocates for your brand.",
+    ],
+  },
+  {
+    slug: "smart-digital-marketing-beyond-the-ads",
+    title: "Smart Digital Marketing: Beyond the Ads",
+    category: "Digital marketing",
+    summary:
+      "Throwing money at ads won't save a bad strategy. Here is how to market with intention and data.",
+    published: '2026-11-05',
+    readingMinutes: 2,
+    art: "marketing",
+    thumbnail: {
+      src: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71',
+      alt: "Analytics dashboard with traffic charts on a dark screen",
+    },
+    author: defaultAuthor,
+    content:
+      "Digital marketing is a game of data and psychology. It's not just about running a campaign; it's about understanding the entire customer journey. From the very first click to the final conversion, every touchpoint matters.",
+    paragraphs: [
+      "By utilizing audience research, A/B testing, and precise retargeting, we can optimize your ad spend. The goal isn't just to get traffic; it's to get the right traffic. When you market with intention and analyze the data behind every click, you turn casual browsers into loyal, paying customers without wasting your budget.",
+      "A great campaign also requires patience and iteration. It's about testing different creatives, adjusting your messaging based on real-time feedback, and scaling what works. If you don't have a strategy behind your ads, you are simply burning money. Market with intention, and the data will follow.",
+    ],
+  },
+  {
+    slug: "the-art-of-business-writing",
+    title: "The Art of Business Writing: Clarity Over Complexity",
+    category: "Business writing",
+    summary:
+      "If your audience has to read a sentence twice to understand it, you've already lost them.",
+    published: '2026-11-05',
+    readingMinutes: 2,
+    art: "writing",
+    thumbnail: {
+      src: 'https://images.unsplash.com/photo-1517842645767-c639042777db',
+      alt: "Open notebook with a fountain pen and glasses on a wooden desk",
+    },
+    author: defaultAuthor,
+    content:
+      "In business, clear writing is a superpower. Whether you are writing a website landing page, a marketing email, or a formal proposal, the goal is always clarity. Great copywriting cuts through the noise and speaks directly to the reader's pain points and needs.",
+    paragraphs: [
+      "Avoid jargon and fluff. Focus on the benefits, use an active voice, and guide the reader naturally toward the next step. Good writing isn't about sounding smart or using big words; it's about being understood instantly.",
+      "Your words are often the first interaction a client has with your brand. If your communication is messy and confusing, they will assume your business is too. Professional business writing establishes authority, builds trust, and gently persuades your audience to take action.",
+    ],
+  },
+  {
+    slug: "the-power-of-professional-documentation",
+    title: "The Power of Professional Documentation",
+    category: "Business documentation",
+    summary:
+      "Your pitch deck and company profile are your silent salespeople. Make sure they are doing their job.",
+    published: '2026-11-05',
+    readingMinutes: 2,
+    art: "document",
+    thumbnail: {
+      src: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85',
+      alt: "Professional reviewing and signing a printed business document",
+    },
+    author: defaultAuthor,
+    content:
+      "First impressions happen long before a physical meeting. A well-designed company profile, business proposal, or pitch deck speaks volumes about your professionalism. It shows investors and clients that you are organized, credible, and prepared for business.",
+    paragraphs: [
+      "Great documentation doesn't just list facts; it tells a compelling story about your business, your vision, and your financial potential. It uses clean layouts, striking typography, and data visualization to make complex information easy to digest.",
+      "Don't let a poorly formatted, boring document undermine your brilliant business idea. Invest in professional documentation that reflects the high quality of your work and convinces stakeholders to take you seriously from the very first page.",
+    ],
+  },
+  {
+    slug: "sound-branding-the-power-of-audio",
+    title: "Sound Branding: The Unseen Power of Audio",
+    category: "Audio production",
+    summary:
+      "How does your brand sound? The right audio production can elevate your media to the next level.",
+    published: '2026-11-05',
+    readingMinutes: 2,
+    art: "audio",
+    thumbnail: {
+      src: 'https://images.unsplash.com/photo-1478737270239-2f02b77fc618',
+      alt: "Studio condenser microphone in a shock mount under low light",
+    },
+    author: defaultAuthor,
+    content:
+      "Sound is one of the most emotional senses. The right background music in a video, or a perfectly crisp voiceover in a commercial, can completely change how a brand is perceived. Audio production is about more than just recording; it's about mixing, mastering, and creating an immersive auditory experience.",
+    paragraphs: [
+      "Whether you need a custom brand jingle, a podcast edit, or a professional voiceover for a corporate video, investing in high-quality audio ensures your message is heard loud and clear. Poor audio quality is an instant credibility killer, no matter how good the video looks.",
+      "When audio is done right, it elevates the entire production. It sets the mood, controls the pacing, and makes your content memorable. In a world full of visual noise, a distinct and well-produced audio identity can help your brand stand out and stick in your customer's mind.",
     ],
   },
 ]
