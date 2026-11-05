@@ -1425,9 +1425,61 @@ export function ProjectDetail({ project }: { project: Project }) {
         description={project.label || 'CLIENT CASE STUDY'}
       />
       <section className="wrap project-detail">
-        <Art project={project} />
+        {project.gallery?.length ? (
+          <div className="case-showcase">
+            <figure className="case-showcase-lead">
+              <img
+                src={project.gallery[0].src}
+                alt={project.gallery[0].alt}
+                width={project.gallery[0].width}
+                height={project.gallery[0].height}
+              />
+              <figcaption>{project.gallery[0].caption}</figcaption>
+            </figure>
 
-        {project.video ? (
+            {project.video ? (
+              <div className="project-video-player-wrap case-showcase-video">
+                <div className="project-video-header">
+                  <span className="project-video-badge">Promotional Video</span>
+                  <span className="project-video-caption">
+                    {project.title} — Official Media
+                  </span>
+                </div>
+                <video
+                  controls
+                  playsInline
+                  preload="metadata"
+                  src={project.video}
+                  className="project-embedded-video"
+                  aria-label={project.title + ' promotional video'}
+                >
+                  Your browser does not support this video.
+                </video>
+              </div>
+            ) : null}
+
+            {project.gallery.length > 1 ? (
+              <div className="case-showcase-grid">
+                {project.gallery.slice(1).map((item) => (
+                  <figure key={item.src}>
+                    <img
+                      src={item.src}
+                      alt={item.alt}
+                      width={item.width}
+                      height={item.height}
+                      loading="lazy"
+                    />
+                    <figcaption>{item.caption}</figcaption>
+                  </figure>
+                ))}
+              </div>
+            ) : null}
+          </div>
+        ) : (
+          <Art project={project} />
+        )}
+
+        {project.video && !project.gallery?.length ? (
           <div className="project-video-player-wrap">
             <div className="project-video-header">
               <span className="project-video-badge">10-Second Commercial Reel</span>

@@ -405,6 +405,7 @@ export type Project = {
   client?: string
   location?: string
   mediaPending?: boolean
+  gallery?: { src: string; alt: string; caption: string; width: number; height: number }[]
 }
 
 export const clientProjects: Project[] = [
@@ -415,8 +416,31 @@ export const clientProjects: Project[] = [
     client: 'Erin Fashion World',
     location: 'Ilorin, Nigeria',
     label: 'Client Case Study · Logo & Brand Identity',
-    image: '/portfolio/erin-fashion-world.jpg',
-    video: '/portfolio/erin-fashion-world.mp4',
+    image: '/portfolio/erin-fashion-world-logo.jpg',
+    video: '/portfolio/erin-fashion-world-promo.mp4',
+    gallery: [
+      {
+        src: '/portfolio/erin-fashion-world-logo.jpg',
+        alt: 'Erin Fashion World circular gold logo with EF monogram, crown and hanger, reading Luxury, Thrift, Bespoke',
+        caption: 'Primary brand mark',
+        width: 779,
+        height: 770,
+      },
+      {
+        src: '/portfolio/erin-fashion-world-shopping-bag.jpg',
+        alt: 'Black Erin Fashion World shopping bag with gold rope handles and gold logo, tagline Dress Better. Live Bolder.',
+        caption: 'Shopping bag application',
+        width: 808,
+        height: 957,
+      },
+      {
+        src: '/portfolio/erin-fashion-world-hang-tag.jpg',
+        alt: 'Black Erin Fashion World apparel hang tag with gold foil logo and tagline on dark fabric',
+        caption: 'Apparel hang tag',
+        width: 614,
+        height: 954,
+      },
+    ],
     description:
       'Full brand mark and visual identity system for Erin Fashion World, capturing a luxury thrift vision with polish and distinction.',
     objectives:
