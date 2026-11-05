@@ -1459,51 +1459,76 @@ function PreviewVisual({ id }: { id: Exclude<PreviewId, 'video'> }) {
   )
 }
 
-/* Case-study promo video: no poster image. preload="metadata" plus a tiny
-   media fragment makes browsers (including iOS Safari) render the real first
-   frame, with a play button overlay until playback starts. */
+/* Case-study promo video card: a branded thumbnail built from the client's
+   own portfolio image (dark overlay + glowing play button) sits over the
+   native video. Clicking it hides the overlay and starts playback, so no
+   separate poster uploads are needed. */
 function CaseVideo({
   src,
   title,
+  thumbnail,
   captions,
 }: {
   src: string
   title: string
+  thumbnail?: string
   captions?: string
 }) {
   const ref = useRef<HTMLVideoElement>(null)
-  const [playing, setPlaying] = useState(false)
+  const [started, setStarted] = useState(false)
+  const start = () => {
+    setStarted(true)
+    const video = ref.current
+    if (!video) return
+    video.play().catch(() => {
+      /* Playback blocked: native controls remain available. */
+    })
+  }
   return (
-    <div className="case-video-stage">
+    <div className={'case-video-card' + (started ? ' is-started' : '')}>
       <video
         ref={ref}
-        controls
+        controls={started}
+        preload="auto"
         playsInline
-        preload="metadata"
+        width="100%"
+        style={{ backgroundColor: '#121212' }}
         className="project-embedded-video"
         aria-label={title + ' promotional video'}
-        onPlay={() => setPlaying(true)}
-        onPause={() => setPlaying(false)}
-        onEnded={() => setPlaying(false)}
+        tabIndex={started ? 0 : -1}
+        onPlay={() => setStarted(true)}
       >
-        <source src={src + '#t=0.001'} type="video/mp4" />
+        <source src={src} type="video/mp4" />
         {captions ? (
           <track kind="captions" src={captions} srcLang="en" label="English" default />
         ) : null}
         Your browser does not support this video.
       </video>
-      {playing ? null : (
+      {started ? null : (
         <button
           type="button"
-          className="case-video-play"
+          className="case-video-cover"
           aria-label={'Play ' + title + ' promotional video'}
-          onClick={() => {
-            void ref.current?.play()
-          }}
+          onClick={start}
         >
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M8 5.5v13l11-6.5-11-6.5Z" fill="currentColor" />
-          </svg>
+          {thumbnail ? (
+            <img
+              className="case-video-thumb"
+              src={remoteImage(thumbnail, 1200)}
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
+          ) : null}
+          <span className="case-video-shade" aria-hidden="true" />
+          <span className="case-video-play" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M8 5.5v13l11-6.5-11-6.5Z" fill="currentColor" />
+            </svg>
+          </span>
+          <span className="case-video-label" aria-hidden="true">
+            Watch the promo
+          </span>
         </button>
       )}
     </div>
@@ -1878,6 +1903,7 @@ export function ProjectDetail({ project }: { project: Project }) {
                 <CaseVideo
                   src={project.video}
                   title={project.title}
+                  thumbnail={project.image || project.gallery[0]?.src}
                   captions={project.captions}
                 />
               </div>
@@ -1916,6 +1942,7 @@ export function ProjectDetail({ project }: { project: Project }) {
             <CaseVideo
               src={project.video}
               title={project.title}
+              thumbnail={project.image}
               captions={project.captions}
             />
           </div>

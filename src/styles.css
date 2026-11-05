@@ -588,12 +588,19 @@ p + p {
   bottom: 13px;
   left: 13px;
   z-index: 3;
-  border-radius: 3px;
-  background: #f4f0e5dd;
-  color: #3d4038;
-  font-size: 7px;
-  padding: 5px 8px;
-  letter-spacing: 0.1em;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: #0a0a0a;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  color: #ffffff;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1;
+  padding: 7px 11px;
+  letter-spacing: 0.12em;
+  text-shadow: none;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
 }
 .art-brand {
   background: #c6c3b1;
@@ -5407,64 +5414,133 @@ video {
   object-fit: contain;
 }
 
-/* ===== Case-study promo video with first-frame preview ===== */
-.case-video-stage {
+/* ===== Case-study promo video card (branded thumbnail + play) ===== */
+.case-video-card {
   position: relative;
-  background: #121212;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(247, 37, 133, 0.22), transparent 60%),
+    radial-gradient(ellipse at 85% 100%, rgba(124, 58, 237, 0.24), transparent 60%),
+    #121212;
 }
-.case-video-stage .project-embedded-video {
+.project-detail .case-video-card video,
+.case-video-card .project-embedded-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  margin: 0;
   object-fit: contain;
   background: #121212;
 }
-.case-video-play {
+.case-video-cover {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  inset: 0;
+  z-index: 2;
   display: grid;
   place-items: center;
-  width: 76px;
-  height: 76px;
-  margin: -38px 0 0 -38px;
+  width: 100%;
+  height: 100%;
   padding: 0;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  background: rgba(18, 18, 18, 0.55);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  border: 0;
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(247, 37, 133, 0.25), transparent 60%),
+    radial-gradient(ellipse at 85% 100%, rgba(124, 58, 237, 0.28), transparent 60%),
+    #121212;
   color: #ffffff;
   cursor: pointer;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
-  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  font: inherit;
+}
+.case-video-thumb {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100% !important;
+  object-fit: contain;
+  opacity: 0.4;
+  transition: opacity 0.3s ease, transform 0.6s ease;
+}
+.case-video-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 10, 10, 0.15), rgba(10, 10, 10, 0.55));
+}
+.case-video-play {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: linear-gradient(135deg, rgba(247, 37, 133, 0.85), rgba(124, 58, 237, 0.85));
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  box-shadow:
+    0 0 0 10px rgba(255, 255, 255, 0.06),
+    0 0 40px rgba(247, 37, 133, 0.55),
+    0 0 80px rgba(124, 58, 237, 0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 .case-video-play svg {
-  width: 30px;
-  height: 30px;
-  margin-left: 4px;
+  width: 36px;
+  height: 36px;
+  margin-left: 5px;
 }
-.case-video-play:hover {
-  transform: scale(1.06);
-  border-color: #67e8f9;
-  background: rgba(0, 180, 216, 0.35);
+.case-video-label {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  bottom: 22px;
+  transform: translateX(-50%);
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(10, 10, 10, 0.75);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
-.case-video-play:focus-visible {
+.case-video-cover:hover .case-video-play {
+  transform: scale(1.07);
+  box-shadow:
+    0 0 0 12px rgba(255, 255, 255, 0.08),
+    0 0 55px rgba(247, 37, 133, 0.7),
+    0 0 100px rgba(124, 58, 237, 0.45);
+}
+.case-video-cover:hover .case-video-thumb {
+  opacity: 0.5;
+}
+.case-video-cover:focus-visible {
   outline: 2px solid #22d3ee;
-  outline-offset: 4px;
+  outline-offset: -4px;
 }
 @media (max-width: 760px) {
   .case-video-play {
-    width: 60px;
-    height: 60px;
-    margin: -30px 0 0 -30px;
+    width: 68px;
+    height: 68px;
   }
   .case-video-play svg {
-    width: 24px;
-    height: 24px;
+    width: 26px;
+    height: 26px;
+    margin-left: 4px;
+  }
+  .case-video-label {
+    bottom: 14px;
+    font-size: 10px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
   .case-video-play,
-  .case-video-play:hover {
+  .case-video-thumb {
     transition: none;
+  }
+  .case-video-cover:hover .case-video-play {
     transform: none;
   }
 }
