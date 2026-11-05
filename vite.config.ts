@@ -3,8 +3,9 @@ import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 import viteReact from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import netlify from '@netlify/vite-plugin-tanstack-start'
+import { cloudflare } from '@cloudflare/vite-plugin'
 
-export default defineConfig(({ command }) => ({
+export default defineConfig(() => ({
   resolve: { tsconfigPaths: true },
   server: {
     host: '0.0.0.0',
@@ -13,7 +14,9 @@ export default defineConfig(({ command }) => ({
   },
   plugins: [
     tailwindcss(),
-    ...(command === 'build' || process.env.NETLIFY ? [netlify()] : []),
+    ...(process.env.NETLIFY
+      ? [netlify()]
+      : [cloudflare({ viteEnvironment: { name: 'ssr' } })]),
     tanstackStart(),
     viteReact(),
   ],
