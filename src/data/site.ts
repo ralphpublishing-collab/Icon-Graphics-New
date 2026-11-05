@@ -608,8 +608,24 @@ export const clientProjects: Project[] = [
     client: 'Nova Global Brands',
     location: 'United States',
     label: 'Client Case Study · Packaging & Digital Marketing',
-    image: '/portfolio/nova-global-brands.jpg',
-    video: '/portfolio/nova-global-brands.mp4',
+    image: '/portfolio/nova-global-brands-packaging.png',
+    video: '/portfolio/nova-global-brands-promo.mp4',
+    gallery: [
+      {
+        src: '/portfolio/nova-global-brands-packaging.png',
+        alt: 'Nova Global Radiant Skin Beauty Serum packaging mockup: a gloss black 50 ml pump bottle with gold collar beside its matching black presentation box, both carrying the gold N monogram, the NOVA GLOBAL wordmark, the line Glow. Refresh. Renew., a gold droplet icon and For Healthy, Youthful and Radiant Skin, with a magenta wave on the box, styled with a pink orchid, dark towel and plant under magenta light',
+        caption: 'Product packaging · serum bottle & box',
+        width: 1672,
+        height: 941,
+      },
+      {
+        src: '/portfolio/nova-global-brands-digital-ad.png',
+        alt: 'Nova Global square digital ad in black, magenta and gold: the gold N monogram and NOVA GLOBAL wordmark over Skincare · Beauty · Confidence, the headline Glow Beyond Borders with Premium Skincare for a Radiant You., the serum bottle and box on a glowing podium in front of a lit globe, benefit icons for radiant glow, deep hydration, youthful skin and all skin types, and the footer Nova Global · Beauty Without Borders',
+        caption: 'Digital ad campaign graphic',
+        width: 1254,
+        height: 1254,
+      },
+    ],
     description:
       'Custom product packaging design and high conversion digital campaign graphics for an Africa focused consumer product line.',
     objectives:
