@@ -5544,3 +5544,131 @@ video {
     transform: none;
   }
 }
+
+/* ===== FAQ: questions first on mobile, sticky contact card on desktop ===== */
+@media (min-width: 769px) {
+  .faq-layout {
+    grid-template-rows: auto 1fr;
+    row-gap: 0;
+  }
+  .faq-layout > .faq-intro {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .faq-layout > .faq-list {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
+  .faq-layout > .faq-contact-card {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: start;
+    position: sticky;
+    top: 110px;
+  }
+}
+@media (max-width: 768px) {
+  .faq-layout > .faq-contact-card {
+    margin-top: 8px;
+  }
+}
+
+/* ===== Case study: sticky project summary card ===== */
+.project-description {
+  align-items: start;
+}
+.project-summary-column {
+  position: sticky;
+  top: 110px;
+  align-self: start;
+}
+.project-summary-card {
+  margin-top: 32px;
+  padding: 28px;
+  border-radius: 16px;
+  background: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.03) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+.project-summary-card h3 {
+  margin: 0 0 20px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #00b4d8 !important;
+}
+.project-summary-card dl {
+  margin: 0 0 26px;
+}
+.project-summary-card dl > div {
+  padding: 14px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.project-summary-card dl > div:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+.project-summary-card dt {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #8b8f99 !important;
+}
+.project-summary-card dd {
+  margin: 6px 0 0;
+  font-size: 16px;
+  line-height: 1.45;
+  color: #ffffff !important;
+}
+.project-summary-card dd.project-summary-meta {
+  margin-top: 4px;
+  font-size: 13px;
+  color: #a6aab4 !important;
+}
+.project-summary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 50px;
+  padding: 0 22px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #f72585 0%, #9b5de5 50%, #00b4d8 100%);
+  color: #ffffff !important;
+  font-weight: 700;
+  box-shadow: 0 6px 20px rgba(247, 37, 133, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.project-summary-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 26px rgba(247, 37, 133, 0.5);
+}
+.project-summary-button:focus-visible {
+  outline: 2px solid #00b4d8;
+  outline-offset: 3px;
+}
+@media (max-width: 768px) {
+  .project-summary-column {
+    position: static;
+  }
+  .project-summary-card {
+    margin-top: 24px;
+    padding: 22px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-summary-button {
+    transition: none;
+  }
+  .project-summary-button:hover {
+    transform: none;
+  }
+}
