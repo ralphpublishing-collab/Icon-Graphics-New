@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { track } from '../lib/analytics'
 import {
   services,
@@ -468,7 +468,12 @@ export function Art({
 }) {
   return (
     <div
-      className={'art art-' + (project.art || 'brand') + (hero ? ' hero-art' : '')}
+      className={
+        'art art-' +
+        (project.art || 'brand') +
+        (hero ? ' hero-art' : '') +
+        (project.image || project.video ? ' art-media' : '')
+      }
       role="img"
       aria-label={`${project.title} · client case study`}
     >
@@ -477,7 +482,7 @@ export function Art({
           src={project.image}
           loading="lazy"
           alt={project.title}
-          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          style={{ width: '100%', height: '100%', objectFit: 'contain' }}
         />
       ) : project.video ? (
         <video
@@ -735,84 +740,43 @@ function ServicesOverview() {
     </section>
   )
 }
-const CAPABILITY_IDS = ['video', 'web', 'audio', 'writing', 'photography']
-const CAPABILITY_ICONS: Record<string, React.ReactNode> = {
-  video: (
-    <>
-      <rect x="3" y="6" width="13" height="12" rx="2.5" />
-      <path d="M16 10.5 21 7.5v9l-5-3" />
-    </>
-  ),
-  web: (
-    <>
-      <rect x="3" y="4.5" width="18" height="12" rx="2" />
-      <path d="M8 20h8M12 16.5V20M3 8h18" />
-    </>
-  ),
-  audio: (
-    <>
-      <rect x="9" y="3" width="6" height="11" rx="3" />
-      <path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7" />
-    </>
-  ),
-  writing: (
-    <>
-      <path d="M4 20h4L19.5 8.5a2.1 2.1 0 0 0-4-4L4 16v4Z" />
-      <path d="m13.5 6.5 4 4M13 20h7" />
-    </>
-  ),
-  photography: (
-    <>
-      <path d="M4 8h3l1.8-2.5h6.4L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z" />
-      <circle cx="12" cy="13" r="3.6" />
-    </>
-  ),
-}
-function StudioCapabilities() {
-  const items = CAPABILITY_IDS.map((id) =>
-    services.find((s) => s.id === id),
-  ).filter((s): s is (typeof services)[number] => Boolean(s))
+const DIFFERENCE_POINTS = [
+  [
+    'Founder-Led Direction',
+    'Direct access to Rapheal Adebayo from the initial brief to the final delivery. No middlemen.',
+  ],
+  [
+    'Global Standards',
+    'Based in Nigeria and creating beyond borders. We deliver international quality to clients worldwide.',
+  ],
+  [
+    'Nine Disciplines, One Studio',
+    'From branding and video to web design and audio. All your creative needs under one seamless roof.',
+  ],
+  [
+    'Ideas with Intention',
+    "We don't just make things look good. We solve business problems with strategic design and media.",
+  ],
+]
+function IconDifference() {
   return (
-    <section
-      className="section studio-capabilities"
-      aria-labelledby="studio-capabilities-title"
-    >
+    <section className="section icon-difference" aria-labelledby="icon-difference-title">
       <div className="wrap">
-        <div className="studio-capabilities-heading">
-          <Label>STUDIO CAPABILITIES</Label>
-          <h2 id="studio-capabilities-title">
-            Nine disciplines. <em>One creative connection.</em>
+        <div className="icon-difference-heading">
+          <Label>WHY ICON GRAPHICS</Label>
+          <h2 id="icon-difference-title">
+            The ICON GRAPHICS <em>Difference.</em>
           </h2>
-          <p>
-            Beyond the case studies above, the studio also delivers these
-            services, planned and produced under one creative direction.
-          </p>
         </div>
-        <div className="studio-capabilities-grid">
-          {items.map((s) => (
-            <a
-              key={s.id}
-              className="capability-card"
-              href={'/services#' + s.id}
-            >
-              <span className="capability-icon" aria-hidden="true">
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.6"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  {CAPABILITY_ICONS[s.id]}
-                </svg>
+        <div className="icon-difference-grid">
+          {DIFFERENCE_POINTS.map(([title, text], i) => (
+            <article key={title} className="difference-card">
+              <span className="difference-index" aria-hidden="true">
+                0{i + 1}
               </span>
-              <h3>{s.title}</h3>
-              <p>{s.description}</p>
-              <span className="capability-link">
-                Explore service <span aria-hidden="true">→</span>
-              </span>
-            </a>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </article>
           ))}
         </div>
       </div>
@@ -1155,8 +1119,7 @@ export function Home() {
       </section>
       <AboutFounderSection />
       <ServicesOverview />
-      <StudioCapabilities />
-      <Why />
+      <IconDifference />
       <Testimonials />
       <Process />
       <section className="section light">
@@ -1493,6 +1456,57 @@ function PreviewVisual({ id }: { id: Exclude<PreviewId, 'video'> }) {
         <span>48 kHz · 24-bit</span>
       </div>
     </>
+  )
+}
+
+/* Case-study promo video: no poster image. preload="metadata" plus a tiny
+   media fragment makes browsers (including iOS Safari) render the real first
+   frame, with a play button overlay until playback starts. */
+function CaseVideo({
+  src,
+  title,
+  captions,
+}: {
+  src: string
+  title: string
+  captions?: string
+}) {
+  const ref = useRef<HTMLVideoElement>(null)
+  const [playing, setPlaying] = useState(false)
+  return (
+    <div className="case-video-stage">
+      <video
+        ref={ref}
+        controls
+        playsInline
+        preload="metadata"
+        className="project-embedded-video"
+        aria-label={title + ' promotional video'}
+        onPlay={() => setPlaying(true)}
+        onPause={() => setPlaying(false)}
+        onEnded={() => setPlaying(false)}
+      >
+        <source src={src + '#t=0.001'} type="video/mp4" />
+        {captions ? (
+          <track kind="captions" src={captions} srcLang="en" label="English" default />
+        ) : null}
+        Your browser does not support this video.
+      </video>
+      {playing ? null : (
+        <button
+          type="button"
+          className="case-video-play"
+          aria-label={'Play ' + title + ' promotional video'}
+          onClick={() => {
+            void ref.current?.play()
+          }}
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M8 5.5v13l11-6.5-11-6.5Z" fill="currentColor" />
+          </svg>
+        </button>
+      )}
+    </div>
   )
 }
 
@@ -1861,16 +1875,11 @@ export function ProjectDetail({ project }: { project: Project }) {
                     {project.title} — Official Media
                   </span>
                 </div>
-                <video
-                  controls
-                  playsInline
-                  preload="metadata"
+                <CaseVideo
                   src={project.video}
-                  className="project-embedded-video"
-                  aria-label={project.title + ' promotional video'}
-                >
-                  Your browser does not support this video.
-                </video>
+                  title={project.title}
+                  captions={project.captions}
+                />
               </div>
             ) : null}
 
@@ -1904,25 +1913,11 @@ export function ProjectDetail({ project }: { project: Project }) {
               <span className="project-video-badge">10-Second Commercial Reel</span>
               <span className="project-video-caption">{project.title} — Official Media</span>
             </div>
-            <video
-              controls
-              playsInline
-              preload="metadata"
-              poster={project.image}
-              className="project-embedded-video"
-            >
-              <source src={project.video} type="video/mp4" />
-              {project.captions && (
-                <track
-                  kind="captions"
-                  src={project.captions}
-                  srcLang="en"
-                  label="English"
-                  default
-                />
-              )}
-              Your browser does not support this video.
-            </video>
+            <CaseVideo
+              src={project.video}
+              title={project.title}
+              captions={project.captions}
+            />
           </div>
         ) : null}
 

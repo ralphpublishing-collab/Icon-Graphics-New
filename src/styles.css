@@ -5163,8 +5163,8 @@ video {
   }
 }
 
-/* ===== Homepage: Studio Capabilities glass grid ===== */
-.section.studio-capabilities {
+/* ===== Homepage: The ICON GRAPHICS Difference glass grid ===== */
+.section.icon-difference {
   position: relative;
   overflow: hidden;
   background:
@@ -5172,89 +5172,55 @@ video {
     radial-gradient(circle at 85% 90%, rgba(0, 200, 230, 0.08), transparent 50%),
     #0b0d14 !important;
 }
-.studio-capabilities-heading {
+.icon-difference-heading {
   max-width: 720px;
   margin: 0 auto 52px;
   text-align: center;
 }
-.studio-capabilities-heading h2 {
-  margin: 18px 0 16px;
+.icon-difference-heading h2 {
+  margin: 18px 0 0;
 }
-.studio-capabilities-heading p {
-  margin: 0 auto;
-  max-width: 560px;
-}
-.studio-capabilities-grid {
+.icon-difference-grid {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
 }
-.capability-card {
-  grid-column: span 2;
+.difference-card {
   display: flex;
   flex-direction: column;
   gap: 14px;
-  padding: 30px 28px;
+  padding: 30px 26px;
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 20px 40px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  color: inherit;
-  text-decoration: none;
-  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+  transition: border-color 0.25s ease, background 0.25s ease;
 }
-.capability-card:nth-child(4) {
-  grid-column: 2 / span 2;
+.difference-card:hover {
+  border-color: rgba(0, 200, 230, 0.4);
+  background: rgba(255, 255, 255, 0.06);
 }
-.capability-card:hover,
-.capability-card:focus-visible {
-  transform: translateY(-4px);
-  border-color: rgba(0, 200, 230, 0.45);
-  background: rgba(255, 255, 255, 0.07);
-}
-.capability-card:focus-visible {
-  outline: 2px solid #22d3ee;
-  outline-offset: 3px;
-}
-.capability-icon {
-  display: inline-grid;
-  place-items: center;
-  width: 52px;
-  height: 52px;
-  border-radius: 14px;
+.difference-index {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
   color: #67e8f9;
-  background: linear-gradient(145deg, rgba(34, 211, 238, 0.18), rgba(34, 211, 238, 0.04));
-  border: 1px solid rgba(103, 232, 249, 0.28);
 }
-.capability-icon svg {
-  width: 26px;
-  height: 26px;
-}
-.capability-card h3 {
-  margin: 6px 0 0;
+.difference-card h3 {
+  margin: 0;
   font-size: 20px;
+  color: #ffffff;
 }
-.studio-capabilities .capability-card p {
+.icon-difference .difference-card p {
   margin: 0;
   font-size: 14px;
-  line-height: 1.6;
-  flex: 1;
-}
-.studio-capabilities .capability-link {
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  color: #67e8f9 !important;
+  line-height: 1.65;
 }
 @media (prefers-reduced-motion: reduce) {
-  .capability-card {
+  .difference-card {
     transition: none;
-  }
-  .capability-card:hover,
-  .capability-card:focus-visible {
-    transform: none;
   }
 }
 
@@ -5380,20 +5346,13 @@ video {
 
 /* ===== Mobile stacking ===== */
 @media (max-width: 768px) {
-  .studio-capabilities-heading {
+  .icon-difference-heading {
     margin-bottom: 32px;
     text-align: left;
   }
-  .studio-capabilities-heading p {
-    margin-left: 0;
-  }
-  .studio-capabilities-grid {
+  .icon-difference-grid {
     grid-template-columns: 1fr;
     gap: 18px;
-  }
-  .capability-card,
-  .capability-card:nth-child(4) {
-    grid-column: auto;
   }
   .faq-intro-column {
     position: static;
@@ -5408,15 +5367,8 @@ video {
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
-  .studio-capabilities-grid {
+  .icon-difference-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  .capability-card,
-  .capability-card:nth-child(4) {
-    grid-column: auto;
-  }
-  .capability-card:nth-child(5) {
-    grid-column: 1 / -1;
   }
 }
 
@@ -5433,4 +5385,86 @@ video {
 .service-detail .project-card:not(.service-preview-card) .art > img,
 .service-detail .project-card:not(.service-preview-card) .art > video {
   object-fit: contain !important;
+}
+
+/* ===== Portfolio media: show full artwork, never crop ===== */
+.art.art-media {
+  background: #121212 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+.art.art-media > img,
+.art.art-media > video {
+  object-fit: contain !important;
+  background: transparent;
+}
+.case-showcase-lead,
+.case-showcase-grid > figure > img {
+  background: #121212;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.case-showcase img {
+  object-fit: contain;
+}
+
+/* ===== Case-study promo video with first-frame preview ===== */
+.case-video-stage {
+  position: relative;
+  background: #121212;
+}
+.case-video-stage .project-embedded-video {
+  object-fit: contain;
+  background: #121212;
+}
+.case-video-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 76px;
+  height: 76px;
+  margin: -38px 0 0 -38px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(18, 18, 18, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+.case-video-play svg {
+  width: 30px;
+  height: 30px;
+  margin-left: 4px;
+}
+.case-video-play:hover {
+  transform: scale(1.06);
+  border-color: #67e8f9;
+  background: rgba(0, 180, 216, 0.35);
+}
+.case-video-play:focus-visible {
+  outline: 2px solid #22d3ee;
+  outline-offset: 4px;
+}
+@media (max-width: 760px) {
+  .case-video-play {
+    width: 60px;
+    height: 60px;
+    margin: -30px 0 0 -30px;
+  }
+  .case-video-play svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .case-video-play,
+  .case-video-play:hover {
+    transition: none;
+    transform: none;
+  }
 }
