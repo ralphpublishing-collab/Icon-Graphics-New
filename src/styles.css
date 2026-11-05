@@ -4157,3 +4157,312 @@ button::after,
     gap: 24px;
   }
 }
+
+/* ==============================================================
+   MOBILE RESPONSIVE FIXES (≤ 800px / ≤ 768px, tested at 375px)
+   ============================================================== */
+
+/* Never allow sideways scrolling; media always fits its container */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+@supports (overflow-x: clip) {
+  html,
+  body {
+    overflow-x: clip;
+  }
+}
+img,
+video,
+svg,
+iframe {
+  max-width: 100%;
+}
+img,
+video {
+  height: auto;
+}
+
+/* Hero WhatsApp link: clean outlined button instead of the pink box */
+.hero-copy a.hero-whatsapp {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 24px !important;
+  min-height: 48px;
+  font-size: 13px !important;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #ffffff !important;
+  background: transparent !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  border-radius: 4px;
+  box-shadow: none !important;
+  text-shadow: none;
+  white-space: nowrap;
+}
+.hero-copy a.hero-whatsapp:hover,
+.hero-copy a.hero-whatsapp:focus-visible {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: #f72585 !important;
+  box-shadow: none !important;
+  filter: none;
+}
+
+/* Pricing cards: dark card surface with readable descriptive text */
+.dark-pricing-section .package,
+.dark-pricing-section .package:nth-child(even) {
+  background: #12141e;
+  border-color: rgba(255, 255, 255, 0.12);
+  min-width: 0;
+}
+.dark-pricing-section .package-grid {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+.dark-pricing-section .package-number {
+  color: #c4c7d0 !important;
+}
+.dark-pricing-section .package > p {
+  color: #e6e8ee !important;
+  line-height: 1.7;
+}
+.dark-pricing-section .package p {
+  color: #d9dce3 !important;
+}
+.dark-pricing-section .service-chip {
+  color: #ffffff !important;
+}
+
+/* The 3D brand block stacks below the hero buttons once the hero is single
+   column, where it only pushes content down, so hide it there. */
+@media (max-width: 800px) {
+  .hero-brand-card-wrap {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Stack every multi-column layout into a single column */
+  .hero,
+  .intro,
+  .founder-split,
+  .dedicated-founder-grid,
+  .cinematic-founder-grid,
+  .featured-grid,
+  .why-grid,
+  .process-list,
+  .faq-layout,
+  .footer-grid,
+  .about-grid,
+  .values-grid,
+  .service-detail-grid,
+  .portfolio-grid,
+  .portfolio-preview-grid,
+  .project-description,
+  .package-grid,
+  .insight-grid,
+  .next-step-grid,
+  .enquiry-layout,
+  .service-tiers-grid,
+  .service-checks,
+  .testimonials-grid,
+  .case-showcase-grid,
+  .form-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .hero > *,
+  .intro > *,
+  .founder-split > *,
+  .dedicated-founder-grid > *,
+  .cinematic-founder-grid > *,
+  .featured-grid > *,
+  .why-grid > *,
+  .faq-layout > *,
+  .footer-grid > *,
+  .about-grid > *,
+  .values-grid > *,
+  .service-detail-grid > *,
+  .portfolio-grid > *,
+  .portfolio-preview-grid > *,
+  .project-description > *,
+  .package-grid > *,
+  .insight-grid > *,
+  .next-step-grid > *,
+  .enquiry-layout > *,
+  .form-grid > * {
+    min-width: 0;
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+  /* Section headings: stack and let copy span full width */
+  .section-heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .section-heading > p,
+  .section-heading > div + div {
+    max-width: none;
+    font-size: 14px;
+  }
+  .section-heading h2 {
+    overflow-wrap: break-word;
+  }
+  .contact-strip,
+  .footer-bottom {
+    flex-wrap: wrap;
+  }
+
+  /* Hero */
+  .hero {
+    gap: 24px;
+    padding-block: 40px 48px;
+  }
+  .hero h1 {
+    font-size: clamp(2.6rem, 13vw, 4rem);
+    overflow-wrap: break-word;
+  }
+  .hero-copy > p {
+    max-width: none;
+    font-size: 15px;
+  }
+  .hero-buttons {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    margin: 26px 0 14px;
+  }
+  .hero-buttons .button,
+  .hero-copy a.hero-whatsapp {
+    width: 100%;
+    justify-content: center;
+    padding: 15px 20px !important;
+    font-size: 14px !important;
+    white-space: normal;
+    text-align: center;
+  }
+
+  /* Founder page: image on top, text full width below */
+  .founder-split {
+    display: flex !important;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 36px;
+  }
+  .founder-split .portrait-wrap {
+    width: 100%;
+    max-width: 440px;
+    margin-inline: auto;
+  }
+  .founder-split .portrait-wrap > img {
+    width: 100%;
+    height: 100%;
+    max-height: none;
+  }
+  .founder-copy,
+  .founder-story-column {
+    width: 100%;
+    max-width: none;
+  }
+  .founder-copy h2 {
+    font-size: clamp(2.4rem, 11vw, 3rem);
+  }
+  .founder-copy p {
+    font-size: 15px;
+    line-height: 1.75;
+  }
+  .founder-copy .large-copy {
+    font-size: 18px !important;
+  }
+  .founder-copy .button {
+    width: 100%;
+    white-space: normal;
+    text-align: center;
+  }
+  .founder-portrait-card {
+    max-width: 400px;
+  }
+
+  /* Pricing: stacked cards with comfortable padding */
+  .package-grid {
+    display: flex !important;
+    flex-direction: column;
+    gap: 20px;
+    border: 0 !important;
+  }
+  .package,
+  .dark-pricing-section .package {
+    width: 100%;
+    padding: 26px 20px !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    border-radius: 8px;
+    overflow-wrap: break-word;
+  }
+  .package h3 {
+    font-size: 22px;
+    margin: 18px 0 12px;
+  }
+  .package .button {
+    width: 100%;
+    white-space: normal;
+    text-align: center;
+  }
+  .package .text-link {
+    max-width: 100%;
+  }
+
+  /* Insights: wrap the filter chips, stack the article cards */
+  .filter-bar {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-top: 22px;
+  }
+  .filter-bar button {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    padding: 10px 14px;
+    min-height: 44px;
+    font-size: 13px;
+  }
+  .insight-grid {
+    display: flex !important;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .insight-card,
+  .insight-card:first-child {
+    display: block !important;
+    width: 100%;
+  }
+  .dark-insight-card {
+    padding: 18px;
+  }
+  .insight-card h2 {
+    font-size: 1.6rem;
+    overflow-wrap: break-word;
+  }
+  .insight-thumbnail-icon svg {
+    width: 30px;
+    height: 30px;
+  }
+  .insight-thumbnail-glow {
+    width: 70%;
+    height: 90%;
+    filter: blur(28px);
+  }
+  .insight-thumbnail-box {
+    background: linear-gradient(135deg, rgba(247, 37, 133, 0.28) 0%, rgba(155, 93, 229, 0.22) 50%, rgba(0, 180, 216, 0.2) 100%), #090a0f;
+  }
+
+  /* Misc overflow guards */
+  .ticker {
+    overflow: hidden;
+  }
+  .contact-info a,
+  .footer-grid a {
+    overflow-wrap: anywhere;
+  }
+}
