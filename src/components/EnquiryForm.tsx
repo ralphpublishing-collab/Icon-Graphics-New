@@ -9,49 +9,49 @@ export function EnquiryForm() {
     const body = new FormData(e.currentTarget)
     const attachment = body.get('reference-file')
     if (attachment instanceof File &amp;&amp; attachment.size &gt; 5 * 1024 * 1024) {
-      e.preventDefault()
+ e.preventDefault()
       setFileError(
         'Please choose a file under 5 MB, or share a reference link instead.',
       )
       return
     }
     if (
-      attachment instanceof File &amp;&amp;
-      attachment.size &amp;&amp;
-      !['application/pdf', 'image/jpeg', 'image/png', 'image/webp'].includes(
-        attachment.type,
+ attachment instanceof File &amp;&amp;
+ attachment.size &amp;&amp;
+ !['application/pdf', 'image/jpeg', 'image/png', 'image/webp'].includes(
+ attachment.type,
       )
     ) {
-      e.preventDefault()
+ e.preventDefault()
       setFileError('Please use a PDF, JPEG, PNG or WebP file.')
       return
     }
     setFileError('')
   }
   return state === 'success' ? (
-    &lt;div className="form-success" role="status"&gt;
-      &lt;span style={{ fontSize: '26px', color: '#65dbed' }}&gt;✓&lt;/span&gt;
-      &lt;h2&gt;Enquiry received.&lt;/h2&gt;
+ &lt;div className="form-success" role="status"&gt;
+ &lt;span style={{ fontSize: '26px', color: '#65dbed' }}&gt;✓&lt;/span&gt;
+ &lt;h2&gt;Enquiry received.&lt;/h2&gt;
       &lt;p&gt;
-        Thank you for sharing your project. Rapheal Adebayo and the ICON
-        GRAPHICS team will review your requirements and follow up within 24
+ Thank you for sharing your project. Rapheal Adebayo and the ICON
+ GRAPHICS team will review your requirements and follow up within 24
         hours.
-      &lt;/p&gt;
-      &lt;div style={{ display: 'flex', gap: '14px', marginTop: '18px', flexWrap: 'wrap' }}&gt;
-        &lt;a className="button yellow small" href="/success"&gt;
+ &lt;/p&gt;
+ &lt;div style={{ display: 'flex', gap: '14px', marginTop: '18px', flexWrap: 'wrap' }}&gt;
+ &lt;a className="button yellow small" href="/success"&gt;
           View Confirmation Details
-        &lt;/a&gt;
-        &lt;button className="button outline small" onClick={() =&gt; setState('idle')}&gt;
+ &lt;/a&gt;
+ &lt;button className="button outline small" onClick={() =&gt; setState('idle')}&gt;
           Send Another Enquiry
-        &lt;/button&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
+ &lt;/button&gt;
+ &lt;/div&gt;
+ &lt;/div&gt;
   ) : (
     &lt;form
-      name="project-enquiry"
-      method="POST"
-      encType="multipart/form-data"
-      action="https://formsubmit.co/hello@icongraphics.com.ng"
+ ame="project-enquiry"
+ method="POST"
+ encType="multipart/form-data"
+ action="https://formsubmit.co/hello@icongraphics.com.ng"
       onSubmit={submit}
       aria-busy={state === 'sending'}
     &gt;
