@@ -15,10 +15,11 @@ import {
   type Project,
 } from '../data/site'
 import { EnquiryForm } from './EnquiryForm'
+
 export const image = (file: string, _w = 800) => '/img/' + file
-/** Serve a remote (allow-listed) image through Netlify Image CDN. */
-export const remoteImage = (url: string, w = 1200) =>
-  '/.netlify/images?url=' + encodeURIComponent(url) + '&w=' + w + '&q=75'
+
+/** Direct image load (Bypassing Netlify CDN to fix broken images) */
+export const remoteImage = (url: string, _w = 1200) => url
 
 const SHOWREEL_BG = 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d'
 const SHOWREEL_VIDEO = projects.find((p) => p.video)
@@ -175,6 +176,7 @@ export function NewsletterSignup() {
     </div>
   )
 }
+
 export function GradientSpark({
   size = 28,
   className = '',
@@ -223,6 +225,7 @@ function Logo() {
     </a>
   )
 }
+
 export function Layout({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useState(false)
   useEffect(() => {
@@ -396,6 +399,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
     </>
   )
 }
+
 export function SocialLinks() {
   return (
     <div className="socials">
@@ -439,6 +443,7 @@ export function SocialLinks() {
     </div>
   )
 }
+
 export function Catalogue({ className = 'catalogue button outline' }: { className?: string }) {
   return (
     <a
@@ -451,6 +456,7 @@ export function Catalogue({ className = 'catalogue button outline' }: { classNam
     </a>
   )
 }
+
 function Label({ children }: { children: React.ReactNode }) {
   return (
     <div className="eyebrow">
@@ -459,6 +465,7 @@ function Label({ children }: { children: React.ReactNode }) {
     </div>
   )
 }
+
 export function Art({
   project,
   hero = false,
@@ -707,6 +714,7 @@ export function ProjectCard({ project }: { project: Project }) {
     </article>
   )
 }
+
 function ServicesOverview() {
   return (
     <section className="section light">
@@ -740,6 +748,7 @@ function ServicesOverview() {
     </section>
   )
 }
+
 const DIFFERENCE_POINTS = [
   [
     'Founder-Led Direction',
@@ -758,6 +767,7 @@ const DIFFERENCE_POINTS = [
     "We don't just make things look good. We solve business problems with strategic design and media.",
   ],
 ]
+
 function IconDifference() {
   return (
     <section className="section icon-difference" aria-labelledby="icon-difference-title">
@@ -783,6 +793,7 @@ function IconDifference() {
     </section>
   )
 }
+
 export function AboutFounderSection({
   photo = '/img/rapheal-adebayo-supplied.jpeg',
 }: {
@@ -835,6 +846,7 @@ export function AboutFounderSection({
     </section>
   )
 }
+
 function Why() {
   return (
     <section className="section why">
@@ -879,6 +891,7 @@ function Why() {
     </section>
   )
 }
+
 export function Process() {
   return (
     <section className="section light">
@@ -912,6 +925,7 @@ export function Process() {
     </section>
   )
 }
+
 function Testimonials() {
   return (
     <section className="testimonials wrap">
@@ -938,6 +952,7 @@ function Testimonials() {
     </section>
   )
 }
+
 export function FAQ() {
   return (
     <section className="section light" id="faq">
@@ -990,11 +1005,12 @@ export function FAQ() {
           <h3 id="faq-contact-title">Still have questions?</h3>
           <div className="faq-contact-person">
             <img
-              src="/.netlify/images?url=/img/rapheal-adebayo-supplied.jpeg&w=128&h=128&fit=cover"
+              src="/img/rapheal-adebayo-supplied.jpeg"
               alt="Rapheal Adebayo, Founder & Creative Director"
               width={64}
               height={64}
               loading="lazy"
+              style={{ objectFit: 'cover', borderRadius: '50%' }}
             />
             <p>
               Talk directly with Rapheal Adebayo, Founder &amp; Creative
@@ -1012,6 +1028,7 @@ export function FAQ() {
     </section>
   )
 }
+
 export function Home() {
   return (
     <Layout>
@@ -1170,6 +1187,7 @@ export function Home() {
     </Layout>
   )
 }
+
 export function PageHero({
   label,
   title,
@@ -1187,6 +1205,7 @@ export function PageHero({
     </section>
   )
 }
+
 export function About() {
   return (
     <Layout>
@@ -1249,6 +1268,7 @@ export function About() {
     </Layout>
   )
 }
+
 export function Founder() {
   return (
     <Layout>
@@ -1312,6 +1332,7 @@ export function Founder() {
     </Layout>
   )
 }
+
 /* ---------------------------------------------------------------
    Service previews: illustrative concept visuals for service
    categories that do not yet have supplied client work. They use
@@ -1761,6 +1782,7 @@ export function Services() {
     </Layout>
   )
 }
+
 export function Portfolio({
   initialFilter = 'all',
 }: {
@@ -1867,6 +1889,7 @@ export function Portfolio({
     </Layout>
   )
 }
+
 export function ProjectDetail({ project }: { project: Project }) {
   const s = services.find((s) => s.id === project.category)!
   const projectServices =
@@ -2044,6 +2067,7 @@ export function ProjectDetail({ project }: { project: Project }) {
     </Layout>
   )
 }
+
 export function Contact({ quote = false }: { quote?: boolean }) {
   return (
     <Layout>
@@ -2124,6 +2148,7 @@ export function Contact({ quote = false }: { quote?: boolean }) {
     </Layout>
   )
 }
+
 export function Privacy() {
   return (
     <Layout>
