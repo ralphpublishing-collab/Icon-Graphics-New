@@ -343,6 +343,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
               ['Insights', '/insights'],
               ['FAQs', '/faq'],
               ['Request a quote', '/request-a-quote'],
+              ['Start a project', '/onboarding'],
             ].map(([t, u]) => (
               <a key={u} href={u}>
                 {t}
