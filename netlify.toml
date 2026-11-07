@@ -11,7 +11,7 @@
 
 # Unsplash stock photography is served through Netlify Image CDN.
 [images]
-  remote_images = ['https://images\.unsplash\.com/.*']
+  remote_images = ['https://images\\.unsplash\\.com/.*']
 
 [[headers]]
   for = "/*"
@@ -27,3 +27,5 @@
   to = "https://icongraphics.com.ng/:splat"
   status = 301
   force = true
+
+# Isolated Cloudflare Pages preview project build trigger.
