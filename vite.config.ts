@@ -14,7 +14,18 @@ export default defineConfig(({ command }) => ({
   plugins: [
     tailwindcss(),
     ...(command === 'build' || process.env.NETLIFY ? [netlify()] : []),
-    tanstackStart(),
+    tanstackStart({
+      pages: [
+        {
+          path: '/creative-studio',
+          prerender: {
+            enabled: true,
+            outputPath: '/creative-studio/index.html',
+            crawlLinks: false,
+          },
+        },
+      ],
+    }),
     viteReact(),
   ],
 }))
