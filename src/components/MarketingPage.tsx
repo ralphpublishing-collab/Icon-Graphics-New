@@ -280,6 +280,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
               ['Home', '/'],
               ['About', '/about'],
               ['Services', '/services'],
+              ['Creative Studio', '/creative-studio'],
               ['Portfolio', '/portfolio'],
               ['Pricing', '/pricing'],
               ['How We Work', '/how-we-work'],
