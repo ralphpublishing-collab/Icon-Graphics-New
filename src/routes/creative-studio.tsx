@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 import { createFileRoute } from '@tanstack/react-router'
 import { Layout } from '../components/MarketingPage'
 import { services } from '../data/site'
@@ -7,7 +7,12 @@ function CreativeStudio() {
   const [goal, setGoal] = useState('Launch a new business')
   const [industry, setIndustry] = useState('Fashion & beauty')
   const [audience, setAudience] = useState('Everyday consumers')
-  const [campaign, setCampaign] = useState(false)
+  const [campaign, setCampaign] = useState<{campaign_title?: string; objective?: string; ideas?: {title: string; concept: string; format: string; call_to_action: string}[]; recommended_sequence?: string[] } | null>(null)
+  const [campaignLoading, setCampaignLoading] = useState(false)
+  const [campaignError, setCampaignError] = useState('')
+  const [match, setMatch] = useState<{service?: string; rationale?: string; next_step?: string} | null>(null)
+  const [matchLoading, setMatchLoading] = useState(false)
+  const [matchError, setMatchError] = useState('')
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
@@ -18,21 +23,46 @@ function CreativeStudio() {
   const [fileError, setFileError] = useState('')
   const [status, setStatus] = useState<'idle'|'sending'|'success'|'error'>('idle')
 
-  const recommendation = useMemo(() => {
-    if (/website|online|store|sell/i.test(goal)) return 'Website Design & Development'
-    if (/audience|sales|awareness|promote/i.test(goal)) return 'Digital Marketing'
-    if (/content|social/i.test(goal)) return 'Social Media Management & Content Creation'
-    return 'Branding & Graphic Design'
-  }, [goal])
+  async function generateMatch() {
+    setMatchLoading(true)
+    setMatchError('')
+    try {
+      const response = await fetch('https://studio-ai.icongraphics.com.ng/api/match', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ goal }),
+        signal: AbortSignal.timeout(30000),
+      })
+      const payload = await response.json() as { ok?: boolean; result?: { service?: string; rationale?: string; next_step?: string }; error?: string }
+      if (!response.ok || !payload.ok || !payload.result) throw new Error(payload.error || 'The service guide is temporarily unavailable.')
+      setMatch(payload.result)
+    } catch (error) {
+      setMatchError(error instanceof Error ? error.message : 'Unable to generate guidance. Please try again.')
+    } finally {
+      setMatchLoading(false)
+    }
+  }
 
-  const ideas = useMemo(() => {
-    const label = industry.toLowerCase()
-    return [
-      { title: 'Make the first impression count', concept: 'Introduce the brand with a clear visual identity, a concise origin story and a memorable launch announcement tailored to ' + label + '.', format: 'Launch graphic + short brand video' },
-      { title: 'Show the value in action', concept: 'Create a short series showing how the offer solves a real customer problem for ' + audience.toLowerCase() + '.', format: 'Three social posts + one short-form video' },
-      { title: 'Turn interest into enquiries', concept: 'Use a focused offer, a clear benefit and one direct call to action to invite people to take the next step.', format: 'Promotional flyer + WhatsApp call to action' },
-    ]
-  }, [industry, audience])
+  async function generateCampaign() {
+    setCampaignLoading(true)
+    setCampaignError('')
+    setCampaign(null)
+    try {
+      const response = await fetch('https://studio-ai.icongraphics.com.ng/api/campaign', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ industry, audience }),
+        signal: AbortSignal.timeout(45000),
+      })
+      const payload = await response.json() as { ok?: boolean; result?: { campaign_title?: string; objective?: string; ideas?: {title: string; concept: string; format: string; call_to_action: string}[]; recommended_sequence?: string[] }; error?: string }
+      if (!response.ok || !payload.ok || !payload.result?.ideas?.length) throw new Error(payload.error || 'The campaign generator is temporarily unavailable.')
+      setCampaign(payload.result)
+    } catch (error) {
+      setCampaignError(error instanceof Error ? error.message : 'Unable to generate campaign ideas. Please try again.')
+    } finally {
+      setCampaignLoading(false)
+    }
+  }
 
   function resetRequest() {
     setName('')
@@ -107,8 +137,10 @@ function CreativeStudio() {
                 <option>Launch a new business</option><option>Refresh my brand identity</option><option>Build a website or online store</option><option>Promote a product or service</option><option>Grow my social media presence</option><option>Create business content</option>
               </select>
             </label>
-            <div className="creative-result"><span className="eyebrow">SUGGESTED SERVICE</span><h3>{recommendation}</h3><a className="text-link" href="/services">Explore services ↗</a></div>
-            <p className="creative-note">This is a guided service matcher, not an AI-generated consultation.</p>
+            <button className="button yellow" type="button" onClick={generateMatch} disabled={matchLoading}>{matchLoading ? 'Thinking…' : 'Find my best-fit service'}</button>
+            {match && <div className="creative-result" aria-live="polite"><span className="eyebrow">AI SERVICE RECOMMENDATION</span><h3>{match.service}</h3><p>{match.rationale}</p><p><strong>Suggested next step:</strong> {match.next_step}</p><a className="text-link" href="/services">Explore services ↗</a></div>}
+            {matchError && <p className="creative-error" role="alert">{matchError}</p>}
+            <p className="creative-note">AI-generated guidance to help you choose a starting point. Our team will confirm the best scope for your project.</p>
           </section>
           <section className="creative-panel">
             <span className="eyebrow">02 / BUILD A CAMPAIGN STARTER</span>
@@ -120,9 +152,10 @@ function CreativeStudio() {
             <label className="creative-label">Who do you want to reach?
               <select value={audience} onChange={e=>setAudience(e.target.value)}><option>Everyday consumers</option><option>Business owners</option><option>Young adults</option><option>Parents and families</option><option>Corporate decision-makers</option></select>
             </label>
-            <button className="button yellow" type="button" onClick={()=>setCampaign(true)}>Generate campaign ideas</button>
-            {campaign && <div className="campaign-ideas">{ideas.map((idea,i)=><article key={idea.title}><span className="eyebrow">IDEA 0{i+1} · {idea.format}</span><h3>{idea.title}</h3><p>{idea.concept}</p></article>)}</div>}
-            <p className="creative-note">Starter concepts are generated from guided templates; they are not live AI output.</p>
+            <button className="button yellow" type="button" onClick={generateCampaign} disabled={campaignLoading}>{campaignLoading ? 'Developing your campaign…' : 'Generate campaign ideas'}</button>
+            {campaignError && <p className="creative-error" role="alert">{campaignError}</p>}
+            {campaign && <div className="campaign-ideas" aria-live="polite"><h3>{campaign.campaign_title}</h3>{campaign.objective && <p>{campaign.objective}</p>}{campaign.ideas?.map((idea,i)=><article key={idea.title}><span className="eyebrow">IDEA 0{i+1} · {idea.format}</span><h3>{idea.title}</h3><p>{idea.concept}</p><p><strong>Call to action:</strong> {idea.call_to_action}</p></article>)}{campaign.recommended_sequence?.length ? <article><h3>Suggested rollout</h3><ol>{campaign.recommended_sequence.map((step,i)=><li key={i}>{step}</li>)}</ol></article> : null}</div>}
+            <p className="creative-note">Campaign concepts are generated by AI and should be reviewed against your offer, budget and audience before launch.</p>
           </section>
         </div>
         <section className="creative-panel creative-request" id="quick-request">
