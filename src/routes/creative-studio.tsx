@@ -183,10 +183,19 @@ function CreativeStudio() {
 
 export const Route = createFileRoute('/creative-studio')({
   head: () => ({ meta: [
-    { title: 'Creative Studio | ICON GRAPHICS' },
-    { name: 'description', content: 'Explore creative service guidance, campaign starter ideas and send a design request to ICON GRAPHICS.' },
-    { property: 'og:title', content: 'Creative Studio | ICON GRAPHICS' },
-    { property: 'og:description', content: 'Find a creative direction, explore campaign ideas and start a project with ICON GRAPHICS.' },
+    { title: 'AI Creative Studio | Campaign Ideas & Design Guidance | ICON GRAPHICS' },
+    {
+      name: 'description',
+      content:
+        'Use the ICON GRAPHICS AI Creative Studio for service guidance, campaign ideas and a direct design enquiry. Available to Nigerian and global businesses.',
+    },
+    { property: 'og:title', content: 'AI Creative Studio | ICON GRAPHICS' },
+    {
+      property: 'og:description',
+      content:
+        'Explore creative service guidance, generate campaign ideas and send a project request to ICON GRAPHICS.',
+    },
+    { property: 'og:url', content: 'https://icongraphics.com.ng/creative-studio' },
   ], links: [{ rel: 'canonical', href: 'https://icongraphics.com.ng/creative-studio' }] }),
   component: CreativeStudio,
 })
