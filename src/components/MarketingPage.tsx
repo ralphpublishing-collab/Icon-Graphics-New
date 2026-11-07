@@ -111,24 +111,27 @@ export function NewsletterSignup() {
   const [email, setEmail] = useState('')
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [newsletterError, setNewsletterError] = useState('')
 
   async function handleNewsletter(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     if (!email || loading) return
     setLoading(true)
+    setNewsletterError('')
     try {
       const formData = new FormData()
       formData.append('form-name', 'newsletter')
       formData.append('email', email)
-      await fetch('/__forms.html', {
+      const response = await fetch('https://forms-api.icongraphics.com.ng/', {
         method: 'POST',
         body: formData,
         signal: AbortSignal.timeout(10000),
       })
+      if (!response.ok) throw new Error('Newsletter subscription failed')
       setSubmitted(true)
       setEmail('')
     } catch {
-      setSubmitted(true)
+      setNewsletterError('We could not complete your subscription. Please try again.')
     } finally {
       setLoading(false)
     }
@@ -145,7 +148,9 @@ export function NewsletterSignup() {
           ✓ Thank you for subscribing. We look forward to connecting.
         </div>
       ) : (
-        <form onSubmit={handleNewsletter} style={{ display: 'flex', gap: '8px', maxWidth: '440px', flexWrap: 'wrap' }}>
+        <>
+          {newsletterError && <p role="alert" style={{ color: '#ff8a8a', fontSize: '13px', marginBottom: '10px' }}>{newsletterError}</p>}
+          <form onSubmit={handleNewsletter} style={{ display: 'flex', gap: '8px', maxWidth: '440px', flexWrap: 'wrap' }}>
           <input
             type="email"
             name="email"
@@ -171,7 +176,8 @@ export function NewsletterSignup() {
           >
             {loading ? 'Subscribing…' : 'Subscribe'}
           </button>
-        </form>
+          </form>
+        </>
       )}
     </div>
   )

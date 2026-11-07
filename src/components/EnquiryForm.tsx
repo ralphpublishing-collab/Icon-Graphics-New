@@ -35,7 +35,7 @@ export function EnquiryForm() {
     )
     setState('sending')
     try {
-      const r = await fetch('/__forms.html', {
+      const r = await fetch('https://forms-api.icongraphics.com.ng/', {
         method: 'POST',
         body,
         signal: AbortSignal.timeout(20000),
@@ -72,9 +72,7 @@ export function EnquiryForm() {
       name="project-enquiry"
       method="POST"
       encType="multipart/form-data"
-      action="/__forms.html"
-      data-netlify="true"
-      netlify-honeypot="bot-field"
+      action="https://forms-api.icongraphics.com.ng/"
       onSubmit={submit}
       aria-busy={state === 'sending'}
     >
