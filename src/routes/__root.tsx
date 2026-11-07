@@ -85,7 +85,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
               '@context': 'https://schema.org',
               '@graph': [
                 {
-                  '@type': 'Organization',
+                  '@type': 'ProfessionalService',
                   '@id': 'https://icongraphics.com.ng/#organization',
                   name: 'ICON GRAPHICS',
                   url: 'https://icongraphics.com.ng',
@@ -94,6 +94,13 @@ function RootDocument({ children }: { children: React.ReactNode }) {
                   logo: 'https://icongraphics.com.ng/img/logo-reference.png',
                   email: 'hello@icongraphics.com.ng',
                   telephone: '+2348086714454',
+                  address: {
+                    '@type': 'PostalAddress',
+                    addressLocality: 'Ilorin',
+                    addressRegion: 'Kwara State',
+                    addressCountry: 'NG',
+                  },
+                  areaServed: ['Nigeria', 'Worldwide'],
                   sameAs: socials.map(([, url]) => url),
                   founder: {
                     '@type': 'Person',
