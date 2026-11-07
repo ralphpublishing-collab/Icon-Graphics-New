@@ -4,8 +4,8 @@ import { NotFoundPage } from '../components/NotFoundPage'
 
 import '../styles.css'
 
-const siteName = site.name
-const siteDescription = site.description
+const siteName = 'ICON GRAPHICS | Creative & Digital Studio in Ilorin, Nigeria'
+const siteDescription = 'ICON GRAPHICS is an Ilorin, Nigeria creative studio for branding, graphic design, photography, video production, website design and digital marketing.'
 
 export const Route = createRootRoute({
   notFoundComponent: NotFoundPage,
@@ -34,6 +34,7 @@ export const Route = createRootRoute({
         content: 'ICON GRAPHICS original multicoloured iG logo',
       },
       { property: 'og:site_name', content: 'ICON GRAPHICS' },
+      { property: 'og:locale', content: 'en_NG' },
       {
         name: 'twitter:image',
         content: 'https://icongraphics.com.ng/img/logo-reference.png',
@@ -85,6 +86,15 @@ function RootDocument({ children }: { children: React.ReactNode }) {
               '@context': 'https://schema.org',
               '@graph': [
                 {
+                  '@type': 'WebSite',
+                  '@id': 'https://icongraphics.com.ng/#website',
+                  url: 'https://icongraphics.com.ng/',
+                  name: 'ICON GRAPHICS',
+                  description: siteDescription,
+                  inLanguage: 'en-NG',
+                  publisher: { '@id': 'https://icongraphics.com.ng/#organization' },
+                },
+                {
                   '@type': 'ProfessionalService',
                   '@id': 'https://icongraphics.com.ng/#organization',
                   name: 'ICON GRAPHICS',
@@ -100,7 +110,17 @@ function RootDocument({ children }: { children: React.ReactNode }) {
                     addressRegion: 'Kwara State',
                     addressCountry: 'NG',
                   },
-                  areaServed: ['Nigeria', 'Worldwide'],
+                  areaServed: [
+                    { '@type': 'Country', name: 'Nigeria' },
+                    { '@type': 'Place', name: 'Worldwide (remote services)' },
+                  ],
+                  contactPoint: {
+                    '@type': 'ContactPoint',
+                    telephone: '+2348086714454',
+                    email: 'hello@icongraphics.com.ng',
+                    contactType: 'sales',
+                    availableLanguage: ['English'],
+                  },
                   sameAs: socials.map(([, url]) => url),
                   founder: {
                     '@type': 'Person',
