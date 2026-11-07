@@ -18,7 +18,7 @@ Original uploaded artwork and both founder photographs are preserved in `public/
 
 ## Enquiries
 
-The Contact and Request a Quote pages share the real `project-enquiry` Netlify Form. Its static registration is `public/__forms.html`. The component posts multipart data to that static path, includes a honeypot and required consent, and reports success only after an accepted response. Network failures retain entered information. A static preview that simply returns the registration page is rejected instead of displaying simulated success. Form processing becomes available on Netlify after deployment; the required feature marker is included. Manage submissions and optionally configure email notifications in the site's Forms dashboard. This project does not configure notification recipients or submit a test enquiry.
+The Contact and Request a Quote pages share the real `project-enquiry` Netlify Form. Its static registration is `publichttps://forms-api.icongraphics.com.ng/l`. The component posts multipart data to that static path, includes a honeypot and required consent, and reports success only after an accepted response. Network failures retain entered information. A static preview that simply returns the registration page is rejected instead of displaying simulated success. Form processing becomes available on Netlify after deployment; the required feature marker is included. Manage submissions and optionally configure email notifications in the site's Forms dashboard. This project does not configure notification recipients or submit a test enquiry.
 
 ## Publication notes
 
