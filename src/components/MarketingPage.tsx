@@ -18,7 +18,7 @@ import { EnquiryForm } from './EnquiryForm'
 
 export const image = (file: string, _w = 800) => '/img/' + file
 
-/** Direct image load (Bypassing Netlify CDN to fix broken images) */
+/** Return the source URL directly; local client media is served from the site assets. */
 export const remoteImage = (url: string, _w = 1200) => url
 
 const SHOWREEL_BG = '/portfolio/erin-fashion-world-logo.jpg'
@@ -1340,7 +1340,7 @@ export function Founder() {
 /* ---------------------------------------------------------------
    Service previews: illustrative concept visuals for service
    categories that do not yet have supplied client work. They use
-   licensed Unsplash stock photography (via Netlify Image CDN) and
+   licensed Unsplash stock photography loaded directly from its source URLs and
    code-native mockups, and are always labelled as concept previews.
 ---------------------------------------------------------------- */
 const PREVIEW_PHOTOS = {
