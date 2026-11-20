@@ -13,7 +13,15 @@ export default defineConfig({
   },
   plugins: [
     cloudflare({ viteEnvironment: { name: 'ssr' } }),
-    tanstackStart(),
+    tanstackStart({
+      // Prerender public routes so edge hosts and crawlers receive complete HTML.
+      prerender: {
+        enabled: true,
+        autoStaticPathsDiscovery: true,
+        crawlLinks: true,
+        failOnError: true,
+      },
+    }),
     tailwindcss(),
     viteReact(),
   ],
