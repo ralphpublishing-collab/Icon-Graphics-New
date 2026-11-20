@@ -15,6 +15,14 @@ export default defineConfig(({ command }) => ({
     tailwindcss(),
     ...(command === 'build' || process.env.NETLIFY ? [netlify()] : []),
     tanstackStart({
+      // Emit static HTML for every public route so static edge hosts and
+      // search/social crawlers receive real pages instead of route-level 404s.
+      prerender: {
+        enabled: true,
+        autoStaticPathsDiscovery: true,
+        crawlLinks: true,
+        failOnError: true,
+      },
       pages: [
         {
           path: '/creative-studio',
