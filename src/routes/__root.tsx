@@ -4,8 +4,8 @@ import { NotFoundPage } from '../components/NotFoundPage'
 
 import '../styles.css'
 
-const siteName = 'ICON GRAPHICS | Creative & Digital Studio in Ilorin, Nigeria'
-const siteDescription = 'ICON GRAPHICS is an Ilorin, Nigeria creative studio for branding, graphic design, photography, video production, website design and digital marketing.'
+const siteName = site.name
+const siteDescription = site.description
 
 export const Route = createRootRoute({
   notFoundComponent: NotFoundPage,
