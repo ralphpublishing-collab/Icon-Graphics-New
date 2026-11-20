@@ -14,7 +14,7 @@ export function Pricing() {
       <PageHero
         label="PRICING & PACKAGES"
         title="The right scope. A considered quotation."
-        description="Every project starts with what you need. Explore transparent rates across our nine services with Basic, Standard and Premium tiers in NGN and USD."
+        description="Every project starts with the brief. Explore Basic, Standard and Premium package structures across nine services, with quotations shaped by deliverables and timeline."
       />
       <section className="section dark-pricing-section">
         <div className="wrap">
@@ -22,10 +22,13 @@ export function Pricing() {
             <span className="eyebrow">BUILT AROUND YOUR BRIEF</span>
             <h2>Clarity before commitment.</h2>
             <p>
-              We collaborate with businesses, brands and individuals in Nigeria
-              and internationally. Prices are provided in Nigerian Naira (₦) and
-              US Dollars ($). Standard packages include 2 to 3 rounds of
-              revisions.
+              We work with businesses in Nigeria and worldwide. Basic,
+              Standard and Premium packages are tailored to deliverables and
+              timelines. Quick single-asset graphic tasks start from ₦3,000
+              (approximately $5); full brand identities, websites, video
+              productions and corporate documentation are custom-quoted within
+              24 hours. Standard and Premium packages typically include 2 to 3
+              rounds of revisions.
             </p>
           </div>
           <div className="package-grid">
@@ -102,23 +105,13 @@ export function Pricing() {
                       <div style={{ margin: '6px 0' }}>
                         <span
                           style={{
-                            fontSize: '20px',
+                            fontSize: '15px',
                             fontWeight: '700',
                             color: '#ffffff',
                             fontFamily: 'Manrope, sans-serif',
                           }}
                         >
-                          {t.priceNgn}
-                        </span>
-                        <span
-                          style={{
-                            fontSize: '14px',
-                            color: '#c4c7d0',
-                            marginLeft: '8px',
-                            fontWeight: '600',
-                          }}
-                        >
-                          / {t.priceUsd}
+                          Quoted to scope
                         </span>
                       </div>
                       <p
@@ -164,10 +157,13 @@ export function Pricing() {
                 color: '#959aa5',
               }}
             >
-              Deposit policy: A 50% non-refundable deposit is required to
-              commence work. The final 50% balance is payable upon project
-              completion before the final handover of deliverables. Full
-              copyright transfers to the client upon full payment.
+              Payment terms: A 50% mobilization deposit reserves scheduling
+              and creative direction. The remaining 50% balance is due upon
+              your approval of the completed work and before final source-file
+              handover. Pay by NGN bank transfer or international USD methods,
+              including wire or bank transfer, Wise and invoice payment links.
+              Usage rights transfer as set out in the project agreement after
+              full payment.
             </p>
           </div>
         </div>

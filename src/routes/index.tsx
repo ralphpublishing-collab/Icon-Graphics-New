@@ -8,7 +8,7 @@ export const Route = createFileRoute('/')({
       {
         name: 'description',
         content:
-          'Get branding, graphic design, photography, video production, website design and digital marketing from ICON GRAPHICS in Ilorin, Nigeria.',
+          'Founder-led branding, video production, web design and executive documentation for ambitious businesses in Nigeria and worldwide. Explore the ICON GRAPHICS portfolio and request a custom quote.',
       },
       {
         property: 'og:title',
@@ -17,7 +17,7 @@ export const Route = createFileRoute('/')({
       {
         property: 'og:description',
         content:
-          'Get branding, graphic design, photography, video production, website design and digital marketing from ICON GRAPHICS in Ilorin, Nigeria.',
+          'Founder-led branding, video production, web design and executive documentation for ambitious businesses in Nigeria and worldwide. Explore the ICON GRAPHICS portfolio and request a custom quote.',
       },
       { property: 'og:url', content: 'https://icongraphics.com.ng/' },
     ],

@@ -1,7 +1,7 @@
 export const site = {
-  name: 'ICON GRAPHICS | Creative Agency in Nigeria',
+  name: 'ICON GRAPHICS | Branding, Media & Digital Solutions in Nigeria',
   description:
-    'We turn ideas into identities, stories and digital experiences that connect.',
+    'Founder-led branding, video production, web design and executive documentation from Ilorin, Nigeria, serving ambitious businesses locally and worldwide.',
 }
 
 export const LOCATION = {
@@ -388,7 +388,7 @@ export const services: ServiceDetail[] = [
 ]
 
 export const pricingDisclaimer =
-  'We work with local and international clients. Prices are subject to project scope. Ad spend for digital marketing is paid separately by the client.'
+  'Basic, Standard and Premium packages are scoped around deliverables and timelines. Quick single-asset graphic tasks start from ₦3,000 (approximately $5); larger brand identity, website, video production and corporate documentation projects are custom-quoted within 24 hours. Ad spend for digital marketing is funded separately by the client.'
 
 export type Project = {
   id: string
@@ -589,7 +589,7 @@ export const clientProjects: Project[] = [
       },
     ],
     description:
-      'Custom investor pitch deck, business proposals and corporate profile layouts for international export focused initiatives.',
+      'Custom investor pitch deck, business proposals and corporate profile layouts for international export-focused initiatives.',
     objectives:
       'Develop compelling investor presentation materials that communicate cross border trade logistics, scale, and financial viability.',
     direction:
@@ -631,7 +631,7 @@ export const clientProjects: Project[] = [
       },
     ],
     description:
-      'Custom product packaging design and high conversion digital campaign graphics for an Africa focused consumer product line.',
+      'Custom product packaging design and high conversion digital campaign graphics for an Africa-focused consumer product line.',
     objectives:
       'Create striking retail packaging with strong shelf appeal, supported by targeted digital promotional graphics.',
     direction:
@@ -657,33 +657,43 @@ export const projects: Project[] = clientProjects
 export const testimonials = [
   {
     name: 'Gift Olayemi O.',
-    role: 'Founder / Fashion Designer, Erin Fashion World, Ilorin, Nigeria',
+    role: 'Founder & Fashion Designer',
+    brand: 'Erin Fashion World',
+    location: 'Ilorin, Nigeria',
     quote:
-      'ICON GRAPHICS built our full brand mark and visual identity for Erin Fashion World. They captured our luxury thrift vision perfectly, delivering a polished look that stands out to our fashion customers.',
+      'The identity captures exactly what we wanted Erin Fashion World to represent. Our luxury thrift brand now has a distinctive mark and a visual style that helps us stand out to fashion buyers.',
   },
   {
     name: 'Harbeyfe Investment',
-    role: 'Founder, Lewa Glam Beauty Empire, Offa, Nigeria',
+    role: 'Founder',
+    brand: 'Lewa Glam Beauty Empire',
+    location: 'Offa, Nigeria',
     quote:
-      'We worked with ICON GRAPHICS to create our main promotional flyer and social media visuals for Lewa Glam Beauty Empire. Their designs highlight our full beauty service range and have helped us attract many new clients.',
+      'The flyer makes our beauty services easy to understand at a glance, while the social media visuals give us a consistent way to promote the business. We have seen more clients making enquiries about our services.',
   },
   {
     name: 'Opeyemi',
-    role: 'Founder, Opeyemi Beauty Touch / Collections, Ilorin, Nigeria',
+    role: 'Founder',
+    brand: 'Opeyemi Beauty Touch / Collections',
+    location: 'Ilorin, Nigeria',
     quote:
-      'ICON GRAPHICS designed our service brochure and business cards for Opeyemi Beauty Touch / Collections. The layouts are clean and elegant, ideal for our bridal glam and photoshoot client base.',
+      'Our brochure presents the services and packages clearly, and the business cards carry that same elegant feel. Both pieces are well suited to the bridal glam and photoshoot clients we serve.',
   },
   {
     name: 'James Harrison',
-    role: 'Operations Lead, Global Trade Connect, United Kingdom',
+    role: 'Operations Lead',
+    brand: 'Global Trade Connect',
+    location: 'United Kingdom',
     quote:
-      'We partner with ICON GRAPHICS for custom pitch decks, business proposals and corporate profile layouts for our export focused projects. Communication is clear, quality is consistent, and they follow international brand standards closely.',
+      'The pitch decks, business proposals and corporate profile layouts give our export-focused projects a much clearer presentation. Communication was straightforward throughout, and the finished work meets the international standards we need.',
   },
   {
     name: 'Lisa Carter',
-    role: 'Brand Manager, Nova Global Brands, United States',
+    role: 'Brand Manager',
+    brand: 'Nova Global Brands',
+    location: 'United States',
     quote:
-      'We commission custom product packaging and digital campaign graphics for our Africa focused product line from ICON GRAPHICS. Their creativity and attention to detail are impressive, and they always meet agreed upon deadlines.',
+      'The packaging and digital campaign graphics brought our Africa-focused product line together with a strong, consistent look. The work was handled with care and delivered on schedule, which made the process easy for our team.',
   },
 ]
 
@@ -699,14 +709,14 @@ export const process = [
 ]
 
 export const processDescriptions = [
-  'Share your idea through the enquiry form, email or WhatsApp. Rapheal is your direct point of contact.',
-  'Discuss the audience, objectives, references, required deliverables and preferred deadline. Clarify what success means for your project.',
-  'Receive a quotation based on the agreed scope. Discuss costs, payment arrangements and practical requirements before committing.',
+  'Share your idea through the enquiry form, email or WhatsApp. You will work directly with Rapheal Adebayo, Founder & Creative Director.',
+  'Discuss your audience, objectives, references, required deliverables and preferred deadline so the scope is clear from the outset.',
+  'Receive a quotation based on the agreed deliverables and timeline, with the practical requirements confirmed before work begins.',
   'Confirm the scope, responsibilities, usage rights and approval process in a project agreement.',
-  'Agree any initial payment (50% deposit) and scheduling requirements before creative work starts.',
-  'Rapheal oversees the creative direction, project coordination and development of the agreed deliverables.',
+  'A 50% mobilization deposit locks in your project schedule and creative direction.',
+  'Rapheal leads the creative direction and coordinates specialist collaborators or production resources when the brief requires them.',
   'Review the work and provide consolidated feedback. Standard and Premium packages include 2 to 3 rounds of revisions.',
-  'Complete final 50% payment and receive all final deliverables with full copyright and usage rights transferred.',
+  'Once you approve the completed work, settle the remaining 50% balance before final source files and deliverables are handed over.',
 ]
 
 export const packagePrices: Record<string, string> = {
@@ -734,7 +744,7 @@ export const packages = services.map((service) => ({
 export const faqs = [
   [
     'What exactly does ICON GRAPHICS do?',
-    'We are a founder led creative and media agency. We offer nine core services: Branding & Graphic Design, Photography, Video Production, Website Design, Social Media Management, Digital Marketing, Copywriting, Business Documentation, and Audio Production. We are a one stop shop for your brand’s visual and digital needs.',
+    'ICON GRAPHICS is a founder-led creative, media and digital solutions agency offering nine core services: Branding & Graphic Design, Photography, Video Production, Website Design, Social Media Management, Digital Marketing, Writing & Copywriting, Business Documentation, and Audio Production. Clients work directly with Founder & Creative Director Rapheal Adebayo, supported by specialist collaborators and production resources when a project spans multiple disciplines. One creative partner, with the right expertise for the brief.',
   ],
   [
     'Do you work with clients outside of Nigeria?',
@@ -742,15 +752,15 @@ export const faqs = [
   ],
   [
     'How much do your services cost?',
-    'Our pricing depends on the scope of the project. However, our entry level tasks start from as low as ₦3,000 (approx. $5). We offer Basic, Standard, and Premium packages for all nine services. Please check our Services page for detailed starting prices.',
+    'Pricing is scoped by deliverables and timeline across Basic, Standard and Premium packages for all nine services. Quick single-asset graphic tasks start from ₦3,000 (approximately $5). Full brand identities, websites, video productions and corporate documentation packages are custom-quoted within 24 hours after we understand your brief.',
   ],
   [
     'How do I pay for my project?',
-    'We require a 50% non-refundable deposit to commence any project. The remaining 50% balance is due upon project completion, before the final handover of files. We accept bank transfers in NGN and international payments in USD.',
+    'Projects begin with a 50% mobilization deposit to reserve scheduling and establish the creative direction. The remaining 50% balance is due upon your approval of the completed work and before final source-file handover. We accept NGN bank transfers and international USD payments, including wire or bank transfer, Wise and invoice payment links.',
   ],
   [
     'How do we begin working together?',
-    'It is very simple. You can click any of the “Enquire” buttons on our website to chat with our founder directly on WhatsApp, or you can fill out the contact form. We will discuss your goals and provide a custom quote within 24 hours.',
+    'Start with the project enquiry form or contact Rapheal Adebayo directly on WhatsApp. He will discuss your goals, confirm the deliverables and timeline, and provide a tailored quotation within 24 hours.',
   ],
   [
     'What do I need to prepare before we start?',
@@ -758,7 +768,7 @@ export const faqs = [
   ],
   [
     'How many revisions do I get?',
-    'We want you to be 100% happy. Standard and Premium packages include 2 to 3 rounds of revisions. We will work closely with you to refine the design until it perfectly matches your vision.',
+    'Revision rounds are agreed in your project scope. Standard and Premium packages typically include 2 to 3 rounds of revisions, with feedback focused on the approved brief and deliverables.',
   ],
   [
     'How long will my project take?',
@@ -781,7 +791,7 @@ export const faqCategories: FAQCategory[] = [
     items: [
       [
         'What exactly does ICON GRAPHICS do?',
-        'We are a founder led creative and media agency. We offer nine core services: Branding & Graphic Design, Photography, Video Production, Website Design, Social Media Management, Digital Marketing, Copywriting, Business Documentation, and Audio Production. We are a one stop shop for your brand’s visual and digital needs.',
+        'ICON GRAPHICS is a founder-led creative, media and digital solutions agency offering nine core services: Branding & Graphic Design, Photography, Video Production, Website Design, Social Media Management, Digital Marketing, Writing & Copywriting, Business Documentation, and Audio Production. Clients work directly with Founder & Creative Director Rapheal Adebayo, supported by specialist collaborators and production resources when a project spans multiple disciplines. One creative partner, with the right expertise for the brief.',
       ],
       [
         'Do you work with clients outside of Nigeria?',
@@ -794,11 +804,11 @@ export const faqCategories: FAQCategory[] = [
     items: [
       [
         'How much do your services cost?',
-        'Our pricing depends on the scope of the project. However, our entry level tasks start from as low as ₦3,000 (approx. $5). We offer Basic, Standard, and Premium packages for all nine services. Please check our Services page for detailed starting prices.',
+        'Pricing is scoped by deliverables and timeline across Basic, Standard and Premium packages for all nine services. Quick single-asset graphic tasks start from ₦3,000 (approximately $5). Full brand identities, websites, video productions and corporate documentation packages are custom-quoted within 24 hours after we understand your brief.',
       ],
       [
         'How do I pay for my project?',
-        'We require a 50% non-refundable deposit to commence any project. The remaining 50% balance is due upon project completion, before the final handover of files. We accept bank transfers in NGN and international payments in USD.',
+        'Projects begin with a 50% mobilization deposit to reserve scheduling and establish the creative direction. The remaining 50% balance is due upon your approval of the completed work and before final source-file handover. We accept NGN bank transfers and international USD payments, including wire or bank transfer, Wise and invoice payment links.',
       ],
     ],
   },
@@ -807,7 +817,7 @@ export const faqCategories: FAQCategory[] = [
     items: [
       [
         'How do we begin working together?',
-        'It is very simple. You can click any of the “Enquire” buttons on our website to chat with our founder directly on WhatsApp, or you can fill out the contact form. We will discuss your goals and provide a custom quote within 24 hours.',
+        'Start with the project enquiry form or contact Rapheal Adebayo directly on WhatsApp. He will discuss your goals, confirm the deliverables and timeline, and provide a tailored quotation within 24 hours.',
       ],
       [
         'What do I need to prepare before we start?',
@@ -820,7 +830,7 @@ export const faqCategories: FAQCategory[] = [
     items: [
       [
         'How many revisions do I get?',
-        'We want you to be 100% happy. Standard and Premium packages include 2 to 3 rounds of revisions. We will work closely with you to refine the design until it perfectly matches your vision.',
+        'Revision rounds are agreed in your project scope. Standard and Premium packages typically include 2 to 3 rounds of revisions, with feedback focused on the approved brief and deliverables.',
       ],
       [
         'How long will my project take?',
