@@ -8,13 +8,13 @@ export const Route = createFileRoute('/about')({
       {
         name: 'description',
         content:
-          'Discover the purpose, values and creative approach behind ICON GRAPHICS, a founder led creative and digital business rooted in Nigeria.',
+          'Meet the founder-led creative, media and digital solutions agency in Ilorin, Nigeria. Discover the thinking, values and approach behind ICON GRAPHICS.',
       },
       { property: 'og:title', content: 'About | ICON GRAPHICS' },
       {
         property: 'og:description',
         content:
-          'Discover the purpose, values and creative approach behind ICON GRAPHICS, a founder led creative and digital business rooted in Nigeria.',
+          'Meet the founder-led creative, media and digital solutions agency in Ilorin, Nigeria. Discover the thinking, values and approach behind ICON GRAPHICS.',
       },
     ],
     links: [{ rel: 'canonical', href: 'https://icongraphics.com.ng/about' }],
