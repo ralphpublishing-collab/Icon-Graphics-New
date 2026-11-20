@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { track } from '../lib/analytics'
 import { services } from '../data/site'
 export function EnquiryForm() {
-  const [state, setState] = useState<'idle' | 'sending' | 'success' | 'error'>(
+  const [state, setState] = useState<'idle' | 'sending' | 'success' | 'partial' | 'error'>(
     'idle',
   )
   const [fileError, setFileError] = useState('')
@@ -40,23 +40,23 @@ export function EnquiryForm() {
         body,
         signal: AbortSignal.timeout(30000),
       })
-      const text = await r.text()
-      if (!r.ok || text.includes('ICON_FORMS_REGISTRATION')) throw new Error()
+      const result = await r.json().catch(() => null) as { ok?: boolean; saved?: boolean } | null
+      if ((!r.ok && result?.saved !== true) || (result?.ok !== true && result?.saved !== true)) throw new Error()
       track('enquiry_submitted', { form: 'project-enquiry' })
-      setState('success')
+      setState(result?.ok === true ? 'success' : 'partial')
       form.reset()
     } catch {
       setState('error')
     }
   }
-  return state === 'success' ? (
+  return state === 'success' || state === 'partial' ? (
     <div className="form-success" role="status">
       <span style={{ fontSize: '26px', color: '#65dbed' }}>✓</span>
-      <h2>Enquiry received.</h2>
+      <h2>{state === 'success' ? 'Enquiry received.' : 'Your enquiry has been saved.'}</h2>
       <p>
-        Thank you for sharing your project. Rapheal Adebayo and the ICON
-        GRAPHICS team will review your requirements and follow up within 24
-        hours.
+        {state === 'success'
+          ? 'Thank you for sharing your project. Rapheal Adebayo and the ICON GRAPHICS team will review your requirements and follow up within 24 hours.'
+          : 'Your enquiry is safely saved, but one or more email notifications could not be delivered. Please contact us on WhatsApp if you need a prompt response.'}
       </p>
       <div style={{ display: 'flex', gap: '14px', marginTop: '18px', flexWrap: 'wrap' }}>
         <a className="button yellow small" href="/success">
