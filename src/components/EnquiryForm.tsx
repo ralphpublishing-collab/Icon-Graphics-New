@@ -38,7 +38,7 @@ export function EnquiryForm() {
       const r = await fetch('https://forms-api.icongraphics.com.ng/', {
         method: 'POST',
         body,
-        signal: AbortSignal.timeout(20000),
+        signal: AbortSignal.timeout(30000),
       })
       const text = await r.text()
       if (!r.ok || text.includes('ICON_FORMS_REGISTRATION')) throw new Error()
