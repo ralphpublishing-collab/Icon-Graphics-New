@@ -109,6 +109,7 @@ export function NewsletterSignup() {
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
   const [newsletterError, setNewsletterError] = useState('')
+  const [newsletterNotice, setNewsletterNotice] = useState('Thank you for subscribing. We look forward to connecting.')
 
   async function handleNewsletter(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -124,7 +125,11 @@ export function NewsletterSignup() {
         body: formData,
         signal: AbortSignal.timeout(30000),
       })
-      if (!response.ok) throw new Error('Newsletter subscription failed')
+      const result = await response.json().catch(() => null) as { ok?: boolean; saved?: boolean } | null
+      if ((!response.ok && result?.saved !== true) || (result?.ok !== true && result?.saved !== true)) throw new Error('Newsletter subscription failed')
+      setNewsletterNotice(result?.ok === true
+        ? 'Thank you for subscribing. We look forward to connecting.'
+        : 'Your subscription has been saved, but one or more email notifications could not be delivered. You are on the list.')
       setSubmitted(true)
       setEmail('')
     } catch {
@@ -142,7 +147,7 @@ export function NewsletterSignup() {
       </p>
       {submitted ? (
         <div style={{ padding: '12px 16px', background: '#65dbed18', border: '1px solid #65dbed', borderRadius: '4px', color: '#65dbed', fontSize: '13px' }}>
-          ✓ Thank you for subscribing. We look forward to connecting.
+          ✓ {newsletterNotice}
         </div>
       ) : (
         <>
