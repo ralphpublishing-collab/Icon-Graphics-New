@@ -21,7 +21,7 @@ export const image = (file: string, _w = 800) => '/img/' + file
 /** Direct image load (Bypassing Netlify CDN to fix broken images) */
 export const remoteImage = (url: string, _w = 1200) => url
 
-const SHOWREEL_BG = 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d'
+const SHOWREEL_BG = '/portfolio/erin-fashion-world-logo.jpg'
 const SHOWREEL_VIDEO = projects.find((p) => p.video)
 
 function Showreel() {
@@ -42,10 +42,7 @@ function Showreel() {
         <>
           <img
             className="showreel-bg"
-            src={remoteImage(SHOWREEL_BG, 1200)}
-            srcSet={[640, 960, 1400]
-              .map((w) => remoteImage(SHOWREEL_BG, w) + ' ' + w + 'w')
-              .join(', ')}
+            src={SHOWREEL_BG}
             sizes="(max-width: 768px) 100vw, 45vw"
             alt=""
             width={1200}
@@ -307,12 +304,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
               <br />
               Let’s make it <em>iconic.</em>
             </h2>
-            <a
-              className="circle-link"
-              href="/request-a-quote"
-              aria-label="Start a project"
-            >
-              <GradientSpark size={24} />
+            <a className="button yellow cta-project-link" href="/request-a-quote">
+              <GradientSpark size={20} />
+              <span>Start a Project</span>
             </a>
           </div>
           <div className="cta-bottom">
@@ -760,7 +754,7 @@ function ServicesOverview() {
 const DIFFERENCE_POINTS = [
   [
     'Founder-Led Direction',
-    'Direct access to Rapheal Adebayo from the initial brief to the final delivery. No middlemen.',
+    'Work directly with Rapheal Adebayo, supported by specialist collaborators and production resources when a brief spans multiple disciplines.',
   ],
   [
     'Global Standards',
@@ -952,7 +946,12 @@ function Testimonials() {
             <p className="testimonial-text">{t.quote}</p>
             <div className="testimonial-author">
               <strong>{t.name}</strong>
-              {t.role && <span className="testimonial-role">{t.role}</span>}
+              <span className="testimonial-role">
+                {t.role}{t.brand ? ' · ' + t.brand : ''}
+              </span>
+              {t.location && (
+                <span className="testimonial-location">{t.location}</span>
+              )}
             </div>
           </article>
         ))}
@@ -1044,22 +1043,19 @@ export function Home() {
         <div className="hero-copy">
           <Label>ICON GRAPHICS / CREATIVE, MEDIA & DIGITAL SOLUTIONS</Label>
           <h1>
-            Your vision.
-            <br />
-            Our creative
-            <br />
-            <em>expertise.</em>
+            Brand identities, media &amp; digital systems built to{' '}
+            <em>command trust.</em>
           </h1>
           <p>
-            We turn ideas into identities, stories and digital experiences that
-            connect. Creative, media and digital solutions, all in one place.
+            Founder-led branding, video production, web design, and executive
+            documentation for ambitious businesses in Nigeria and worldwide.
           </p>
           <div className="hero-buttons">
-            <a className="button yellow" href="/services">
-              Explore Our Services
-            </a>
             <a className="button yellow" href="/portfolio">
               View Our Portfolio
+            </a>
+            <a className="button outline" href="/request-a-quote">
+              Request a Custom Quote
             </a>
           </div>
           <WA className="hero-whatsapp">Let’s Discuss Your Project</WA>
@@ -1220,7 +1216,7 @@ export function About() {
       <PageHero
         label="THE BRAND"
         title="Creative by nature. Intentional by design."
-        description="ICON GRAPHICS is a founder led creative, media and digital solutions business. We connect ideas with purposeful execution for brands, businesses and individuals."
+        description="ICON GRAPHICS is a founder-led creative, media and digital solutions business. We connect ideas with purposeful execution for brands, businesses and individuals."
       />
       <section className="section light">
         <div className="wrap about-grid">
@@ -2177,7 +2173,7 @@ export function Privacy() {
         </p>
         <h2>Hosting and Form Processing</h2>
         <p>
-          Our web services are hosted via Netlify infrastructure with TLS encryption. Enquiries submitted through our forms are securely routed to our creative director. Technical logging is restricted to standard server telemetry for security and spam prevention.
+          Our website is delivered over HTTPS through Cloudflare-hosted infrastructure. Enquiries submitted through our forms are securely routed to our creative director. Technical logging is restricted to standard server telemetry for security and spam prevention.
         </p>
         <h2>Data Retention Period</h2>
         <p>
@@ -2209,7 +2205,7 @@ export function Terms() {
         </p>
         <h2>2. Payment Terms</h2>
         <p>
-          To commence any creative or digital project, a <strong>50% non-refundable deposit</strong> of the total agreed quotation is required. Work commences only once this deposit has been confirmed. The <strong>remaining 50% balance</strong> is strictly payable upon project completion, prior to the final handover of production deliverables, source files, or commercial assets. For monthly recurring retainers (such as Social Media Management and Digital Marketing), fees are billed and payable in advance of each service cycle. Ad spend for digital advertising campaigns is funded separately by the client.
+          A <strong>50% mobilization deposit</strong> of the agreed quotation reserves project scheduling and establishes the creative direction. Work begins once the deposit is confirmed. The <strong>remaining 50% balance</strong> is due upon the client’s approval of the completed work and before final source files or production assets are handed over. For monthly recurring retainers (such as Social Media Management and Digital Marketing), fees are billed and payable in advance of each service cycle. Ad spend for digital advertising campaigns is funded separately by the client.
         </p>
         <h2>3. Intellectual Property and Usage Rights</h2>
         <p>
