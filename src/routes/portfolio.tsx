@@ -8,7 +8,7 @@ export const Route = createFileRoute('/portfolio')({
       {
         name: 'description',
         content:
-          'Explore nine creative disciplines through clearly labelled concept previews. Real ICON GRAPHICS project work will be added here.',
+          'Explore authentic ICON GRAPHICS client work across brand identity, beauty campaigns, business documentation, product packaging and digital creative.',
       },
       { property: 'og:title', content: 'Portfolio | ICON GRAPHICS' },
       {
