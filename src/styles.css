@@ -5764,3 +5764,24 @@ video {
 .creative-consent a,.creative-error a{text-decoration:underline;color:#fff}
 .creative-error{color:#ff9999}
 @media(max-width:760px){.creative-grid{grid-template-columns:1fr}.creative-form{grid-template-columns:1fr}.creative-full{grid-column:auto}}
+
+/* Homepage hero headline: controlled mobile wrapping and breathing room */
+@media (max-width: 800px) {
+  .hero h1 {
+    font-size: clamp(2.35rem, 8.8vw, 3.5rem);
+    line-height: 1.08;
+    margin: 22px 0 24px;
+    letter-spacing: -0.055em;
+  }
+  .hero-copy > p {
+    margin-top: 0;
+  }
+}
+@media (max-width: 540px) {
+  .hero h1 {
+    font-size: clamp(2.2rem, 9.2vw, 3rem);
+    line-height: 1.08;
+    margin: 20px 0 24px;
+    letter-spacing: -0.055em;
+  }
+}
