@@ -8,13 +8,13 @@ export const Route = createFileRoute('/portfolio')({
       {
         name: 'description',
         content:
-          'Explore nine creative disciplines through clearly labelled concept previews. Real ICON GRAPHICS project work will be added here.',
+          'Explore authentic ICON GRAPHICS client work across brand identity, beauty campaigns, business documentation, product packaging and digital creative.',
       },
       { property: 'og:title', content: 'Portfolio | ICON GRAPHICS' },
       {
         property: 'og:description',
         content:
-          'Creative directions across branding, media and digital experiences.',
+          'View client case studies from Nigeria and international projects across branding, media and digital experiences.',
       },
     ],
     links: [
