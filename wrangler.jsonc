@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "icon-graphics-studio",
+  "name": "icon-graphics-new",
   "main": "@tanstack/react-start/server-entry",
   "compatibility_date": "2026-11-12",
   "observability": {
