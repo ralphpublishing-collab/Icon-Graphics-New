@@ -14,7 +14,7 @@ export const Route = createFileRoute('/portfolio')({
       {
         property: 'og:description',
         content:
-          'Creative directions across branding, media and digital experiences.',
+          'View client case studies from Nigeria and international projects across branding, media and digital experiences.',
       },
     ],
     links: [
