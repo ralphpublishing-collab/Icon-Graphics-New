@@ -1048,7 +1048,7 @@ export function Home() {
         <div className="hero-copy">
           <Label>ICON GRAPHICS / CREATIVE, MEDIA & DIGITAL SOLUTIONS</Label>
           <h1>
-            Brand identities, media &amp; digital systems built to{' '}
+            Brands &amp; digital systems built to{' '}
             <em>command trust.</em>
           </h1>
           <p>
