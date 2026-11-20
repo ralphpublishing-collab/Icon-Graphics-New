@@ -1721,16 +1721,13 @@ export function Services() {
                         </span>
                       </div>
                       <div className="tier-price-row">
-                        <span className="tier-price-ngn">{tier.priceNgn}</span>
-                        <span className="tier-price-usd">
-                          / {tier.priceUsd}
-                        </span>
+                        <span className="tier-price-ngn">Quoted to scope</span>
                       </div>
                       <p className="tier-desc">{tier.description}</p>
                     </div>
                     <WA
                       className="button small yellow"
-                      message={`Hello ICON GRAPHICS, I am interested in the ${tier.name} package (${tier.priceNgn} / ${tier.priceUsd}) for ${s.title}.`}
+                      message={`Hello ICON GRAPHICS, I am interested in the ${tier.name} package for ${s.title}. Please share the scope and quotation.`}
                     >
                       Enquire {tier.name}
                     </WA>
