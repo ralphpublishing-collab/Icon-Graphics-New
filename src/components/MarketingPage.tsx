@@ -122,7 +122,7 @@ export function NewsletterSignup() {
       const response = await fetch('https://forms-api.icongraphics.com.ng/', {
         method: 'POST',
         body: formData,
-        signal: AbortSignal.timeout(10000),
+        signal: AbortSignal.timeout(30000),
       })
       if (!response.ok) throw new Error('Newsletter subscription failed')
       setSubmitted(true)
