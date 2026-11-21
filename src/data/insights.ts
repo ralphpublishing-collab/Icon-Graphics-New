@@ -38,7 +38,7 @@ export const defaultAuthor = {
 export const insights: Insight[] = [
   {
     slug: 'prepare-a-creative-brief',
-    title: 'The Foundation of Impact: How to Prepare a Creative Brief',
+    title: 'How to Prepare a Creative Brief',
     category: 'Branding',
     summary:
       'Before a single pixel is designed or a camera is turned on, the most important step of any creative project is the brief.',
@@ -73,7 +73,7 @@ export const insights: Insight[] = [
   },
   {
     slug: 'plan-your-business-website',
-    title: 'Websites That Convert: Designing the User Journey',
+    title: 'Business Website Design That Converts',
     category: 'Website development',
     summary:
       'Before thinking about animations, color schemes, or layout trends, the most critical question is: what is the user’s journey?',
@@ -108,7 +108,7 @@ export const insights: Insight[] = [
   },
   {
     slug: 'prepare-media-project-references',
-    title: 'Pre-Production Mastery: Video References and Permissions',
+    title: 'Video Production: References & Permissions',
     category: 'Video production',
     summary:
       'Video is one of the most powerful storytelling mediums, but smooth production starts with disciplined preparation.',
@@ -227,7 +227,7 @@ export const insights: Insight[] = [
   },
   {
     slug: "the-art-of-business-writing",
-    title: "The Art of Business Writing: Clarity Over Complexity",
+    title: "Business Writing: Clarity Over Complexity",
     category: "Business writing",
     summary:
       "If your audience has to read a sentence twice to understand it, you've already lost them.",
