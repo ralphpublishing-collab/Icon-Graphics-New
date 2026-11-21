@@ -18,6 +18,7 @@ const assets = [
   'portfolio/nova-global-brands-digital-ad.png',
   'img/rapheal-adebayo-supplied.jpeg',
   'img/rapheal-adebayo-about.jpeg',
+  'img/logo.png',
 ]
 
 const publicDir = path.join(process.cwd(), 'public')
@@ -34,7 +35,7 @@ for (const asset of assets) {
 
   await mkdir(path.dirname(output), { recursive: true })
   const before = await stat(source)
-  const maxDimension = asset.startsWith('img/') ? 1400 : 1800
+  const maxDimension = asset.startsWith('img/') ? 1200 : 1400
 
   await sharp(source)
     .rotate()
@@ -45,7 +46,7 @@ for (const asset of assets) {
       withoutEnlargement: true,
     })
     .webp({
-      quality: 88,
+      quality: asset.includes('lewa-glam-beauty-empire-social-grid') ? 78 : 84,
       effort: 6,
       alphaQuality: 100,
     })
