@@ -3,7 +3,7 @@ import { Terms } from '../components/MarketingPage'
 export const Route = createFileRoute('/terms')({
   head: () => ({
     meta: [
-      { property: 'og:url', content: 'https://icongraphics.com.ng/terms' },
+      { property: 'og:url', content: 'https://icongraphics.com.ng/terms/' },
       { title: 'Terms of Service | ICON GRAPHICS' },
       {
         name: 'description',
@@ -17,7 +17,7 @@ export const Route = createFileRoute('/terms')({
           'Website terms and the starting point for project discussions with ICON GRAPHICS.',
       },
     ],
-    links: [{ rel: 'canonical', href: 'https://icongraphics.com.ng/terms' }],
+    links: [{ rel: 'canonical', href: 'https://icongraphics.com.ng/terms/' }],
   }),
   component: () => <Terms />,
 })
