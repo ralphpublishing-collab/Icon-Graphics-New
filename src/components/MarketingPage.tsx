@@ -36,6 +36,7 @@ export const remoteImage = (url: string, width = 1200) => {
 }
 
 const SHOWREEL_BG = '/optimized/portfolio/erin-fashion-world-logo.webp'
+const GOOGLE_REVIEW_URL = 'https://g.page/r/CXLqh68-W9BMEBM/review'
 const SHOWREEL_VIDEO = projects.find((p) => p.video)
 
 function Showreel() {
@@ -390,6 +391,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
               Rapheal Adebayo
             </p>
             <Catalogue />
+            <a href={GOOGLE_REVIEW_URL} target="_blank" rel="noopener noreferrer" className="text-link" style={{ display: 'inline-block', marginTop: '12px' }}>Review us on Google</a>
           </div>
         </div>
         <div className="wrap footer-newsletter-row">
@@ -2154,6 +2156,7 @@ export function Contact({ quote = false }: { quote?: boolean }) {
             </WA>
             <SocialLinks />
             <Catalogue className="button yellow" />
+            <a href={GOOGLE_REVIEW_URL} target="_blank" rel="noopener noreferrer" className="text-link" style={{ display: 'inline-block', marginTop: '18px' }}>Review us on Google</a>
           </aside>
           <div className="form-panel">
             <h3>{quote ? 'Request a quote' : 'Send an enquiry'}</h3>
