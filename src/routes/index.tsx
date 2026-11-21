@@ -4,20 +4,20 @@ import { Home } from '../components/MarketingPage'
 export const Route = createFileRoute('/')({
   head: () => ({
     meta: [
-      { title: 'ICON GRAPHICS | Branding, Design & Digital Services in Nigeria' },
+      { title: 'ICON GRAPHICS | Branding & Digital Solutions' },
       {
         name: 'description',
         content:
-          'Founder-led branding, video production, web design and executive documentation for ambitious businesses in Nigeria and worldwide. Explore the ICON GRAPHICS portfolio and request a custom quote.',
+          'Branding, graphic design, websites and media for businesses in Nigeria. Explore ICON GRAPHICS services and request a project quote.',
       },
       {
         property: 'og:title',
-        content: 'ICON GRAPHICS | Branding, Design & Digital Services in Nigeria',
+        content: 'ICON GRAPHICS | Branding & Digital Solutions',
       },
       {
         property: 'og:description',
         content:
-          'Founder-led branding, video production, web design and executive documentation for ambitious businesses in Nigeria and worldwide. Explore the ICON GRAPHICS portfolio and request a custom quote.',
+          'Branding, graphic design, websites and media for businesses in Nigeria. Explore ICON GRAPHICS services and request a project quote.',
       },
       { property: 'og:url', content: 'https://icongraphics.com.ng/' },
     ],
