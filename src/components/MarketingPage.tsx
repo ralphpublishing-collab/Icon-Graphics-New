@@ -1391,6 +1391,9 @@ function PreviewPhoto({
     <img
       className={className}
       src={remoteImage(url, 1000)}
+      srcSet={[560, 800, 1200]
+        .map((w) => remoteImage(url, w) + ' ' + w + 'w')
+        .join(', ')}
       sizes="(max-width: 768px) 100vw, 45vw"
       alt=""
       width={1000}
