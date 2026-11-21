@@ -99,17 +99,20 @@ export function WA({
   message,
   className = 'button outline',
   style,
+  ariaLabel,
 }: {
   children?: React.ReactNode
   message?: string
   className?: string
   showArrow?: boolean
   style?: React.CSSProperties
+  ariaLabel?: string
 }) {
   return (
     <a
       className={className}
       style={style}
+      aria-label={ariaLabel}
       href={whatsapp(message)}
       target="_blank"
       rel="noopener noreferrer"
@@ -234,12 +237,13 @@ export function GradientSpark({
 
 function Logo() {
   return (
-    <a className="logo" href="/" aria-label="ICON GRAPHICS home">
+    <a className="logo" href="/">
       <img
-        src="/img/logo.png"
+        src="/optimized/img/logo.webp"
         width="44"
         height="44"
-        alt="ICON GRAPHICS 3D gradient logo"
+        alt=""
+        aria-hidden="true"
         style={{ objectFit: 'contain', borderRadius: '4px' }}
       />
       <span>
@@ -284,7 +288,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
             onClick={() => setOpen(!open)}
             aria-expanded={open}
             aria-controls="main-nav"
-            aria-label={open ? 'Close navigation' : 'Open navigation'}
+            aria-label={open ? 'Close' : 'Menu'}
           >
             {open ? 'Close ×' : 'Menu ☰'}
           </button>
@@ -407,7 +411,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           </div>
         </div>
       </footer>
-      <WA className="floating-wa" aria-label="Chat on WhatsApp">
+      <WA className="floating-wa" ariaLabel="Chat on WhatsApp">
         <svg
           viewBox="0 0 24 24"
           width="32"
@@ -1306,8 +1310,10 @@ export function Founder() {
         <div className="wrap founder-split">
           <div className="portrait-wrap">
             <img
-              src={image('rapheal-adebayo-about.jpeg', 900)}
+              src="/optimized/img/rapheal-adebayo-about.webp"
               alt="Rapheal Adebayo, Founder and Creative Director of ICON GRAPHICS"
+              fetchPriority="high"
+              decoding="async"
             />
             <span className="portrait-label">RAPHEAL ADEBAYO / FOUNDER</span>
           </div>
