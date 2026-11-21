@@ -545,9 +545,9 @@ export function Art({
               <span style={{ fontSize: '11px', letterSpacing: '0.18em', color: '#65dbed', textTransform: 'uppercase', fontWeight: 700 }}>
                 CLIENT CASE STUDY · ILORIN
               </span>
-              <h4 style={{ fontFamily: 'Manrope, sans-serif', fontSize: '26px', margin: '14px 0 6px', color: '#ffffff', letterSpacing: '-0.03em' }}>
+              <div style={{ fontFamily: 'Manrope, sans-serif', fontSize: '26px', margin: '14px 0 6px', color: '#ffffff', letterSpacing: '-0.03em' }}>
                 ERIN FASHION WORLD
-              </h4>
+              </div>
               <small style={{ fontSize: '11px', letterSpacing: '0.12em', color: '#c2c6d0', textTransform: 'uppercase' }}>
                 LUXURY THRIFT IDENTITY & BRAND SYSTEM
               </small>
@@ -581,9 +581,9 @@ export function Art({
               <span style={{ fontSize: '11px', letterSpacing: '0.18em', color: '#65dbed', textTransform: 'uppercase', fontWeight: 700 }}>
                 CLIENT CASE STUDY · OFFA
               </span>
-              <h4 style={{ fontFamily: 'Manrope, sans-serif', fontSize: '24px', margin: '14px 0 6px', color: '#ffffff', letterSpacing: '-0.03em' }}>
+              <div style={{ fontFamily: 'Manrope, sans-serif', fontSize: '24px', margin: '14px 0 6px', color: '#ffffff', letterSpacing: '-0.03em' }}>
                 LEWA GLAM BEAUTY EMPIRE
-              </h4>
+              </div>
               <small style={{ fontSize: '11px', letterSpacing: '0.12em', color: '#e8b4c8', textTransform: 'uppercase' }}>
                 SALON PROMOTIONAL FLYERS & SOCIAL SUITE
               </small>
@@ -617,9 +617,9 @@ export function Art({
               <span style={{ fontSize: '11px', letterSpacing: '0.18em', color: '#65dbed', textTransform: 'uppercase', fontWeight: 700 }}>
                 CLIENT CASE STUDY · ILORIN
               </span>
-              <h4 style={{ fontFamily: 'Manrope, sans-serif', fontSize: '23px', margin: '14px 0 6px', color: '#ffffff', letterSpacing: '-0.03em' }}>
+              <div style={{ fontFamily: 'Manrope, sans-serif', fontSize: '23px', margin: '14px 0 6px', color: '#ffffff', letterSpacing: '-0.03em' }}>
                 OPEYEMI BEAUTY TOUCH
-              </h4>
+              </div>
               <small style={{ fontSize: '11px', letterSpacing: '0.12em', color: '#a8bbd9', textTransform: 'uppercase' }}>
                 BRIDAL GLAM BROCHURE & EXECUTIVE CARDS
               </small>
@@ -653,9 +653,9 @@ export function Art({
               <span style={{ fontSize: '11px', letterSpacing: '0.18em', color: '#65dbed', textTransform: 'uppercase', fontWeight: 700 }}>
                 CLIENT CASE STUDY · UNITED KINGDOM
               </span>
-              <h4 style={{ fontFamily: 'Manrope, sans-serif', fontSize: '24px', margin: '14px 0 6px', color: '#ffffff', letterSpacing: '-0.03em' }}>
+              <div style={{ fontFamily: 'Manrope, sans-serif', fontSize: '24px', margin: '14px 0 6px', color: '#ffffff', letterSpacing: '-0.03em' }}>
                 GLOBAL TRADE CONNECT
-              </h4>
+              </div>
               <small style={{ fontSize: '11px', letterSpacing: '0.12em', color: '#a0c4d8', textTransform: 'uppercase' }}>
                 INVESTOR PITCH DECK & EXPORT PROPOSALS
               </small>
@@ -689,9 +689,9 @@ export function Art({
               <span style={{ fontSize: '11px', letterSpacing: '0.18em', color: '#65dbed', textTransform: 'uppercase', fontWeight: 700 }}>
                 CLIENT CASE STUDY · UNITED STATES
               </span>
-              <h4 style={{ fontFamily: 'Manrope, sans-serif', fontSize: '24px', margin: '14px 0 6px', color: '#ffffff', letterSpacing: '-0.03em' }}>
+              <div style={{ fontFamily: 'Manrope, sans-serif', fontSize: '24px', margin: '14px 0 6px', color: '#ffffff', letterSpacing: '-0.03em' }}>
                 NOVA GLOBAL BRANDS
-              </h4>
+              </div>
               <small style={{ fontSize: '11px', letterSpacing: '0.12em', color: '#dfc28d', textTransform: 'uppercase' }}>
                 CONSUMER PACKAGING & DIGITAL CAMPAIGNS
               </small>
