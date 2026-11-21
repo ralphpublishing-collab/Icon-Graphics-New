@@ -19,7 +19,21 @@ import { EnquiryForm } from './EnquiryForm'
 export const image = (file: string, _w = 800) => '/img/' + file
 
 /** Return the source URL directly; local client media is served from the site assets. */
-export const remoteImage = (url: string, _w = 1200) => url
+export const remoteImage = (url: string, width = 1200) => {
+  try {
+    const imageUrl = new URL(url)
+    if (imageUrl.hostname === 'images.unsplash.com') {
+      imageUrl.searchParams.set('auto', 'format')
+      imageUrl.searchParams.set('fit', 'max')
+      imageUrl.searchParams.set('w', String(width))
+      imageUrl.searchParams.set('q', '80')
+      return imageUrl.toString()
+    }
+  } catch {
+    // Keep local and non-Unsplash image paths unchanged.
+  }
+  return url
+}
 
 const SHOWREEL_BG = '/portfolio/erin-fashion-world-logo.jpg'
 const SHOWREEL_VIDEO = projects.find((p) => p.video)
