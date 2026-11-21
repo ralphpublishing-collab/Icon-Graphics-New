@@ -12,7 +12,9 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "deploy": "npm run build && wrangler deploy",
-    "cf-typegen": "wrangler types"
+    "cf-typegen": "wrangler types",
+    "predev": "node scripts/optimize-images.mjs",
+    "prebuild": "node scripts/optimize-images.mjs"
   },
   "dependencies": {
     "@tanstack/react-router": "1.170.46",
@@ -35,7 +37,8 @@
     "vitest": "5.0.5",
     "vite": "8.3.5",
     "@cloudflare/vite-plugin": "^1.67.0",
-    "wrangler": "^4.128.0"
+    "wrangler": "^4.128.0",
+    "sharp": "^0.34.3"
   },
   "engines": {
     "node": "^22.13.0 || ^24.0.0 || >=26.0.0"
