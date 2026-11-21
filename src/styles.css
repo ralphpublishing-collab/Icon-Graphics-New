@@ -5873,3 +5873,22 @@ video {
     margin-top: 0;
   }
 }
+
+
+/* Mobile footer: keep the catalogue action clear of the social links and
+   reserve a comfortable buffer above the fixed WhatsApp chat control. */
+@media (max-width: 768px) {
+  .footer-brand .socials {
+    margin-bottom: 18px;
+  }
+
+  .footer-grid .catalogue {
+    display: inline-flex;
+    margin-top: 32px;
+    margin-bottom: 72px;
+  }
+
+  .footer-bottom {
+    padding-bottom: 100px;
+  }
+}
