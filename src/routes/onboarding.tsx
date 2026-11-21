@@ -5,6 +5,7 @@ export const Route = createFileRoute('/onboarding')({
   head: () => ({
     meta: [
       { title: 'Start a Project | ICON GRAPHICS' },
+      { name: 'robots', content: 'noindex, follow' },
       {
         name: 'description',
         content: 'Share your project brief and reference files with ICON GRAPHICS to begin your creative, media or digital project.',
@@ -14,9 +15,9 @@ export const Route = createFileRoute('/onboarding')({
         property: 'og:description',
         content: 'Share your project brief and reference files with ICON GRAPHICS to begin your creative, media or digital project.',
       },
-      { property: 'og:url', content: 'https://icongraphics.com.ng/onboarding' },
+      { property: 'og:url', content: 'https://icongraphics.com.ng/onboarding/' },
     ],
-    links: [{ rel: 'canonical', href: 'https://icongraphics.com.ng/onboarding' }],
+    links: [{ rel: 'canonical', href: 'https://icongraphics.com.ng/onboarding/' }],
   }),
   component: Onboarding,
 })
