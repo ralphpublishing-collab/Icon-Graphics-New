@@ -5,7 +5,7 @@ export const Route = createFileRoute('/how-we-work')({
     meta: [
       {
         property: 'og:url',
-        content: 'https://icongraphics.com.ng/how-we-work',
+        content: 'https://icongraphics.com.ng/how-we-work/',
       },
       { title: 'How We Work | ICON GRAPHICS' },
       {
@@ -21,7 +21,7 @@ export const Route = createFileRoute('/how-we-work')({
       },
     ],
     links: [
-      { rel: 'canonical', href: 'https://icongraphics.com.ng/how-we-work' },
+      { rel: 'canonical', href: 'https://icongraphics.com.ng/how-we-work/' },
     ],
   }),
   component: () => (

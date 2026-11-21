@@ -7,17 +7,17 @@ export const Route = createFileRoute('/pricing')({
       {
         name: 'description',
         content:
-          'Explore Basic, Standard and Premium packages for nine creative services, scoped by deliverables and timeline. Larger brand, web, video and documentation projects receive custom quotes.',
+          'Compare creative service packages from ICON GRAPHICS. Get a tailored quote for branding, websites, video and digital projects.',
       },
       { property: 'og:title', content: 'Pricing & Packages | ICON GRAPHICS' },
       {
         property: 'og:description',
         content:
-          'Explore Basic, Standard and Premium packages for nine creative services, scoped by deliverables and timeline. Larger brand, web, video and documentation projects receive custom quotes.',
+          'Compare creative service packages from ICON GRAPHICS. Get a tailored quote for branding, websites, video and digital projects.',
       },
-      { property: 'og:url', content: 'https://icongraphics.com.ng/pricing' },
+      { property: 'og:url', content: 'https://icongraphics.com.ng/pricing/' },
     ],
-    links: [{ rel: 'canonical', href: 'https://icongraphics.com.ng/pricing' }],
+    links: [{ rel: 'canonical', href: 'https://icongraphics.com.ng/pricing/' }],
   }),
   component: () => <Pricing />,
 })

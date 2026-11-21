@@ -3,7 +3,7 @@ import { Services } from '../components/MarketingPage'
 export const Route = createFileRoute('/services')({
   head: () => ({
     meta: [
-      { property: 'og:url', content: 'https://icongraphics.com.ng/services' },
+      { property: 'og:url', content: 'https://icongraphics.com.ng/services/' },
       { title: 'Creative, Media & Digital Services | ICON GRAPHICS' },
       {
         name: 'description',
@@ -20,7 +20,7 @@ export const Route = createFileRoute('/services')({
           'Explore nine creative services: branding, photography, video, websites, social media, marketing, writing, business documentation and audio.',
       },
     ],
-    links: [{ rel: 'canonical', href: 'https://icongraphics.com.ng/services' }],
+    links: [{ rel: 'canonical', href: 'https://icongraphics.com.ng/services/' }],
   }),
   component: () => <Services />,
 })

@@ -3,7 +3,7 @@ import { FAQ, Layout, PageHero } from '../components/MarketingPage'
 export const Route = createFileRoute('/faq')({
   head: () => ({
     meta: [
-      { property: 'og:url', content: 'https://icongraphics.com.ng/faq' },
+      { property: 'og:url', content: 'https://icongraphics.com.ng/faq/' },
       { title: 'Frequently Asked Questions | ICON GRAPHICS' },
       {
         name: 'description',
@@ -20,7 +20,7 @@ export const Route = createFileRoute('/faq')({
           'Find answers about ICON GRAPHICS services, quotations, project requirements, revisions, delivery and international collaboration.',
       },
     ],
-    links: [{ rel: 'canonical', href: 'https://icongraphics.com.ng/faq' }],
+    links: [{ rel: 'canonical', href: 'https://icongraphics.com.ng/faq/' }],
   }),
   component: () => (
     <Layout>

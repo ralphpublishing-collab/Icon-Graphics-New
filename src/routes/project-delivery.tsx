@@ -20,13 +20,13 @@ export const Route = createFileRoute('/project-delivery')({
       },
       {
         property: 'og:url',
-        content: 'https://icongraphics.com.ng/project-delivery',
+        content: 'https://icongraphics.com.ng/project-delivery/',
       },
     ],
     links: [
       {
         rel: 'canonical',
-        href: 'https://icongraphics.com.ng/project-delivery',
+        href: 'https://icongraphics.com.ng/project-delivery/',
       },
     ],
   }),

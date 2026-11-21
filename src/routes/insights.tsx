@@ -18,9 +18,9 @@ export const Route = createFileRoute('/insights')({
         content:
           'Practical guides on creative briefs, branding, websites and media projects from ICON GRAPHICS.',
       },
-      { property: 'og:url', content: 'https://icongraphics.com.ng/insights' },
+      { property: 'og:url', content: 'https://icongraphics.com.ng/insights/' },
     ],
-    links: [{ rel: 'canonical', href: 'https://icongraphics.com.ng/insights' }],
+    links: [{ rel: 'canonical', href: 'https://icongraphics.com.ng/insights/' }],
   }),
   component: () => <Insights />,
 })

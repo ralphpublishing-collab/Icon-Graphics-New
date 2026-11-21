@@ -31,7 +31,7 @@ export const Route = createFileRoute('/portfolio_/$projectId')({
       ? [
           {
             rel: 'canonical',
-            href: 'https://icongraphics.com.ng/portfolio/' + p.id,
+            href: 'https://icongraphics.com.ng/portfolio/' + p.id + '/',
           },
         ]
       : [],

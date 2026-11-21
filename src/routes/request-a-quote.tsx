@@ -5,7 +5,7 @@ export const Route = createFileRoute('/request-a-quote')({
     meta: [
       {
         property: 'og:url',
-        content: 'https://icongraphics.com.ng/request-a-quote',
+        content: 'https://icongraphics.com.ng/request-a-quote/',
       },
       { title: 'Request a Quote | ICON GRAPHICS' },
       {
@@ -21,7 +21,7 @@ export const Route = createFileRoute('/request-a-quote')({
       },
     ],
     links: [
-      { rel: 'canonical', href: 'https://icongraphics.com.ng/request-a-quote' },
+      { rel: 'canonical', href: 'https://icongraphics.com.ng/request-a-quote/' },
     ],
   }),
   component: () => <Contact quote />,

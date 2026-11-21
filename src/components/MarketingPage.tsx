@@ -1522,7 +1522,7 @@ function CaseVideo({
       <video
         ref={ref}
         controls={started}
-        preload="auto"
+        preload="none"
         playsInline
         width="100%"
         style={{ backgroundColor: '#121212' }}

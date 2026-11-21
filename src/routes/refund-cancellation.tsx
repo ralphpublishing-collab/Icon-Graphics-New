@@ -20,13 +20,13 @@ export const Route = createFileRoute('/refund-cancellation')({
       },
       {
         property: 'og:url',
-        content: 'https://icongraphics.com.ng/refund-cancellation',
+        content: 'https://icongraphics.com.ng/refund-cancellation/',
       },
     ],
     links: [
       {
         rel: 'canonical',
-        href: 'https://icongraphics.com.ng/refund-cancellation',
+        href: 'https://icongraphics.com.ng/refund-cancellation/',
       },
     ],
   }),
