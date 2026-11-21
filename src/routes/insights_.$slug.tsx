@@ -22,7 +22,7 @@ export const Route = createFileRoute('/insights_/$slug')({
     links: [
       {
         rel: 'canonical',
-        href: `https://icongraphics.com.ng/insights/${loaderData?.slug || ''}`,
+        href: `https://icongraphics.com.ng/insights/${loaderData?.slug || ''}/`,
       },
     ],
   }),
