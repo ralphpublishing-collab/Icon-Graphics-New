@@ -183,7 +183,7 @@ function CreativeStudio() {
 
 export const Route = createFileRoute('/creative-studio')({
   head: () => ({ meta: [
-    { title: 'AI Creative Studio | Campaign Ideas & Design Guidance | ICON GRAPHICS' },
+    { title: 'Creative Studio & Campaign Ideas | ICON GRAPHICS' },
     {
       name: 'description',
       content:
@@ -195,7 +195,7 @@ export const Route = createFileRoute('/creative-studio')({
       content:
         'Explore creative service guidance, generate campaign ideas and send a project request to ICON GRAPHICS.',
     },
-    { property: 'og:url', content: 'https://icongraphics.com.ng/creative-studio' },
-  ], links: [{ rel: 'canonical', href: 'https://icongraphics.com.ng/creative-studio' }] }),
+    { property: 'og:url', content: 'https://icongraphics.com.ng/creative-studio/' },
+  ], links: [{ rel: 'canonical', href: 'https://icongraphics.com.ng/creative-studio/' }] }),
   component: CreativeStudio,
 })
