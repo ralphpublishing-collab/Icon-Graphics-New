@@ -185,6 +185,9 @@ export function InsightThumbnail({
     <div className="insight-thumbnail-box insight-thumbnail-photo">
       <img
         src={remoteImage(thumbnail.src, 800)}
+        srcSet={[480, 800, 1200]
+          .map((w) => remoteImage(thumbnail.src, w) + ' ' + w + 'w')
+          .join(', ')}
         sizes="(max-width: 768px) 100vw, 400px"
         alt={thumbnail.alt}
         width={800}
