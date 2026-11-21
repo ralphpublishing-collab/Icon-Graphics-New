@@ -5786,3 +5786,90 @@ video {
     letter-spacing: -0.055em;
   }
 }
+
+
+/* Shared site-wide CTA: give the two contact routes distinct visual zones. */
+.cta .cta-row {
+  position: relative;
+  margin: 30px 0 0;
+  padding: clamp(26px, 4vw, 42px);
+  gap: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 16px;
+  background: linear-gradient(115deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.018));
+}
+
+.cta .cta-row h2 {
+  margin: 0;
+}
+
+.cta .cta-project-link {
+  flex: 0 0 auto;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.cta .cta-bottom {
+  margin-top: 18px;
+  padding: 20px clamp(22px, 3vw, 32px);
+  gap: 24px;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.cta .cta-bottom p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.cta .cta-bottom .text-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 12px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 999px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.cta .cta-bottom .text-link:hover {
+  background: rgba(247, 37, 133, 0.13);
+  border-color: #f72585;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 540px) {
+  .cta .cta-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 22px;
+    margin-top: 24px;
+    padding: 24px 20px;
+  }
+
+  .cta .cta-project-link {
+    align-self: flex-start;
+  }
+
+  .cta .cta-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    margin-top: 14px;
+    padding: 20px;
+  }
+
+  .cta .cta-bottom .text-link {
+    margin-top: 0;
+  }
+}
