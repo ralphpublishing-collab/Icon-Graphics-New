@@ -29,7 +29,7 @@ for (const asset of assets) {
   const output = path.join(
     publicDir,
     'optimized',
-    asset.replace(/\\.(?:png|jpe?g)$/i, '.webp'),
+    asset.replace(/\.(?:png|jpe?g)$/i, '.webp'),
   )
 
   await mkdir(path.dirname(output), { recursive: true })
