@@ -35,7 +35,7 @@ export const remoteImage = (url: string, width = 1200) => {
   return url
 }
 
-const SHOWREEL_BG = '/portfolio/erin-fashion-world-logo.jpg'
+const SHOWREEL_BG = '/optimized/portfolio/erin-fashion-world-logo.webp'
 const SHOWREEL_VIDEO = projects.find((p) => p.video)
 
 function Showreel() {
@@ -816,7 +816,7 @@ function IconDifference() {
 }
 
 export function AboutFounderSection({
-  photo = '/img/rapheal-adebayo-supplied.jpeg',
+  photo = '/optimized/img/rapheal-adebayo-supplied.webp',
 }: {
   photo?: string
 }) {
@@ -1031,7 +1031,7 @@ export function FAQ() {
           <h3 id="faq-contact-title">Still have questions?</h3>
           <div className="faq-contact-person">
             <img
-              src="/img/rapheal-adebayo-supplied.jpeg"
+              src="/optimized/img/rapheal-adebayo-supplied.webp"
               alt="Rapheal Adebayo, Founder & Creative Director"
               width={64}
               height={64}
@@ -1286,7 +1286,7 @@ export function About() {
           ))}
         </div>
       </section>
-      <AboutFounderSection photo="/img/rapheal-adebayo-about.jpeg" />
+      <AboutFounderSection photo="/optimized/img/rapheal-adebayo-about.webp" />
       <Why />
     </Layout>
   )
