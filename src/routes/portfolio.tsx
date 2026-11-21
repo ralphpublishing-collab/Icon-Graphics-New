@@ -3,7 +3,7 @@ import { Portfolio } from '../components/MarketingPage'
 export const Route = createFileRoute('/portfolio')({
   head: () => ({
     meta: [
-      { property: 'og:url', content: 'https://icongraphics.com.ng/portfolio' },
+      { property: 'og:url', content: 'https://icongraphics.com.ng/portfolio/' },
       { title: 'Portfolio | ICON GRAPHICS' },
       {
         name: 'description',
@@ -18,7 +18,7 @@ export const Route = createFileRoute('/portfolio')({
       },
     ],
     links: [
-      { rel: 'canonical', href: 'https://icongraphics.com.ng/portfolio' },
+      { rel: 'canonical', href: 'https://icongraphics.com.ng/portfolio/' },
     ],
   }),
   validateSearch: (search: Record<string, unknown>) => ({
