@@ -13,16 +13,6 @@ export const Route = createRootRoute({
     links: [
       { rel: 'icon', type: 'image/png', href: '/img/logo-3d.png' },
       { rel: 'apple-touch-icon', href: '/img/logo-3d.png' },
-      { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-      {
-        rel: 'preconnect',
-        href: 'https://fonts.gstatic.com',
-        crossOrigin: 'anonymous',
-      },
-      {
-        rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=DM+Sans:wght@400..700&family=Manrope:wght@400..800&display=swap',
-      },
     ],
     meta: [
       {
