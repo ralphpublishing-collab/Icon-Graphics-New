@@ -1391,9 +1391,6 @@ function PreviewPhoto({
     <img
       className={className}
       src={remoteImage(url, 1000)}
-      srcSet={[560, 800, 1200]
-        .map((w) => remoteImage(url, w) + ' ' + w + 'w')
-        .join(', ')}
       sizes="(max-width: 768px) 100vw, 45vw"
       alt=""
       width={1000}
@@ -1522,7 +1519,7 @@ function CaseVideo({
       <video
         ref={ref}
         controls={started}
-        preload="auto"
+        preload="none"
         playsInline
         width="100%"
         style={{ backgroundColor: '#121212' }}
