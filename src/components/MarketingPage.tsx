@@ -299,20 +299,20 @@ export function Layout({ children }: { children: React.ReactNode }) {
           >
             {[
               ['Home', '/'],
-              ['About', '/about'],
-              ['Services', '/services'],
-              ['Creative Studio', '/creative-studio'],
-              ['Portfolio', '/portfolio'],
-              ['Pricing', '/pricing'],
-              ['How We Work', '/how-we-work'],
-              ['Insights', '/insights'],
-              ['Contact', '/contact'],
+              ['About', '/about/'],
+              ['Services', '/services/'],
+              ['Creative Studio', '/creative-studio/'],
+              ['Portfolio', '/portfolio/'],
+              ['Pricing', '/pricing/'],
+              ['How We Work', '/how-we-work/'],
+              ['Insights', '/insights/'],
+              ['Contact', '/contact/'],
             ].map(([label, url]) => (
               <a href={url} key={url}>
                 {label}
               </a>
             ))}
-            <a className="button yellow small" href="/request-a-quote">
+            <a className="button yellow small" href="/request-a-quote/">
               Request a Quote
             </a>
           </nav>
@@ -328,7 +328,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
               <br />
               Let’s make it <em>iconic.</em>
             </h2>
-            <a className="button yellow cta-project-link" href="/request-a-quote">
+            <a className="button yellow cta-project-link" href="/request-a-quote/">
               <GradientSpark size={20} />
               <span>Start a Project</span>
             </a>
@@ -354,15 +354,15 @@ export function Layout({ children }: { children: React.ReactNode }) {
           <div>
             <h3>Explore</h3>
             {[
-              ['About the brand', '/about'],
-              ['Meet the founder', '/founder'],
-              ['Portfolio', '/portfolio'],
-              ['Pricing', '/pricing'],
-              ['How We Work', '/how-we-work'],
-              ['Insights', '/insights'],
-              ['FAQs', '/faq'],
-              ['Request a quote', '/request-a-quote'],
-              ['Start a project', '/onboarding'],
+              ['About the brand', '/about/'],
+              ['Meet the founder', '/founder/'],
+              ['Portfolio', '/portfolio/'],
+              ['Pricing', '/pricing/'],
+              ['How We Work', '/how-we-work/'],
+              ['Insights', '/insights/'],
+              ['FAQs', '/faq/'],
+              ['Request a quote', '/request-a-quote/'],
+              ['Start a project', '/onboarding/'],
             ].map(([t, u]) => (
               <a key={u} href={u}>
                 {t}
@@ -404,10 +404,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <div className="wrap footer-bottom">
           <span>© 2026 ICON GRAPHICS. All Rights Reserved.</span>
           <div>
-            <a href="/privacy">Privacy Policy</a>
-            <a href="/terms">Terms & Conditions</a>
-            <a href="/refund-cancellation">Refund & Cancellation</a>
-            <a href="/project-delivery">Project Delivery</a>
+            <a href="/privacy/">Privacy Policy</a>
+            <a href="/terms/">Terms & Conditions</a>
+            <a href="/refund-cancellation/">Refund & Cancellation</a>
+            <a href="/project-delivery/">Project Delivery</a>
           </div>
         </div>
       </footer>
@@ -721,14 +721,14 @@ export function ProjectCard({ project }: { project: Project }) {
   const s = services.find((s) => s.id === project.category)!
   return (
     <article className="project-card">
-      <a href={'/portfolio/' + project.id} className="project-image">
+      <a href={'/portfolio/' + project.id + '/'} className="project-image">
         <Art project={project} />
       </a>
       <div className="project-info">
         <div>
           <p>{s.title}</p>
           <h3>
-            <a href={'/portfolio/' + project.id}>{project.title}</a>
+            <a href={'/portfolio/' + project.id + '/'}>{project.title}</a>
           </h3>
         </div>
       </div>
@@ -864,7 +864,7 @@ export function AboutFounderSection({
             >
               Talk to Rapheal on WhatsApp
             </WA>
-            <a className="button outline" href="/contact">
+            <a className="button outline" href="/contact/">
               Send a Project Brief
             </a>
           </div>
@@ -1076,10 +1076,10 @@ export function Home() {
             documentation for ambitious businesses in Nigeria and worldwide.
           </p>
           <div className="hero-buttons">
-            <a className="button yellow" href="/portfolio">
+            <a className="button yellow" href="/portfolio/">
               View Our Portfolio
             </a>
-            <a className="button outline" href="/request-a-quote">
+            <a className="button outline" href="/request-a-quote/">
               Request a Custom Quote
             </a>
           </div>
@@ -1117,7 +1117,7 @@ export function Home() {
           <p className="section-subtitle">
             Purposeful identity design, social campaigns, brochures and
             commercial packages delivered for clients globally.{' '}
-            <a className="text-link" href="/portfolio">
+            <a className="text-link" href="/portfolio/">
               Explore the portfolio
             </a>
           </p>
@@ -1161,7 +1161,7 @@ export function Home() {
             help businesses, brands and individuals build stronger identities,
             communicate effectively and stand out in the digital world.
           </p>
-          <a className="text-link" href="/about">
+          <a className="text-link" href="/about/">
             Get to know us
           </a>
         </div>
@@ -1184,7 +1184,7 @@ export function Home() {
               Explore quotation-based service packages. Agree the deliverables,
               schedule and payment arrangements directly with Rapheal.
             </p>
-            <a className="button dark" href="/pricing">
+            <a className="button dark" href="/pricing/">
               Explore Pricing & Packages
             </a>
           </div>
@@ -1199,7 +1199,7 @@ export function Home() {
               Practical guides to preparing a creative brief, planning a website
               and sharing useful media references.
             </p>
-            <a className="button dark" href="/insights">
+            <a className="button dark" href="/insights/">
               Read the guides
             </a>
           </div>
@@ -1776,7 +1776,7 @@ export function Services() {
                 >
                   Discuss this service
                 </WA>
-                <a className="button outline" href="/request-a-quote">
+                <a className="button outline" href="/request-a-quote/">
                   Request a Quote
                 </a>
               </div>
@@ -2101,7 +2101,7 @@ export function ProjectDetail({ project }: { project: Project }) {
             >
               Enquire on WhatsApp
             </WA>
-            <a href="/portfolio" className="text-link">
+            <a href="/portfolio/" className="text-link">
               ← Back to portfolio
             </a>
           </div>
