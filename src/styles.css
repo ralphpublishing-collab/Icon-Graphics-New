@@ -5875,6 +5875,12 @@ video {
 }
 
 
+/* Contact and Request a Quote pages: separate the catalogue action from
+   the social links without changing the icons or button appearance. */
+.contact-catalogue {
+  margin-top: 32px !important;
+}
+
 /* Mobile footer: keep the catalogue action clear of the social links and
    reserve a comfortable buffer above the fixed WhatsApp chat control. */
 @media (max-width: 768px) {
