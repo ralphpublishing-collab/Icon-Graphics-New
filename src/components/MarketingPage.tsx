@@ -2176,7 +2176,7 @@ export function Contact({ quote = false }: { quote?: boolean }) {
               Prefer WhatsApp?
             </WA>
             <SocialLinks />
-            <Catalogue className="button yellow" />
+            <Catalogue className="button yellow contact-catalogue" />
             <a href={GOOGLE_REVIEW_URL} target="_blank" rel="noopener noreferrer" className="text-link" style={{ display: 'block', width: 'fit-content', marginTop: '20px' }}>Review us on Google</a>
           </aside>
           <div className="form-panel">
