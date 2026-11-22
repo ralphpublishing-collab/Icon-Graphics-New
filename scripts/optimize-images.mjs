@@ -19,6 +19,7 @@ const assets = [
   'img/rapheal-adebayo-supplied.jpeg',
   'img/rapheal-adebayo-about.jpeg',
   'img/logo.png',
+  'img/rapheal-avatar.png',
 ]
 
 const publicDir = path.join(process.cwd(), 'public')
@@ -35,7 +36,11 @@ for (const asset of assets) {
 
   await mkdir(path.dirname(output), { recursive: true })
   const before = await stat(source)
-  const maxDimension = asset.startsWith('img/') ? 1200 : 1400
+  const maxDimension =
+    asset === 'img/logo.png' ? 96 :
+    asset === 'img/rapheal-avatar.png' ? 160 :
+    asset.startsWith('img/') ? 1200 :
+    asset.includes('lewa-glam-beauty-empire-social-grid') ? 1200 : 1400
 
   await sharp(source)
     .rotate()
@@ -46,7 +51,7 @@ for (const asset of assets) {
       withoutEnlargement: true,
     })
     .webp({
-      quality: asset.includes('lewa-glam-beauty-empire-social-grid') ? 78 : 84,
+      quality: asset.includes('lewa-glam-beauty-empire-social-grid') ? 72 : asset === 'img/logo.png' ? 78 : 84,
       effort: 6,
       alphaQuality: 100,
     })
