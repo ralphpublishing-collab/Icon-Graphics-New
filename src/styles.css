@@ -5884,7 +5884,7 @@ video {
 
   .footer-grid .catalogue {
     display: inline-flex;
-    margin-top: 32px;
+    margin-top: 48px !important;
     margin-bottom: 72px;
   }
 
