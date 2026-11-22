@@ -11,7 +11,8 @@ export const Route = createRootRoute({
   notFoundComponent: NotFoundPage,
   head: () => ({
     links: [
-      { rel: 'icon', type: 'image/png', href: '/img/logo-3d.png' },
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'icon', type: 'image/png', sizes: '64x64', href: '/favicon.png' },
       { rel: 'apple-touch-icon', href: '/img/logo-3d.png' },
     ],
     meta: [
