@@ -2155,7 +2155,7 @@ export function Contact({ quote = false }: { quote?: boolean }) {
               
               <div className="founder-contact-card" style={{ display: 'flex', alignItems: 'center', gap: '14px', marginTop: '28px', padding: '14px 18px', background: 'rgba(255, 255, 255, 0.05)', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
                 <img
-                  src="/img/rapheal-avatar.png"
+                  src="/optimized/img/rapheal-avatar.webp"
                   alt="Rapheal Adebayo"
                   style={{ width: '52px', height: '52px', borderRadius: '50%', objectFit: 'cover', border: '2px solid #f72585', flexShrink: 0 }}
                 />
