@@ -102,6 +102,8 @@ function RootDocument({ children }: { children: React.ReactNode }) {
                     addressCountry: 'NG',
                   },
                   areaServed: [
+                    { '@type': 'City', name: 'Ilorin' },
+                    { '@type': 'AdministrativeArea', name: 'Kwara State' },
                     { '@type': 'Country', name: 'Nigeria' },
                     { '@type': 'Place', name: 'Worldwide (remote services)' },
                   ],
