@@ -4,20 +4,20 @@ import { Home } from '../components/MarketingPage'
 export const Route = createFileRoute('/')({
   head: () => ({
     meta: [
-      { title: 'ICON GRAPHICS | Branding & Digital Solutions' },
+      { title: 'Graphic Design & Branding in Ilorin, Nigeria | ICON GRAPHICS' },
       {
         name: 'description',
         content:
-          'Branding, graphic design, websites and media for businesses in Nigeria. Explore ICON GRAPHICS services and request a project quote.',
+          'Based in Ilorin, Kwara State, ICON GRAPHICS provides branding, graphic design, websites and media services for businesses across Nigeria and worldwide. Request a project quote.',
       },
       {
         property: 'og:title',
-        content: 'ICON GRAPHICS | Branding & Digital Solutions',
+        content: 'Graphic Design & Branding in Ilorin, Nigeria | ICON GRAPHICS',
       },
       {
         property: 'og:description',
         content:
-          'Branding, graphic design, websites and media for businesses in Nigeria. Explore ICON GRAPHICS services and request a project quote.',
+          'Based in Ilorin, Kwara State, ICON GRAPHICS provides branding, graphic design, websites and media services for businesses across Nigeria and worldwide. Request a project quote.',
       },
       { property: 'og:url', content: 'https://icongraphics.com.ng/' },
     ],
