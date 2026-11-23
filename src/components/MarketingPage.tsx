@@ -1072,8 +1072,8 @@ export function Home() {
             <em>command trust.</em>
           </h1>
           <p>
-            Founder-led branding, video production, web design, and executive
-            documentation for ambitious businesses in Nigeria and worldwide.
+            Based in Ilorin, Kwara State, ICON GRAPHICS delivers branding, video production,
+            web design and creative media for ambitious businesses across Nigeria and worldwide.
           </p>
           <div className="hero-buttons">
             <a className="button yellow" href="/portfolio/">
